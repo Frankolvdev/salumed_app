@@ -8,7 +8,6 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 
 import 'package:flutter/material.dart';
 import 'package:app/compat/flutter_page_transition.dart';
-import 'package:simple_animations/simple_animations/animation_controller_x/animation_controller_mixin.dart';
 
 class Breathing extends StatefulWidget {
   const Breathing({Key? key}) : super(key: key);
