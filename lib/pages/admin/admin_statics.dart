@@ -638,7 +638,7 @@ class _AdminStaticsState extends State<AdminStatics> {
             title: ChartTitle(text: ""),
             legend: Legend(isVisible: false),
             tooltipBehavior: _tooltipBehavior,
-            series: <ChartSeries>[
+            series: <CartesianSeries>[
               LineSeries<OrdersData, String>(
                   markerSettings: MarkerSettings(
                       color: CustomColors.secondary, isVisible: true),

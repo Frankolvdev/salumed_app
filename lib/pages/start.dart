@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:math';
 
 import 'package:app/constants/globals.dart';
 import 'package:app/helpers/helpers.dart';
@@ -34,8 +36,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:snack/snack.dart';
-import 'dart:math';
-import 'dart:convert';
 
 import '../components/answer_question_dialog.dart';
 import '../components/custom_dialog.dart';
