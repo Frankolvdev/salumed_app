@@ -1,0 +1,2181 @@
+{
+  "gym": {
+    "beginner": {
+      "details": {
+        "objective": "aprender técnica, fortalecer la base muscular y mejorar la coordinación antes de pasar a fases intermedia y avanzada. Los ejercicios priorizan máquinas guiadas y movimientos seguros.",
+        "rest": "60–90 s entre series",
+        "tempo": "2-1-2",
+        "duration": "50-60 min por sesión"
+      },
+      "day1": [
+        {
+          "exercise": "Press de pecho en máquina",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Controla el rango completo",
+          "type": "input"
+        },
+        {
+          "exercise": "Press inclinado con mancuernas ligeras",
+          "series": "3",
+          "reps": "12",
+          "observations": "Supervisar postura",
+          "type": "input"
+        },
+        {
+          "exercise": "Aperturas en máquina o banco plano",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "No sobre-extender",
+          "type": "input"
+        },
+        {
+          "exercise": "Fondos asistidos o en banco",
+          "series": "2",
+          "reps": "10",
+          "observations": "Usa asistencia si es necesario",
+          "type": "check"
+        },
+        {
+          "exercise": "Extensión de tríceps en polea",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Codos fijos",
+          "type": "input"
+        },
+        {
+          "exercise": "Copa con mancuerna sentado",
+          "series": "2",
+          "reps": "12",
+          "observations": "Movimiento controlado",
+          "type": "input"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Jalón al pecho (máquina o polea)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Controla la bajada",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo sentado en polea baja",
+          "series": "3",
+          "reps": "12",
+          "observations": "Espalda recta",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo con mancuerna (una mano)",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Movimiento fluido",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl de bíceps con barra Z",
+          "series": "3",
+          "reps": "12",
+          "observations": "Sin balanceo",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl alternado con mancuernas",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Rotar muñeca",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl concentrado (banco)",
+          "series": "2",
+          "reps": "12",
+          "observations": "Enfocar contracción",
+          "type": "input"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Prensa de piernas",
+          "series": "4",
+          "reps": "12",
+          "observations": "Controla el descenso",
+          "type": "input"
+        },
+        {
+          "exercise": "Extensión de cuádriceps",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Pausa 1 s arriba",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl femoral acostado o sentado",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Control excéntrico",
+          "type": "input"
+        },
+        {
+          "exercise": "Sentadilla con peso corporal o Smith",
+          "series": "3",
+          "reps": "12",
+          "observations": "Técnica ante todo",
+          "type": "input"
+        },
+        {
+          "exercise": "Zancadas fijas o caminando",
+          "series": "2",
+          "reps": "10 por pierna",
+          "observations": "Espalda recta, rodilla al piso",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de talones (gemelos)",
+          "series": "4",
+          "reps": "15-20",
+          "observations": "Ritmo constante",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Press militar con mancuernas",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Sentado",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones laterales",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Control de hombros",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones frontales",
+          "series": "2",
+          "reps": "12",
+          "observations": "Peso ligero",
+          "type": "input"
+        },
+        {
+          "exercise": "Pájaros con mancuernas",
+          "series": "2",
+          "reps": "12-15",
+          "observations": "Deltoide posterior",
+          "type": "input"
+        },
+        {
+          "exercise": "Plancha frontal",
+          "series": "3",
+          "reps": "30-45 s",
+          "observations": "Abdomen firme",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch básico en suelo o máquina",
+          "series": "3",
+          "reps": "20",
+          "observations": "Evitar jalar cuello",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de piernas",
+          "series": "3",
+          "reps": "15",
+          "observations": "Movimiento lento",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Sentadilla libre o en máquina Smith",
+          "series": "3",
+          "reps": "12",
+          "observations": "Control total",
+          "type": "input"
+        },
+        {
+          "exercise": "Press de pecho en máquina",
+          "series": "3",
+          "reps": "12",
+          "observations": "Ritmo constante",
+          "type": "input"
+        },
+        {
+          "exercise": "Jalón al pecho",
+          "series": "3",
+          "reps": "12",
+          "observations": "Sin impulso",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl de bíceps + Press de hombros",
+          "series": "3",
+          "reps": "12",
+          "observations": "Movimiento continuo",
+          "type": "input"
+        },
+        {
+          "exercise": "Step-ups en banco",
+          "series": "3",
+          "reps": "10 por pierna",
+          "observations": "Estabilidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Caminata en cinta o elíptica",
+          "series": "1",
+          "reps": "15 min",
+          "observations": "Intensidad moderada",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha o puente",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Core activo",
+          "type": "check"
+        }
+      ]
+    },
+    "intermediate": {
+      "details": {
+        "structure": "Push / Pull / Legs / Hombro-Core / Full Body",
+        "rest": "60–90 s entre series",
+        "tempo": "2-1-2",
+        "objective": "progresar en carga y volumen de forma controlada."
+      },
+      "day1": [
+        {
+          "exercise": "Press de banca plano con barra",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Ejercicio base",
+          "type": "input"
+        },
+        {
+          "exercise": "Press inclinado con mancuernas",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Activar parte superior",
+          "type": "input"
+        },
+        {
+          "exercise": "Aperturas con mancuernas",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Estiramiento controlado",
+          "type": "input"
+        },
+        {
+          "exercise": "Fondos asistidos o en paralelas",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Si es muy fácil, añadir peso",
+          "type": "input"
+        },
+        {
+          "exercise": "Press francés o copa con mancuerna",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Codos fijos",
+          "type": "input"
+        },
+        {
+          "exercise": "Extensión de tríceps en polea",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Pausa arriba",
+          "type": "input"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Jalón al pecho agarre amplio",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Controlar bajada",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo con mancuerna",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Espalda paralela al suelo",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo en máquina",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Espalda recta",
+          "type": "input"
+        },
+        {
+          "exercise": "Pull-over con polea o mancuerna",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Sentir dorsales",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl con barra Z",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Codos fijos",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl alternado con supinación",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Rotar muñeca",
+          "type": "input"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Sentadilla libre",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Espalda firme",
+          "type": "input"
+        },
+        {
+          "exercise": "Prensa inclinada",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "No bloquear rodillas",
+          "type": "input"
+        },
+        {
+          "exercise": "Peso muerto rumano",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Controlar excéntrico",
+          "type": "input"
+        },
+        {
+          "exercise": "Zancadas caminando",
+          "series": "3",
+          "reps": "12-14 pasos",
+          "observations": "Glúteo y estabilidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Extensión de cuádriceps",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Pausa arriba",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl femoral acostado",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Control de movimiento",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones de talones (gemelos)",
+          "series": "4",
+          "reps": "15-20",
+          "observations": "Ritmo controlado",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Press militar con mancuernas",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Sentado",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones laterales",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Codos semi-flexionados",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones frontales",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Controlar bajada",
+          "type": "input"
+        },
+        {
+          "exercise": "Pájaros con mancuernas",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Deltoide posterior",
+          "type": "input"
+        },
+        {
+          "exercise": "Plancha frontal",
+          "series": "3",
+          "reps": "45 s",
+          "observations": "Activar abdomen",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch en máquina o banco",
+          "series": "3",
+          "reps": "20",
+          "observations": "Respiración controlada",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de piernas",
+          "series": "3",
+          "reps": "15",
+          "observations": "Sin impulso",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Sentadilla + Press con mancuernas",
+          "series": "3",
+          "reps": "12",
+          "observations": "Movimiento compuesto",
+          "type": "input"
+        },
+        {
+          "exercise": "Peso muerto + Remo",
+          "series": "3",
+          "reps": "10",
+          "observations": "Enfocar técnica",
+          "type": "input"
+        },
+        {
+          "exercise": "Flexiones + Remo TRX",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Core firme",
+          "type": "check"
+        },
+        {
+          "exercise": "Step-ups en banco",
+          "series": "3",
+          "reps": "12-14 pasos",
+          "observations": "Alternar piernas",
+          "type": "check"
+        },
+        {
+          "exercise": "Burpees o escaladores",
+          "series": "4",
+          "reps": "30 s ON / 30 s OFF",
+          "observations": "Cardio HIT",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha con toque de hombros",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Estabilidad",
+          "type": "check"
+        }
+      ]
+    },
+    "advanced": {
+      "details": {
+        "structure": "5 días / semana, con enfoque push-pull-legs y distribución equilibrada de volumen, frecuencia y estímulos.",
+        "rest": "60–90 s entre series de aislamiento / 90–120 s en compuestos.",
+        "tempo": "2-1-2 (concéntrico-pausa-excéntrico)."
+      },
+      "day1": [
+        {
+          "exercise": "Press de banca plano con barra",
+          "series": "5",
+          "reps": "6-8",
+          "observations": "Enfocado en fuerza",
+          "type": "input"
+        },
+        {
+          "exercise": "Press inclinado con mancuernas",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Controlar tempo",
+          "type": "input"
+        },
+        {
+          "exercise": "Press declinado con barra",
+          "series": "3",
+          "reps": "8-10",
+          "observations": "Activación inferior",
+          "type": "input"
+        },
+        {
+          "exercise": "Aperturas en máquina o polea",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Estiramiento completo",
+          "type": "input"
+        },
+        {
+          "exercise": "Fondos en paralelas",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Con peso opcional",
+          "type": "input"
+        },
+        {
+          "exercise": "Press francés con barra Z",
+          "series": "3",
+          "reps": "8-10",
+          "observations": "Codos fijos",
+          "type": "input"
+        },
+        {
+          "exercise": "Extensiones de tríceps en cuerda",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Pausa 1 s al final",
+          "type": "input"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Dominadas lastradas",
+          "series": "5",
+          "reps": "6-8",
+          "observations": "Controlar movimiento",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo con barra T o barra libre",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Espalda recta",
+          "type": "input"
+        },
+        {
+          "exercise": "Jalón al pecho agarre cerrado",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Enfocar dorsales",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo en polea baja",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Sin balanceo",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl con barra recta",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Control total",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl alternado con supinación",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Rotar muñeca",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl martillo",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Antebrazos fuertes",
+          "type": "input"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Sentadilla libre profunda",
+          "series": "5",
+          "reps": "6-8",
+          "observations": "Compensar con movilidad",
+          "type": "input"
+        },
+        {
+          "exercise": "Prensa inclinada",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Controlar fase excéntrica",
+          "type": "input"
+        },
+        {
+          "exercise": "Peso muerto rumano",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Isquiotibiales y glúteo",
+          "type": "input"
+        },
+        {
+          "exercise": "Zancadas con mancuernas",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Largo de paso medio",
+          "type": "input"
+        },
+        {
+          "exercise": "Extensiones de cuádriceps",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Pausa 1 s arriba",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl femoral acostado",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Control excéntrico",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones de talones (gemelos)",
+          "series": "5",
+          "reps": "15-20",
+          "observations": "Ritmo controlado",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Press militar con barra",
+          "series": "5",
+          "reps": "6-8",
+          "observations": "Pie firme, sin impulso",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones laterales",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Enfocar deltoide medio",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones frontales",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Control excéntrico",
+          "type": "input"
+        },
+        {
+          "exercise": "Pájaros (deltoide posterior)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Codo semiflexionado",
+          "type": "input"
+        },
+        {
+          "exercise": "Face pull en polea",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Tensión constante",
+          "type": "input"
+        },
+        {
+          "exercise": "Plancha frontal",
+          "series": "3",
+          "reps": "45-60 s",
+          "observations": "Core firme",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch en máquina o peso",
+          "series": "3",
+          "reps": "20",
+          "observations": "Añadir carga gradual",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones de piernas colgado",
+          "series": "3",
+          "reps": "15",
+          "observations": "Sin balanceo",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Peso muerto convencional",
+          "series": "4",
+          "reps": "6-8",
+          "observations": "Compósito total",
+          "type": "input"
+        },
+        {
+          "exercise": "Press de banca inclinado",
+          "series": "3",
+          "reps": "8-10",
+          "observations": "",
+          "type": "input"
+        },
+        {
+          "exercise": "Dominadas pronas",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "",
+          "type": "check"
+        },
+        {
+          "exercise": "Sentadilla frontal",
+          "series": "3",
+          "reps": "8-10",
+          "observations": "",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl + Press (mancuernas)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Fluidez continua",
+          "type": "input"
+        },
+        {
+          "exercise": "Burpees o Assault Bike",
+          "series": "5",
+          "reps": "30 s ON / 30 s OFF",
+          "observations": "Alta intensidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha con rotación",
+          "series": "3",
+          "reps": "12",
+          "observations": "Estabilidad dinámica",
+          "type": "check"
+        }
+      ]
+    }
+  },
+  "calisthenics": {
+    "beginner": {
+      "details": {
+        "duration": "45–60 min",
+        "rest": "45–90 s entre ejercicios",
+        "frequency": "5 días/semana",
+        "material": "barra baja, escalón o banco, barra fija o TRX y banda elástica ligera."
+      },
+      "day1": [
+        {
+          "exercise": "Flexiones clásicas (push-ups)",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Rodillas apoyadas si es necesario",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones inclinadas (manos en banco)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Menor carga, controla el movimiento",
+          "type": "check"
+        },
+        {
+          "exercise": "Fondos entre bancos",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Codos hacia atrás",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones diamante",
+          "series": "2",
+          "reps": "10",
+          "observations": "Centrarse en tríceps",
+          "type": "check"
+        },
+        {
+          "exercise": "Press pike (glúteos arriba)",
+          "series": "2",
+          "reps": "8-10",
+          "observations": "Enfocar hombros",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha frontal",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Abdomen firme",
+          "type": "check"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Dominadas asistidas (banda o TRX)",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Controlar bajada",
+          "type": "check"
+        },
+        {
+          "exercise": "Remo invertido con pies apoyados",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Cuerpo alineado",
+          "type": "check"
+        },
+        {
+          "exercise": "Remo con toalla (puerta o barra baja)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Fuerza de agarre",
+          "type": "check"
+        },
+        {
+          "exercise": "Curl con banda elástica",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Tensión continua",
+          "type": "check"
+        },
+        {
+          "exercise": "Isometría de bíceps (agarre fijo)",
+          "series": "2",
+          "reps": "20 s",
+          "observations": "Activación final",
+          "type": "check"
+        },
+        {
+          "exercise": "Hollow hold",
+          "series": "3",
+          "reps": "20-30 s",
+          "observations": "Fortalecer core",
+          "type": "check"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Sentadilla libre",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Control postural",
+          "type": "check"
+        },
+        {
+          "exercise": "Zancadas fijas",
+          "series": "3",
+          "reps": "10 x pierna",
+          "observations": "Estabilidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Sentadilla búlgara (banco)",
+          "series": "3",
+          "reps": "10 x pierna",
+          "observations": "Rodillas alineadas",
+          "type": "check"
+        },
+        {
+          "exercise": "Puente de glúteo (glute bridge)",
+          "series": "3",
+          "reps": "15-20",
+          "observations": "Activar glúteos",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de talones (gemelos)",
+          "series": "4",
+          "reps": "15-20",
+          "observations": "Ritmo lento",
+          "type": "check"
+        },
+        {
+          "exercise": "Step-ups (subida al banco)",
+          "series": "3",
+          "reps": "10 x pierna",
+          "observations": "Control de impulso",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Plancha frontal",
+          "series": "4",
+          "reps": "30 s",
+          "observations": "Espalda recta",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch básico",
+          "series": "3",
+          "reps": "20",
+          "observations": "No tirar del cuello",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de piernas (acostado)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Lento y controlado",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha lateral",
+          "series": "3",
+          "reps": "30 s por lado",
+          "observations": "Activar oblicuos",
+          "type": "check"
+        },
+        {
+          "exercise": "Superman (espalda baja)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Fortalecer lumbares",
+          "type": "check"
+        },
+        {
+          "exercise": "Respiración diafragmática",
+          "series": "3",
+          "reps": "5-10 reps",
+          "observations": "Recuperación y control",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Circuito: Sentadilla → Flexión → Remo → Plancha",
+          "series": "4",
+          "reps": "30 s cada uno",
+          "observations": "Descanso 30 s entre ejercicios",
+          "type": "check"
+        },
+        {
+          "exercise": "Burpees lentos (principiante)",
+          "series": "3",
+          "reps": "10",
+          "observations": "Control del ritmo",
+          "type": "check"
+        },
+        {
+          "exercise": "Step lateral + sentadilla",
+          "series": "3",
+          "reps": "12",
+          "observations": "Activar piernas",
+          "type": "check"
+        },
+        {
+          "exercise": "Marcha alta (rodillas arriba)",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Cardio suave",
+          "type": "check"
+        },
+        {
+          "exercise": "Estiramientos activos generales",
+          "series": "1",
+          "reps": "10 min",
+          "observations": "Enfriamiento y movilidad",
+          "type": "check"
+        }
+      ]
+    },
+    "intermediate": {
+      "details": {
+        "objective": "construir una base sólida para movimientos avanzados (front lever, planche, muscle-up).",
+        "duration": "60–70 min",
+        "rest": "60–90 s entre series",
+        "material": "barra fija, paralelas bajas, anillas o TRX, banda elástica ligera."
+      },
+      "day1": [
+        {
+          "exercise": "Flexiones declinadas",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Pies elevados, torso firme",
+          "type": "check"
+        },
+        {
+          "exercise": "Fondos en paralelas",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Descenso lento",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones tipo pike (HSPU progresión)",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Controlar el rango",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones diamante",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Codos cerca del cuerpo",
+          "type": "check"
+        },
+        {
+          "exercise": "Dips entre bancos",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Estirar tríceps",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha frontal corta (progresión)",
+          "series": "3",
+          "reps": "30-45 s",
+          "observations": "Mantener abdomen firme",
+          "type": "check"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Dominadas pronas",
+          "series": "4",
+          "reps": "6-8",
+          "observations": "Rango completo",
+          "type": "check"
+        },
+        {
+          "exercise": "Dominadas supinas (chin-up)",
+          "series": "3",
+          "reps": "8-10",
+          "observations": "Dorsales y bíceps",
+          "type": "check"
+        },
+        {
+          "exercise": "Remo invertido (TRX o barra baja)",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Cuerpo alineado",
+          "type": "check"
+        },
+        {
+          "exercise": "Remo con toalla o banda",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Variar agarre",
+          "type": "check"
+        },
+        {
+          "exercise": "Curl isométrico en barra media",
+          "series": "3",
+          "reps": "15 s x 3 rep",
+          "observations": "Mantener codos a 90°",
+          "type": "check"
+        },
+        {
+          "exercise": "Hold de hollow body",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Activar core profundo",
+          "type": "check"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Sentadilla libre profunda",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Control total",
+          "type": "check"
+        },
+        {
+          "exercise": "Zancadas caminando",
+          "series": "3",
+          "reps": "12 por pierna",
+          "observations": "Espalda recta",
+          "type": "check"
+        },
+        {
+          "exercise": "Sentadilla búlgara (banco)",
+          "series": "3",
+          "reps": "10 por pierna",
+          "observations": "Balance",
+          "type": "check"
+        },
+        {
+          "exercise": "Puente de glúteo (glute bridge)",
+          "series": "3",
+          "reps": "15",
+          "observations": "Activación glútea",
+          "type": "check"
+        },
+        {
+          "exercise": "Saltos al cajón o step",
+          "series": "3",
+          "reps": "10",
+          "observations": "Control de impacto",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch con elevación de piernas",
+          "series": "3",
+          "reps": "15",
+          "observations": "Core completo",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha lateral",
+          "series": "3",
+          "reps": "30 s por lado",
+          "observations": "Estabilidad oblicua",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Handstand asistido (pared)",
+          "series": "4",
+          "reps": "30-45 s",
+          "observations": "Control de hombros",
+          "type": "check"
+        },
+        {
+          "exercise": "L-sit en paralelas",
+          "series": "4",
+          "reps": "15-20 s",
+          "observations": "Mantén piernas rectas",
+          "type": "check"
+        },
+        {
+          "exercise": "Back lever (tuck hold)",
+          "series": "3",
+          "reps": "10-15 s",
+          "observations": "Progresión controlada",
+          "type": "check"
+        },
+        {
+          "exercise": "Planche lean (inclinación)",
+          "series": "4",
+          "reps": "15-20 s",
+          "observations": "Hombros hacia adelante",
+          "type": "check"
+        },
+        {
+          "exercise": "Crow pose (cuervo)",
+          "series": "3",
+          "reps": "15-20 s",
+          "observations": "Transición al equilibrio",
+          "type": "check"
+        },
+        {
+          "exercise": "Hollow body hold",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Final con respiración controlada",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Circuito: Pull-up → Push-up → Squat → Dips → Crunch",
+          "series": "4",
+          "reps": "10 cada uno",
+          "observations": "30 s entre ejercicios",
+          "type": "check"
+        },
+        {
+          "exercise": "Burpees o escaladores",
+          "series": "4",
+          "reps": "30 s ON / 30 s OFF",
+          "observations": "Intensidad media",
+          "type": "check"
+        },
+        {
+          "exercise": "Dominadas asistidas + flexiones",
+          "series": "3",
+          "reps": "10 + 15",
+          "observations": "Superset",
+          "type": "check"
+        },
+        {
+          "exercise": "Sentadilla + salto vertical",
+          "series": "3",
+          "reps": "12",
+          "observations": "Control del aterrizaje",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha dinámica (toque de hombros)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Core y estabilidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Estiramientos activos (hombro, cadera, dorsales)",
+          "series": "1",
+          "reps": "10 min",
+          "observations": "Recuperación",
+          "type": "check"
+        }
+      ]
+    },
+    "advanced": {
+      "details": {
+        "objective": "fuerza funcional, control neuromuscular y estética atlética (definición, equilibrio y movilidad).",
+        "frequency": "5 días/semana",
+        "duration": "60–75 min",
+        "rest": "60–120 s según intensidad",
+        "material": "barra fija, paralelas, anillas, bandas elásticas."
+      },
+      "day1": [
+        {
+          "exercise": "Muscle-up",
+          "series": "5",
+          "reps": "4-6",
+          "observations": "Movimiento completo fluido",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones tipo plancha (Planche push-ups)",
+          "series": "4",
+          "reps": "6-8",
+          "observations": "Control total, espalda recta",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones en anillas",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Estabilización avanzada",
+          "type": "check"
+        },
+        {
+          "exercise": "Pike push-up / HSPU (Handstand Push-up)",
+          "series": "4",
+          "reps": "6-8",
+          "observations": "Contra pared si es necesario",
+          "type": "check"
+        },
+        {
+          "exercise": "Fondos en paralelas con lastre",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Enfocar tríceps y pecho",
+          "type": "input"
+        },
+        {
+          "exercise": "Flexiones diamante lentas",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Control excéntrico",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha frontal en suelo o anillas",
+          "series": "3",
+          "reps": "45 s",
+          "observations": "Core activo",
+          "type": "check"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Dominadas lastradas o explosivas",
+          "series": "5",
+          "reps": "6-8",
+          "observations": "Control en bajada",
+          "type": "input"
+        },
+        {
+          "exercise": "Dominadas arqueadas (arch pull-ups)",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Espalda completa",
+          "type": "check"
+        },
+        {
+          "exercise": "Front lever hold (sostén)",
+          "series": "4",
+          "reps": "10-15 s",
+          "observations": "Avanzar en progresiones",
+          "type": "check"
+        },
+        {
+          "exercise": "Remo invertido en anillas (a un brazo si posible)",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Movimiento lento",
+          "type": "check"
+        },
+        {
+          "exercise": "Chin-ups controlados",
+          "series": "3",
+          "reps": "8-10",
+          "observations": "Bíceps y dorsales",
+          "type": "check"
+        },
+        {
+          "exercise": "Curl con toalla o banda (agarre cerrado)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Finalizar con bombeo",
+          "type": "check"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Pistol squat (sentadilla a una pierna)",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Balance y control",
+          "type": "check"
+        },
+        {
+          "exercise": "Salto al cajón (box jump)",
+          "series": "4",
+          "reps": "10",
+          "observations": "Explosividad",
+          "type": "check"
+        },
+        {
+          "exercise": "Zancadas con salto (plyo lunges)",
+          "series": "4",
+          "reps": "12",
+          "observations": "Alternar fluido",
+          "type": "check"
+        },
+        {
+          "exercise": "Sentadilla búlgara (con peso corporal o banda)",
+          "series": "4",
+          "reps": "12-14",
+          "observations": "Control de rodilla",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de talones (gemelos)",
+          "series": "4",
+          "reps": "20",
+          "observations": "Lento y completo",
+          "type": "check"
+        },
+        {
+          "exercise": "Dragon flag",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Core completo",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha lateral con pierna elevada",
+          "series": "3",
+          "reps": "30 s por lado",
+          "observations": "Estabilidad lateral",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Handstand (sostén libre o pared)",
+          "series": "4",
+          "reps": "30-60 s",
+          "observations": "Control respiración",
+          "type": "check"
+        },
+        {
+          "exercise": "Planche hold (progresión o completa)",
+          "series": "4",
+          "reps": "10-20 s",
+          "observations": "Técnica sobre duración",
+          "type": "check"
+        },
+        {
+          "exercise": "L-sit to handstand (en paralelas)",
+          "series": "4",
+          "reps": "6-8",
+          "observations": "Fluidez controlada",
+          "type": "check"
+        },
+        {
+          "exercise": "Back lever hold",
+          "series": "4",
+          "reps": "10-15 s",
+          "observations": "Dominio total",
+          "type": "check"
+        },
+        {
+          "exercise": "Hollow body hold + rocks",
+          "series": "4",
+          "reps": "30 s",
+          "observations": "Estabilidad abdominal",
+          "type": "check"
+        },
+        {
+          "exercise": "Pase de pino a plancha (transiciones)",
+          "series": "3",
+          "reps": "4-6",
+          "observations": "Coordinación",
+          "type": "check"
+        },
+        {
+          "exercise": "Estiramientos activos de hombros y muñecas",
+          "series": "3",
+          "reps": "—",
+          "observations": "Final de sesión",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Circuito de movimientos combinados: Muscle-up → Dips → Pull-up → Push-up → Squat Jump",
+          "series": "5",
+          "reps": "5 rondas",
+          "observations": "Sin descanso entre ejercicios",
+          "type": "check"
+        },
+        {
+          "exercise": "Burpees explosivos + mountain climbers",
+          "series": "4",
+          "reps": "30 s ON / 30 s OFF",
+          "observations": "HIT corporal",
+          "type": "check"
+        },
+        {
+          "exercise": "Sprints cortos o cuerda",
+          "series": "5",
+          "reps": "20 s ON / 40 s OFF",
+          "observations": "",
+          "type": "check"
+        },
+        {
+          "exercise": "Toes to bar",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Core avanzado",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha dinámica + shoulder taps",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Control y coordinación",
+          "type": "check"
+        },
+        {
+          "exercise": "Enfriamiento y movilidad",
+          "series": "1",
+          "reps": "10 min",
+          "observations": "Enfocar hombros y cadera",
+          "type": "check"
+        }
+      ]
+    }
+  },
+  "home": {
+    "beginner": {
+      "details": {
+        "duration": "40–55 min",
+        "frequency": "5 días/semana",
+        "rest": "45–60 s entre series",
+        "objective": "fortalecer la base muscular, mejorar movilidad y crear disciplina.",
+        "material": "2 botellas de agua (1–1.5 L), 1 kilo de arroz o azúcar, Mochila ligera con libros, Silla firme, Tapete o alfombra"
+      },
+      "day1": [
+        {
+          "exercise": "Flexiones con rodillas apoyadas",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Controla bajada y subida",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones inclinadas (manos en silla)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Menor carga, mayor estabilidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Fondos entre bancos o sillas",
+          "series": "3",
+          "reps": "10",
+          "observations": "Codos hacia atrás",
+          "type": "check"
+        },
+        {
+          "exercise": "Press con botellas acostado (suelo)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Sustituye mancuernas",
+          "type": "input"
+        },
+        {
+          "exercise": "Extensión de tríceps con botella (un brazo)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Sentado, movimiento lento",
+          "type": "input"
+        },
+        {
+          "exercise": "Plancha básica",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Core activo y espalda recta",
+          "type": "check"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Remo con toalla (bajo puerta o mesa baja)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Activa dorsales",
+          "type": "check"
+        },
+        {
+          "exercise": "Remo con botellas (de pie, espalda recta)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Controla el ritmo",
+          "type": "input"
+        },
+        {
+          "exercise": "Superman en el suelo",
+          "series": "3",
+          "reps": "15",
+          "observations": "Fortalece zona lumbar",
+          "type": "check"
+        },
+        {
+          "exercise": "Curl con botellas o kilo de arroz",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Codos fijos",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl tipo martillo con botellas",
+          "series": "3",
+          "reps": "12",
+          "observations": "Antebrazos",
+          "type": "input"
+        },
+        {
+          "exercise": "Hollow hold o plancha corta",
+          "series": "3",
+          "reps": "20-30 s",
+          "observations": "Abdomen firme",
+          "type": "check"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Sentadilla libre (sin peso)",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Control postural",
+          "type": "check"
+        },
+        {
+          "exercise": "Zancadas fijas",
+          "series": "3",
+          "reps": "10 por pierna",
+          "observations": "Sin mover torso",
+          "type": "check"
+        },
+        {
+          "exercise": "Sentadilla apoyada en pared (wall sit)",
+          "series": "3",
+          "reps": "30-45 s",
+          "observations": "Isometría",
+          "type": "check"
+        },
+        {
+          "exercise": "Puente de glúteo (en suelo)",
+          "series": "3",
+          "reps": "15-20",
+          "observations": "Sostén 1 s arriba",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de talones (gemelos)",
+          "series": "4",
+          "reps": "15-20",
+          "observations": "Apoyarse en pared o silla",
+          "type": "check"
+        },
+        {
+          "exercise": "Step-ups (subidas a silla)",
+          "series": "3",
+          "reps": "10 por pierna",
+          "observations": "Cuidar equilibrio",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Plancha frontal (rodillas o completa)",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Espalda neutra",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch básico",
+          "series": "3",
+          "reps": "20",
+          "observations": "Sin jalar el cuello",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de piernas",
+          "series": "3",
+          "reps": "12",
+          "observations": "Movimiento controlado",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha lateral (con rodilla apoyada)",
+          "series": "3",
+          "reps": "30 s por lado",
+          "observations": "Control de respiración",
+          "type": "check"
+        },
+        {
+          "exercise": "Superman hold (boca abajo)",
+          "series": "3",
+          "reps": "15",
+          "observations": "Fortalece espalda baja",
+          "type": "check"
+        },
+        {
+          "exercise": "Respiraciones diafragmáticas",
+          "series": "3",
+          "reps": "5-10",
+          "observations": "Mejora control corporal",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Circuito: Sentadilla → Flexión → Remo → Plancha",
+          "series": "4",
+          "reps": "10 reps cada uno",
+          "observations": "30 s entre ejercicios",
+          "type": "check"
+        },
+        {
+          "exercise": "Marcha en el lugar con rodillas altas",
+          "series": "3",
+          "reps": "40 s",
+          "observations": "Cardio ligero",
+          "type": "check"
+        },
+        {
+          "exercise": "Burpees básicos (sin salto)",
+          "series": "3",
+          "reps": "10",
+          "observations": "Control de ritmo",
+          "type": "check"
+        },
+        {
+          "exercise": "Peso muerto con mochila ligera",
+          "series": "3",
+          "reps": "12",
+          "observations": "Espalda recta",
+          "type": "input"
+        },
+        {
+          "exercise": "Estiramientos activos (piernas, hombros, espalda)",
+          "series": "1",
+          "reps": "10 min",
+          "observations": "Cierre relajado",
+          "type": "check"
+        }
+      ]
+    },
+    "intermediate": {
+      "details": {
+        "duration": "50–65 min",
+        "rest": "45–90 s entre ejercicios",
+        "frequency": "5 días/semana",
+        "equipment": "Mochila con 3–5 kg (libros, arroz, garrafón pequeño), 2 botellas de agua de 1–2 L, Silla firme, tapete, toalla o banda elástica, Banco bajo o escalón"
+      },
+      "day1": [
+        {
+          "exercise": "Flexiones clásicas",
+          "series": "4",
+          "reps": "12",
+          "observations": "Cuerpo recto, movimiento completo",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones inclinadas (manos sobre silla)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Menor carga, técnica perfecta",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones declinadas (pies en silla)",
+          "series": "3",
+          "reps": "10-12",
+          "observations": "Enfoca parte superior del pecho",
+          "type": "check"
+        },
+        {
+          "exercise": "Fondos entre sillas (tríceps)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Evita bajar demasiado",
+          "type": "check"
+        },
+        {
+          "exercise": "Extensión de tríceps con botella (por brazo)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Controlar el codo",
+          "type": "input"
+        },
+        {
+          "exercise": "Plancha frontal",
+          "series": "3",
+          "reps": "30-45 s",
+          "observations": "Core firme y respiración controlada",
+          "type": "check"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Remo con mochila o garrafón",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Espalda recta",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo bajo con toalla (puerta o mesa baja)",
+          "series": "3",
+          "reps": "12",
+          "observations": "Activar dorsales",
+          "type": "check"
+        },
+        {
+          "exercise": "Superman en el suelo (brazos extendidos)",
+          "series": "3",
+          "reps": "15",
+          "observations": "Controlar elevación",
+          "type": "check"
+        },
+        {
+          "exercise": "Curl con botellas o mochilas pequeñas",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Evita balanceo",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl tipo martillo",
+          "series": "3",
+          "reps": "12",
+          "observations": "Alternado",
+          "type": "input"
+        },
+        {
+          "exercise": "Hollow body hold (isométrico)",
+          "series": "3",
+          "reps": "20-30 s",
+          "observations": "Core activo",
+          "type": "check"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Sentadilla libre (o con mochila)",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Controla el ritmo",
+          "type": "input"
+        },
+        {
+          "exercise": "Zancadas alternadas (con peso opcional)",
+          "series": "4",
+          "reps": "10-12 por pierna",
+          "observations": "Paso largo, torso recto",
+          "type": "input"
+        },
+        {
+          "exercise": "Sentadilla búlgara (pie trasero en silla)",
+          "series": "3",
+          "reps": "10 por pierna",
+          "observations": "Balance y control",
+          "type": "check"
+        },
+        {
+          "exercise": "Peso muerto con mochila / garrafón",
+          "series": "3",
+          "reps": "12",
+          "observations": "Activa isquiotibiales",
+          "type": "input"
+        },
+        {
+          "exercise": "Puente de glúteo (glute bridge)",
+          "series": "4",
+          "reps": "15",
+          "observations": "Sostén 1 s arriba",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de talones (gemelos)",
+          "series": "4",
+          "reps": "20",
+          "observations": "Lento y con pausa arriba",
+          "type": "check"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Press de hombros con botellas",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Sentado o de pie",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones laterales",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Codos semiflexionados",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones frontales",
+          "series": "3",
+          "reps": "12",
+          "observations": "No sobrepasar los hombros",
+          "type": "input"
+        },
+        {
+          "exercise": "Pájaros (deltoide posterior)",
+          "series": "3",
+          "reps": "15",
+          "observations": "Movimiento lento",
+          "type": "input"
+        },
+        {
+          "exercise": "Plancha con toque de hombros",
+          "series": "3",
+          "reps": "20",
+          "observations": "Estabilidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch con botella o mochila ligera",
+          "series": "3",
+          "reps": "20",
+          "observations": "Movimiento corto y controlado",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones de piernas acostado",
+          "series": "3",
+          "reps": "15",
+          "observations": "Core bajo",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Circuito: Sentadilla → Flexión → Remo → Plancha",
+          "series": "4",
+          "reps": "10 reps cada uno",
+          "observations": "Sin descanso entre ejercicios",
+          "type": "check"
+        },
+        {
+          "exercise": "Burpees moderados (sin salto)",
+          "series": "4",
+          "reps": "10",
+          "observations": "Control del ritmo",
+          "type": "check"
+        },
+        {
+          "exercise": "Peso muerto + Press con mochila",
+          "series": "3",
+          "reps": "12",
+          "observations": "Movimiento fluido",
+          "type": "input"
+        },
+        {
+          "exercise": "Escaladores (mountain climbers)",
+          "series": "4",
+          "reps": "30 s ON / 30 s OFF",
+          "observations": "Cardio core",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha lateral alternada",
+          "series": "3",
+          "reps": "30 s por lado",
+          "observations": "Control de respiración",
+          "type": "check"
+        },
+        {
+          "exercise": "Estiramientos activos y movilidad",
+          "series": "1",
+          "reps": "10 min",
+          "observations": "Finalizar suave",
+          "type": "check"
+        }
+      ]
+    },
+    "advanced": {
+      "details": {
+        "objective": "mejorar fuerza total, resistencia muscular y definición.",
+        "duration": "60–75 min",
+        "frequency": "5 días por semana",
+        "rest": "45–90 s entre ejercicios",
+        "equipment": "Mochila con libros o botellas (peso variable), 2 botellas de agua (1–2 L cada una), Bolsa de arroz o garrafón (3–5 kg), Toalla o banda elástica, Silla estable o mesa baja, Tapete o alfombra"
+      },
+      "day1": [
+        {
+          "exercise": "Flexiones declinadas (pies sobre silla)",
+          "series": "5",
+          "reps": "12-15",
+          "observations": "Inclinación aumenta dificultad",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones explosivas (aplauso o salto)",
+          "series": "4",
+          "reps": "8-10",
+          "observations": "Potencia y control",
+          "type": "check"
+        },
+        {
+          "exercise": "Press de pecho con botellas o mochila",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "En suelo o banco improvisado",
+          "type": "input"
+        },
+        {
+          "exercise": "Fondos entre sillas",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Estabilidad del soporte",
+          "type": "check"
+        },
+        {
+          "exercise": "Flexiones diamante",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Enfocar tríceps",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha con toque de hombros",
+          "series": "3",
+          "reps": "20",
+          "observations": "Core y estabilidad",
+          "type": "check"
+        },
+        {
+          "exercise": "Crunch con mochila",
+          "series": "3",
+          "reps": "20",
+          "observations": "Peso moderado",
+          "type": "input"
+        }
+      ],
+      "day2": [
+        {
+          "exercise": "Remo inclinado con mochila cargada",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Espalda recta",
+          "type": "input"
+        },
+        {
+          "exercise": "Remo con toalla bajo puerta o mesa firme",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Activar dorsales",
+          "type": "check"
+        },
+        {
+          "exercise": "Dominadas en marco de puerta / barra casera",
+          "series": "3",
+          "reps": "6-8",
+          "observations": "Si se dispone",
+          "type": "check"
+        },
+        {
+          "exercise": "Curl con botellas / garrafones",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Control excéntrico",
+          "type": "input"
+        },
+        {
+          "exercise": "Curl tipo martillo (botellas)",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "Antebrazos",
+          "type": "input"
+        },
+        {
+          "exercise": "Superman extendido en suelo",
+          "series": "3",
+          "reps": "20",
+          "observations": "Lumbares y dorsales",
+          "type": "check"
+        },
+        {
+          "exercise": "Hollow body hold",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Core firme",
+          "type": "check"
+        }
+      ],
+      "day3": [
+        {
+          "exercise": "Sentadilla con mochila (peso progresivo)",
+          "series": "5",
+          "reps": "12-15",
+          "observations": "Control del movimiento",
+          "type": "input"
+        },
+        {
+          "exercise": "Zancadas caminando o fijas (con peso)",
+          "series": "4",
+          "reps": "12 por pierna",
+          "observations": "Largo de paso medio",
+          "type": "input"
+        },
+        {
+          "exercise": "Sentadilla búlgara (trasera en silla)",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Glúteo y equilibrio",
+          "type": "check"
+        },
+        {
+          "exercise": "Peso muerto rumano con mochila / botellas",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Estirar isquios",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones de talones con carga",
+          "series": "4",
+          "reps": "20",
+          "observations": "Sostener arriba 1 s",
+          "type": "input"
+        },
+        {
+          "exercise": "Saltos al aire (squat jump)",
+          "series": "3",
+          "reps": "10",
+          "observations": "Explosión final",
+          "type": "check"
+        },
+        {
+          "exercise": "Puente de glúteo (con peso)",
+          "series": "3",
+          "reps": "20",
+          "observations": "Activación final",
+          "type": "input"
+        }
+      ],
+      "day4": [
+        {
+          "exercise": "Press de hombros con botellas / garrafones",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Alternado o simultáneo",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones laterales con botellas",
+          "series": "4",
+          "reps": "12-15",
+          "observations": "Codos semiflexionados",
+          "type": "input"
+        },
+        {
+          "exercise": "Elevaciones frontales",
+          "series": "3",
+          "reps": "12-15",
+          "observations": "No sobrepasar hombros",
+          "type": "input"
+        },
+        {
+          "exercise": "Pájaros (inclinación ligera)",
+          "series": "3",
+          "reps": "15",
+          "observations": "Deltoide posterior",
+          "type": "input"
+        },
+        {
+          "exercise": "Plancha frontal + rotación",
+          "series": "3",
+          "reps": "30 s",
+          "observations": "Core completo",
+          "type": "check"
+        },
+        {
+          "exercise": "Elevaciones de piernas en silla",
+          "series": "3",
+          "reps": "15",
+          "observations": "Control de movimiento",
+          "type": "check"
+        },
+        {
+          "exercise": "Toques de talón (abdominales oblicuos)",
+          "series": "3",
+          "reps": "20",
+          "observations": "Ritmo constante",
+          "type": "check"
+        }
+      ],
+      "day5": [
+        {
+          "exercise": "Circuito: flexión → remo → sentadilla → press → plancha",
+          "series": "5",
+          "reps": "10 reps cada uno",
+          "observations": "Sin descanso entre ejercicios",
+          "type": "check"
+        },
+        {
+          "exercise": "Burpees avanzados (con salto alto)",
+          "series": "4",
+          "reps": "10-12",
+          "observations": "Ritmo explosivo",
+          "type": "check"
+        },
+        {
+          "exercise": "Peso muerto + curl + press con mochila",
+          "series": "4",
+          "reps": "12",
+          "observations": "Movimiento fluido",
+          "type": "input"
+        },
+        {
+          "exercise": "Mountain climbers + jumping jacks",
+          "series": "4",
+          "reps": "40 s ON / 20 s OFF",
+          "observations": "Cardio HIIT",
+          "type": "check"
+        },
+        {
+          "exercise": "Plancha dinámica + toque de rodilla",
+          "series": "3",
+          "reps": "15",
+          "observations": "Coordinación",
+          "type": "check"
+        },
+        {
+          "exercise": "Estiramientos activos",
+          "series": "1",
+          "reps": "10 min",
+          "observations": "Enfriamiento completo",
+          "type": "check"
+        }
+      ]
+    }
+  }
+}
