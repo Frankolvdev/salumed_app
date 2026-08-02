@@ -673,7 +673,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                         elevation: 2,
-                                        primary: CustomColors.primary,
+                                        backgroundColor: CustomColors.primary,
                                         shape: StadiumBorder()),
                                     onPressed: () {
                                       Navigator.push(
@@ -723,7 +723,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                 style: ElevatedButton.styleFrom(
                                     padding: EdgeInsetsDirectional.all(8.0),
                                     elevation: 2,
-                                    primary: CustomColors.primary2,
+                                    backgroundColor: CustomColors.primary2,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   showSearchSelectMedicines();
@@ -743,7 +743,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                           padding:
                                               EdgeInsetsDirectional.all(8.0),
                                           elevation: 2,
-                                          primary: CustomColors.primary2,
+                                          backgroundColor: CustomColors.primary2,
                                           shape: StadiumBorder()),
                                       onPressed: () {
                                         showDialog(
@@ -1235,7 +1235,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed:loading?null: () {
                             processAdd();

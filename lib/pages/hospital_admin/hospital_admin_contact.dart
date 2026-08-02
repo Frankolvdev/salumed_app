@@ -257,7 +257,7 @@ class _HospitalAdminContactState extends State<HospitalAdminContact> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             sendProcess();
@@ -283,7 +283,7 @@ class _HospitalAdminContactState extends State<HospitalAdminContact> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: Color.fromARGB(255, 0, 232, 81),
+                              backgroundColor: Color.fromARGB(255, 0, 232, 81),
                               shape: StadiumBorder()),
                           onPressed: () {
                             openWhatsapp();

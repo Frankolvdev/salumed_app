@@ -698,7 +698,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary2,
+                              backgroundColor: CustomColors.primary2,
                               shape: StadiumBorder()),
                           onPressed: () {
                             showGuestPrescription();
@@ -1003,7 +1003,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary2,
+                              backgroundColor: CustomColors.primary2,
                               shape: StadiumBorder()),
                           onPressed: () {
                             Navigator.push(
@@ -1084,7 +1084,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 elevation: 2,
-                                primary: CustomColors.primary2,
+                                backgroundColor: CustomColors.primary2,
                                 shape: StadiumBorder()),
                             onPressed: () {
                               simpleLoading(context,
@@ -1131,7 +1131,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary2,
+                              backgroundColor: CustomColors.primary2,
                               shape: StadiumBorder()),
                           onPressed: () {
                             processUpdate();

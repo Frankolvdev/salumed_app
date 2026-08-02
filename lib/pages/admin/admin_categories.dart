@@ -424,7 +424,7 @@ class _AdminCategoriesState extends State<AdminCategories> {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       elevation: 2,
-                                      primary: CustomColors.primary,
+                                      backgroundColor: CustomColors.primary,
                                       shape: StadiumBorder()),
                                   onPressed: () {
                                     add();

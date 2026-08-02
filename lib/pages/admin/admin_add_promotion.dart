@@ -951,7 +951,7 @@ class _AdminAddPromotionState extends State<AdminAddPromotion> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             processAdd();

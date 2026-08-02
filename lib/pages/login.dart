@@ -171,7 +171,7 @@ class _LoginState extends State<Login> {
 
     Widget btnLogin = ElevatedButton(
       style: ElevatedButton.styleFrom(
-          elevation: 2, primary: CustomColors.primary, shape: StadiumBorder()),
+          elevation: 2, backgroundColor: CustomColors.primary, shape: StadiumBorder()),
       onPressed: () {
         processSignInEmailPassword();
       },
@@ -292,7 +292,7 @@ class _LoginState extends State<Login> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.secondary,
+                                    backgroundColor: CustomColors.secondary,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   Navigator.push(
@@ -325,7 +325,7 @@ class _LoginState extends State<Login> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.secondary,
+                                    backgroundColor: CustomColors.secondary,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   Navigator.push(
@@ -359,7 +359,7 @@ class _LoginState extends State<Login> {
                                   ? ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                           elevation: 2,
-                                          primary: CustomColors.secondary,
+                                          backgroundColor: CustomColors.secondary,
                                           shape: StadiumBorder()),
                                       onPressed: () {
                                         Navigator.push(
@@ -396,7 +396,7 @@ class _LoginState extends State<Login> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.secondary,
+                                    backgroundColor: CustomColors.secondary,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   Navigator.push(

@@ -299,7 +299,7 @@ class _DeliveryViewOrderState extends State<DeliveryViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: CustomColors.primary,
+                                                backgroundColor: CustomColors.primary,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               showDialog(
@@ -346,7 +346,7 @@ class _DeliveryViewOrderState extends State<DeliveryViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: Colors.green,
+                                                backgroundColor: Colors.green,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               showDialog(

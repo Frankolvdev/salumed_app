@@ -509,7 +509,7 @@ class _TilingQuestionnaireState extends State<TilingQuestionnaire> {
         style: ElevatedButton.styleFrom(
             minimumSize: Size(60, 10),
             fixedSize: Size(60, 25),
-            primary: status ? CustomColors.primary : Colors.grey.shade100,
+            backgroundColor: status ? CustomColors.primary : Colors.grey.shade100,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: EdgeInsets.all(0)),

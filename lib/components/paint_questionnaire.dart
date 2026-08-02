@@ -937,7 +937,7 @@ class _PainQuestionnaireState extends State<PainQuestionnaire> {
       padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: status ? CustomColors.primary : Colors.grey.shade100,
+            backgroundColor: status ? CustomColors.primary : Colors.grey.shade100,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: EdgeInsets.all(0)),

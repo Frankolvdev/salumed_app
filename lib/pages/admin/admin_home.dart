@@ -501,7 +501,7 @@ class _AdminHomeState extends State<AdminHome> {
                                                                               .all(
                                                                           10.0),
                                                                       child: ElevatedButton(
-                                                                          style: ElevatedButton.styleFrom(elevation: 2, primary: Colors.grey.shade800, shape: StadiumBorder()),
+                                                                          style: ElevatedButton.styleFrom(elevation: 2, backgroundColor: Colors.grey.shade800, shape: StadiumBorder()),
                                                                           onPressed: () async {
                                                                             provider.user.pharmacy_assigned =
                                                                                 pTmp;

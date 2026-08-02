@@ -438,7 +438,7 @@ class _ParquetQuestionnaireState extends State<ParquetQuestionnaire> {
         style: ElevatedButton.styleFrom(
             minimumSize: Size(100, 10),
             fixedSize: Size(100, 25),
-            primary: status ? CustomColors.primary : Colors.grey.shade100,
+            backgroundColor: status ? CustomColors.primary : Colors.grey.shade100,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: EdgeInsets.all(0)),

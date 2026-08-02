@@ -883,7 +883,7 @@ class _EditAdvertState extends State<EditAdvert> {
                                   style: ElevatedButton.styleFrom(
                                       minimumSize: Size(100, 10),
                                       fixedSize: Size(100, 25),
-                                      primary: CustomColors.primary,
+                                      backgroundColor: CustomColors.primary,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(8)),
@@ -944,7 +944,7 @@ class _EditAdvertState extends State<EditAdvert> {
                             style: ElevatedButton.styleFrom(
                                 minimumSize: Size(100, 10),
                                 fixedSize: Size(100, 25),
-                                primary: CustomColors.primary,
+                                backgroundColor: CustomColors.primary,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8)),
                                 padding: EdgeInsets.all(0)),
@@ -1004,7 +1004,7 @@ class _EditAdvertState extends State<EditAdvert> {
                             style: ElevatedButton.styleFrom(
                                 minimumSize: Size(100, 10),
                                 fixedSize: Size(100, 25),
-                                primary: CustomColors.primary,
+                                backgroundColor: CustomColors.primary,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8)),
                                 padding: EdgeInsets.all(0)),
@@ -1799,7 +1799,7 @@ class _EditAdvertState extends State<EditAdvert> {
         style: ElevatedButton.styleFrom(
             minimumSize: (expandedWidth) ? Size(0, 10) : Size(100, 10),
             fixedSize: (expandedWidth) ? null : Size(100, 25),
-            primary: status ? CustomColors.primary : Colors.grey.shade100,
+            backgroundColor: status ? CustomColors.primary : Colors.grey.shade100,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: EdgeInsets.all(0)),

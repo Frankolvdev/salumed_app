@@ -68,7 +68,7 @@ class _ViewContractState extends State<ViewContract> {
                                 shadowColor: Colors.transparent,
                                 minimumSize: Size(150, 50),
                                 fixedSize: Size(150, 50),
-                                primary: CustomColors.primary,
+                                backgroundColor: CustomColors.primary,
                                 side: BorderSide(
                                     width: 1.0, color: CustomColors.primary),
                                 shape: RoundedRectangleBorder(
@@ -96,7 +96,7 @@ class _ViewContractState extends State<ViewContract> {
                                 shadowColor: Colors.transparent,
                                 minimumSize: Size(150, 50),
                                 fixedSize: Size(150, 50),
-                                primary: CustomColors.primary,
+                                backgroundColor: CustomColors.primary,
                                 side: BorderSide(
                                     width: 1.0, color: CustomColors.primary),
                                 shape: RoundedRectangleBorder(
@@ -149,7 +149,7 @@ class _ViewContractState extends State<ViewContract> {
                                             shadowColor: Colors.transparent,
                                             minimumSize: Size(120, 30),
                                             fixedSize: Size(120, 30),
-                                            primary: CustomColors.primary,
+                                            backgroundColor: CustomColors.primary,
                                             side: BorderSide(
                                                 width: 1.0,
                                                 color: CustomColors.primary),

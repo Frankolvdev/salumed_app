@@ -1078,7 +1078,7 @@ bool cancelScroll=false;
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             delete(pharmacy);
@@ -1104,7 +1104,7 @@ bool cancelScroll=false;
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             processEdit();

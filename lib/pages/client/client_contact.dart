@@ -257,7 +257,7 @@ class _ClientContactState extends State<ClientContact> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary2,
+                              backgroundColor: CustomColors.primary2,
                               shape: StadiumBorder()),
                           onPressed: () {
                             sendProcess();
@@ -283,7 +283,7 @@ class _ClientContactState extends State<ClientContact> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: Color.fromARGB(255, 0, 137, 48),
+                              backgroundColor: Color.fromARGB(255, 0, 137, 48),
                               shape: StadiumBorder()),
                           onPressed: () {
                             openWhatsapp();

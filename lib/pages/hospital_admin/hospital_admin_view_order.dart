@@ -384,7 +384,7 @@ class _HospitalAdminViewOrderState extends State<HospitalAdminViewOrder> {
                                                   style:
                                                       ElevatedButton.styleFrom(
                                                           elevation: 2,
-                                                          primary: CustomColors
+                                                          backgroundColor: CustomColors
                                                               .primary,
                                                           shape:
                                                               StadiumBorder()),
@@ -757,7 +757,7 @@ class _HospitalAdminViewOrderState extends State<HospitalAdminViewOrder> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: Colors.red,
+                                    backgroundColor: Colors.red,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   showDialog(
@@ -1050,7 +1050,7 @@ class _HospitalAdminViewOrderState extends State<HospitalAdminViewOrder> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.primary,
+                                    backgroundColor: CustomColors.primary,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   //  acceptBudget(budget.id ?? "");
@@ -1241,7 +1241,7 @@ class _HospitalAdminViewOrderState extends State<HospitalAdminViewOrder> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             elevation: 2,
-                                            primary: CustomColors.primary,
+                                            backgroundColor: CustomColors.primary,
                                             shape: StadiumBorder()),
                                         onPressed: () {
                                           //  acceptBudget(budget.id ?? "");
@@ -1276,7 +1276,7 @@ class _HospitalAdminViewOrderState extends State<HospitalAdminViewOrder> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             elevation: 2,
-                                            primary: CustomColors.primary,
+                                            backgroundColor: CustomColors.primary,
                                             shape: StadiumBorder()),
                                         onPressed: () {
                                           showDialog(

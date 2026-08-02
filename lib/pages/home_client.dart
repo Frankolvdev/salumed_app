@@ -670,7 +670,7 @@ class _HomeClientState extends State<HomeClient> {
                                 style: ElevatedButton.styleFrom(
                                     shadowColor: Colors.transparent,
                                     minimumSize: Size(70, 10),
-                                    primary: CustomColors.primary,
+                                    backgroundColor: CustomColors.primary,
                                     side: BorderSide(
                                         width: 1.0,
                                         color: CustomColors.primary),
@@ -858,7 +858,7 @@ class _HomeClientState extends State<HomeClient> {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 elevation: 2,
-                                primary: CustomColors.primary,
+                                backgroundColor: CustomColors.primary,
                                 shape: StadiumBorder()),
                             onPressed: () {
                               if (mounted) {
@@ -1017,7 +1017,7 @@ class _HomeClientState extends State<HomeClient> {
                                       style: ElevatedButton.styleFrom(
                                           shadowColor: Colors.transparent,
                                           minimumSize: Size(70, 10),
-                                          primary: CustomColors.primary,
+                                          backgroundColor: CustomColors.primary,
                                           side: BorderSide(
                                               width: 1.0,
                                               color: CustomColors.primary),
@@ -1260,7 +1260,7 @@ class _HomeClientState extends State<HomeClient> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: Colors.white,
+                                    backgroundColor: Colors.white,
                                     shadowColor: Colors.transparent,
                                     shape: StadiumBorder(),
                                     side: BorderSide(
@@ -1319,7 +1319,7 @@ class _HomeClientState extends State<HomeClient> {
                                   style: ElevatedButton.styleFrom(
                                       shadowColor: Colors.transparent,
                                       minimumSize: Size(70, 10),
-                                      primary: CustomColors.primary,
+                                      backgroundColor: CustomColors.primary,
                                       side: BorderSide(
                                           width: 1.0,
                                           color: CustomColors.primary),
@@ -1443,7 +1443,7 @@ class _HomeClientState extends State<HomeClient> {
                 style: ElevatedButton.styleFrom(
                     shadowColor: Colors.transparent,
                     minimumSize: Size(70, 10),
-                    primary: CustomColors.primary,
+                    backgroundColor: CustomColors.primary,
                     side: BorderSide(width: 1.0, color: CustomColors.primary),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
@@ -1563,7 +1563,7 @@ class _HomeClientState extends State<HomeClient> {
                     style: ElevatedButton.styleFrom(
                         shadowColor: Colors.transparent,
                         minimumSize: Size(70, 10),
-                        primary: CustomColors.primary,
+                        backgroundColor: CustomColors.primary,
                         side:
                             BorderSide(width: 1.0, color: CustomColors.primary),
                         shape: RoundedRectangleBorder(

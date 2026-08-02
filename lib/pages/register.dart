@@ -232,7 +232,7 @@ class _RegisterState extends State<Register> {
 
     Widget btnRegister = ElevatedButton(
       style: ElevatedButton.styleFrom(
-          elevation: 2, primary: CustomColors.primary, shape: StadiumBorder()),
+          elevation: 2, backgroundColor: CustomColors.primary, shape: StadiumBorder()),
       onPressed: () {
         processRegisterProfessional();
       },
@@ -415,7 +415,7 @@ class _RegisterState extends State<Register> {
                               side: BorderSide(
                                   width: 1, color: CustomColors.primary),
                               elevation: 2,
-                              primary: Colors.white,
+                              backgroundColor: Colors.white,
                               shape: StadiumBorder()),
                           onPressed: () {
                             Navigator.pop(context);

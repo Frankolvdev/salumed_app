@@ -855,7 +855,7 @@ class _AdminSendCostsState extends State<AdminSendCosts> {
                                               child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                     elevation: 2,
-                                                    primary:
+                                                    backgroundColor:
                                                         CustomColors.primary,
                                                     shape: StadiumBorder()),
                                                 onPressed: () {
@@ -1086,7 +1086,7 @@ class _AdminSendCostsState extends State<AdminSendCosts> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   elevation: 2,
-                                  primary: CustomColors.primary,
+                                  backgroundColor: CustomColors.primary,
                                   shape: StadiumBorder()),
                               onPressed: () {
                                 final _scaffoldKey =
@@ -1159,7 +1159,7 @@ class _AdminSendCostsState extends State<AdminSendCosts> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             bool status = checkTable();

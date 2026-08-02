@@ -391,7 +391,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: CustomColors.primary,
+                                                backgroundColor: CustomColors.primary,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               searchDeliveryDialog();
@@ -426,7 +426,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: CustomColors.primary,
+                                                backgroundColor: CustomColors.primary,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               completed();
@@ -457,7 +457,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: CustomColors.primary,
+                                                backgroundColor: CustomColors.primary,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               orderReady();
@@ -613,7 +613,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                               child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                     elevation: 2,
-                                                    primary:
+                                                    backgroundColor:
                                                         CustomColors.primary,
                                                     shape: StadiumBorder()),
                                                 onPressed: () {
@@ -819,7 +819,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                                     style: ElevatedButton
                                                         .styleFrom(
                                                             elevation: 2,
-                                                            primary:
+                                                            backgroundColor:
                                                                 CustomColors
                                                                     .secondary,
                                                             shape:
@@ -1229,7 +1229,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                   elevation: 2,
-                                                  primary: CustomColors.primary,
+                                                  backgroundColor: CustomColors.primary,
                                                   shape: StadiumBorder()),
                                               onPressed: () {
                                                 //launchUrl(context, url);
@@ -1439,7 +1439,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: Colors.red,
+                                    backgroundColor: Colors.red,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   showDialog(

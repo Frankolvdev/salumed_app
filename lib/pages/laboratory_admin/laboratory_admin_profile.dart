@@ -418,7 +418,7 @@ class _LaboratoryAdminProfileState extends State<LaboratoryAdminProfile> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             processUpdate();
@@ -444,7 +444,7 @@ class _LaboratoryAdminProfileState extends State<LaboratoryAdminProfile> {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 elevation: 2,
-                                primary: CustomColors.primary,
+                                backgroundColor: CustomColors.primary,
                                 shape: StadiumBorder()),
                             onPressed: () {
                               simpleLoading(context,

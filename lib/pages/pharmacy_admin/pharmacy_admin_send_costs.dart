@@ -821,7 +821,7 @@ class _PharmacyAdminSendCostsState extends State<PharmacyAdminSendCosts> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   elevation: 2,
-                                  primary: CustomColors.primary,
+                                  backgroundColor: CustomColors.primary,
                                   shape: StadiumBorder()),
                               onPressed: () {
                                 showSearchSelectMedicines();
@@ -896,7 +896,7 @@ class _PharmacyAdminSendCostsState extends State<PharmacyAdminSendCosts> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             bool status = checkTable();

@@ -695,7 +695,7 @@ class _laboratoryAdminSendCostsState extends State<laboratoryAdminSendCosts> {
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                   elevation: 2,
-                                                  primary: CustomColors.primary,
+                                                  backgroundColor: CustomColors.primary,
                                                   shape: StadiumBorder()),
                                               onPressed: () {
                                                 //launchUrl(context, url);
@@ -907,7 +907,7 @@ class _laboratoryAdminSendCostsState extends State<laboratoryAdminSendCosts> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   elevation: 2,
-                                  primary: CustomColors.primary,
+                                  backgroundColor: CustomColors.primary,
                                   shape: StadiumBorder()),
                               onPressed: () {
                                 final _scaffoldKey =
@@ -979,7 +979,7 @@ class _laboratoryAdminSendCostsState extends State<laboratoryAdminSendCosts> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             bool status = checkTable();

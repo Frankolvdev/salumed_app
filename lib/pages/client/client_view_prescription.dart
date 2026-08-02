@@ -693,7 +693,7 @@ class _ClientViewPrescriptionState extends State<ClientViewPrescription> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.primary2,
+                                    backgroundColor: CustomColors.primary2,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   widget.callBackBack("to_orders");
@@ -724,7 +724,7 @@ class _ClientViewPrescriptionState extends State<ClientViewPrescription> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.primary2,
+                                    backgroundColor: CustomColors.primary2,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   processConfirm();

@@ -631,7 +631,7 @@ class _HospitalAdminViewPrescriptionState
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.primary,
+                                    backgroundColor: CustomColors.primary,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   widget.callBackBack("to_orders");
@@ -662,7 +662,7 @@ class _HospitalAdminViewPrescriptionState
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.primary,
+                                    backgroundColor: CustomColors.primary,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   processConfirm();

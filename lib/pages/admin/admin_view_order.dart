@@ -334,7 +334,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: CustomColors.primary,
+                                                backgroundColor: CustomColors.primary,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               searchDeliveryDialog();
@@ -369,7 +369,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: CustomColors.primary,
+                                                backgroundColor: CustomColors.primary,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               completed();
@@ -400,7 +400,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 elevation: 2,
-                                                primary: CustomColors.primary,
+                                                backgroundColor: CustomColors.primary,
                                                 shape: StadiumBorder()),
                                             onPressed: () {
                                               orderReady();
@@ -563,7 +563,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                               child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                     elevation: 2,
-                                                    primary:
+                                                    backgroundColor:
                                                         CustomColors.primary,
                                                     shape: StadiumBorder()),
                                                 onPressed: () {
@@ -769,7 +769,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                                     style: ElevatedButton
                                                         .styleFrom(
                                                             elevation: 2,
-                                                            primary:
+                                                            backgroundColor:
                                                                 CustomColors
                                                                     .secondary,
                                                             shape:
@@ -1091,7 +1091,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                               child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                     elevation: 2,
-                                                    primary:
+                                                    backgroundColor:
                                                         CustomColors.primary,
                                                     shape: StadiumBorder()),
                                                 onPressed: () {
@@ -1279,7 +1279,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: Colors.red,
+                                    backgroundColor: Colors.red,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   showDialog(

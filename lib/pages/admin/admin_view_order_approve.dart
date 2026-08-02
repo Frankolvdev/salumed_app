@@ -813,7 +813,7 @@ class _AdminViewOrderApproveState extends State<AdminViewOrderApprove> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: Colors.red,
+                              backgroundColor: Colors.red,
                               shape: StadiumBorder()),
                           onPressed: () {
                             showDialog(
@@ -854,7 +854,7 @@ class _AdminViewOrderApproveState extends State<AdminViewOrderApprove> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: Colors.green,
+                              backgroundColor: Colors.green,
                               shape: StadiumBorder()),
                           onPressed: () {
                             approvedStatus("approved");

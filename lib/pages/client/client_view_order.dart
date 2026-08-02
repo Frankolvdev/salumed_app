@@ -447,7 +447,7 @@ class _ClientViewOrderState extends State<ClientViewOrder> {
                                                   style:
                                                       ElevatedButton.styleFrom(
                                                           elevation: 2,
-                                                          primary: CustomColors
+                                                          backgroundColor: CustomColors
                                                               .primary2,
                                                           shape:
                                                               StadiumBorder()),
@@ -833,7 +833,7 @@ class _ClientViewOrderState extends State<ClientViewOrder> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: Colors.red,
+                                    backgroundColor: Colors.red,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   showDialog(
@@ -1133,7 +1133,7 @@ class _ClientViewOrderState extends State<ClientViewOrder> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: CustomColors.primary2,
+                                    backgroundColor: CustomColors.primary2,
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   //  acceptBudget(budget.id ?? "");
@@ -1337,7 +1337,7 @@ class _ClientViewOrderState extends State<ClientViewOrder> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             elevation: 2,
-                                            primary: CustomColors.primary2,
+                                            backgroundColor: CustomColors.primary2,
                                             shape: StadiumBorder()),
                                         onPressed: () {
                                           //  acceptBudget(budget.id ?? "");
@@ -1372,7 +1372,7 @@ class _ClientViewOrderState extends State<ClientViewOrder> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             elevation: 2,
-                                            primary: CustomColors.primary2,
+                                            backgroundColor: CustomColors.primary2,
                                             shape: StadiumBorder()),
                                         onPressed: () {
                                           showDialog(

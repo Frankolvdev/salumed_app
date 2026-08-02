@@ -287,7 +287,7 @@ class _ClientContactGpState extends State<ClientContactGp> {
                             //   child: ElevatedButton(
                             //     style: ElevatedButton.styleFrom(
                             //         elevation: 2,
-                            //         primary: CustomColors.primary,
+                            //         backgroundColor: CustomColors.primary,
                             //         shape: StadiumBorder()),
                             //     onPressed: () {
                             //       sendProcess();
@@ -314,7 +314,7 @@ class _ClientContactGpState extends State<ClientContactGp> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 2,
-                                    primary: Color.fromARGB(255, 0, 137, 48),
+                                    backgroundColor: Color.fromARGB(255, 0, 137, 48),
                                     shape: StadiumBorder()),
                                 onPressed: () {
                                   openWhatsapp(

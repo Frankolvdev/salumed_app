@@ -130,7 +130,7 @@ class _AnswerQuestionDialogState extends State<AnswerQuestionDialog> {
                             style: ElevatedButton.styleFrom(
                                 padding: EdgeInsetsDirectional.all(4.0),
                                 elevation: 2,
-                                primary: CustomColors.primary,
+                                backgroundColor: CustomColors.primary,
                                 shape: StadiumBorder()),
                             onPressed: () {
                               showTakePicture();

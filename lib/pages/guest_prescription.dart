@@ -796,7 +796,7 @@ class _GuestPrescriptionState extends State<GuestPrescription> {
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                         elevation: 2,
-                                        primary: CustomColors.primary,
+                                        backgroundColor: CustomColors.primary,
                                         shape: StadiumBorder()),
                                     onPressed: () {
                                       Navigator.push(
@@ -1304,7 +1304,7 @@ class _GuestPrescriptionState extends State<GuestPrescription> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 2,
-                              primary: CustomColors.primary,
+                              backgroundColor: CustomColors.primary,
                               shape: StadiumBorder()),
                           onPressed: () {
                             processAdd();

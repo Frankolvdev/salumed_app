@@ -531,7 +531,7 @@ class _AdminUsersState extends State<AdminUsers> {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       elevation: 2,
-                                      primary: CustomColors.primary,
+                                      backgroundColor: CustomColors.primary,
                                       shape: StadiumBorder()),
                                   onPressed: () {
                                     notify();
@@ -562,7 +562,7 @@ class _AdminUsersState extends State<AdminUsers> {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       elevation: 2,
-                                      primary: CustomColors.primary,
+                                      backgroundColor: CustomColors.primary,
                                       shape: StadiumBorder()),
                                   onPressed: () {
                                     setState(() {

@@ -481,7 +481,7 @@ class _IntegralQuestionnaireState extends State<IntegralQuestionnaire> {
       padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: status ? CustomColors.primary : Colors.grey.shade100,
+            backgroundColor: status ? CustomColors.primary : Colors.grey.shade100,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: EdgeInsets.all(0)),
@@ -572,7 +572,7 @@ class _IntegralQuestionnaireState extends State<IntegralQuestionnaire> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 2,
-                            primary: CustomColors.primary,
+                            backgroundColor: CustomColors.primary,
                             shape: StadiumBorder()),
                         onPressed: () {
                           Navigator.pop(context);

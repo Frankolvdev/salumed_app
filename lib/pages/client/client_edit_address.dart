@@ -469,7 +469,7 @@ bool cancelScroll=false;
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 2,
-                            primary: CustomColors.primary2,
+                            backgroundColor: CustomColors.primary2,
                             shape: StadiumBorder()),
                         onPressed: () {
                           editAddres();
@@ -495,7 +495,7 @@ bool cancelScroll=false;
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 2,
-                            primary: Colors.red,
+                            backgroundColor: Colors.red,
                             shape: StadiumBorder()),
                         onPressed: () {
                           showDialog(

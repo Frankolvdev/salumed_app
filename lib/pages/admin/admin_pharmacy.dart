@@ -443,7 +443,7 @@ class _AdminPharmacyState extends State<AdminPharmacy> {
                                       child: ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                               elevation: 2,
-                                              primary: Colors.grey.shade800,
+                                              backgroundColor: Colors.grey.shade800,
                                               shape: StadiumBorder()),
                                           onPressed: () {
                                             setState(() {
@@ -601,7 +601,7 @@ class _AdminPharmacyState extends State<AdminPharmacy> {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       elevation: 2,
-                                      primary: CustomColors.primary,
+                                      backgroundColor: CustomColors.primary,
                                       shape: StadiumBorder()),
                                   onPressed: () {
                                     add();
