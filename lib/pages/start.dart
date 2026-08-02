@@ -213,27 +213,24 @@ void didChangeAppLifecycleState(AppLifecycleState state) {
 }
 
 void _chequearPagoPendiente() {
+  final pagoPendiente = resultadoPagoPendiente;
 
-  if (resultadoPagoPendiente != null && mounted){
+  if (!mounted || pagoPendiente == null) {
+    return;
+  }
 
-
-
-  if (resultadoPagoPendiente != null) {
-    // Mostramos la alerta
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (contextdialog) => CustomDialog(
-        resultadoPagoPendiente!["titulo"]!,
-        resultadoPagoPendiente!["mensaje"]!,
-        "OK",
-        () {
-        
-          resultadoPagoPendiente = null; // Limpiamos para no repetir
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (contextDialog) => CustomDialog(
+      pagoPendiente["titulo"]!,
+      pagoPendiente["mensaje"]!,
+      "OK",
+      () {
+        resultadoPagoPendiente = null;
       },
-    );
-  }
-  }
+    ),
+  );
 }
 
   Future<void> _loadDashboardData() async {
