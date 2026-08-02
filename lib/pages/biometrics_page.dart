@@ -104,7 +104,7 @@ class _BiometriaPageState extends State<BiometriaPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("Nuevo registro biométrico", style: Theme.of(context).textTheme.headline6),
+              Text("Nuevo registro biométrico", style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 12),
               _buildInput(_pesoController, "Peso (kg)", TextInputType.numberWithOptions(decimal: true),
                   inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)], hint: 'ej. 72.5'),

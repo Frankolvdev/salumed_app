@@ -230,8 +230,7 @@ void _chequearPagoPendiente() {
         () {
         
           resultadoPagoPendiente = null; // Limpiamos para no repetir
-        },
-      ),
+      },
     );
   }
   }
@@ -1225,10 +1224,9 @@ if(provider.user.id == null){
   Widget build(BuildContext context) {
     return ShowCaseWidget(
       autoPlay: false,
-      builder: Builder(
-        builder: (contextSC) {
-          contextShowCase = contextSC;
-          return Scaffold(
+      builder: (contextSC) {
+        contextShowCase = contextSC;
+        return Scaffold(
             backgroundColor: const Color(0xFFFDFCF9),
             body: Stack(children: [
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
