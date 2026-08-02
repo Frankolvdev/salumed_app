@@ -1,0 +1,13 @@
+MegaZIP 01B - Reemplazo de latlong por latlong2
+
+Cambios:
+- pubspec.yaml: elimina latlong y agrega latlong2 ^0.10.1.
+- lib/helpers/helpers.dart: actualiza el import al paquete compatible con Dart 3.
+
+No cambia la lógica de cálculo de distancias ni la interfaz.
+
+Después de descomprimir en la raíz:
+flutter clean
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+Remove-Item -Force .\pubspec.lock -ErrorAction SilentlyContinue
+flutter pub get

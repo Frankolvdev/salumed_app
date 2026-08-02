@@ -45,7 +45,7 @@ dependencies:
   responsive_grid: any
   uuid: any
   timelines: any
-  latlong: any
+  latlong2: ^0.10.1
   geolocator: any
   firebase_core: any
   firebase_messaging: any

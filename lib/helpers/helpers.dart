@@ -46,7 +46,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
-import 'package:app/compat/flutter_page_transition.dart';
+import 'package:flutter_page_transition/flutter_page_transition.dart';
 
 //import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -63,7 +63,7 @@ import 'package:provider/provider.dart';
 import 'package:universal_io/io.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:image_picker_web/image_picker_web.dart';
-import 'package:latlong/latlong.dart' as distance;
+import 'package:latlong2/latlong.dart' as distance;
 
 import '../models/order.dart';
 
