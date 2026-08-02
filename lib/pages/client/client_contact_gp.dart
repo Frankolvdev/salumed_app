@@ -11,7 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:snack/snack.dart';
-import 'package:universal_io/prefer_universal/io.dart';
+import 'package:universal_io/io.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ClientContactGp extends StatefulWidget {

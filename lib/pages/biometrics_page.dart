@@ -391,7 +391,7 @@ class _BiometriaPageState extends State<BiometriaPage> {
           tooltipBehavior: TooltipBehavior(enable: true),
           title: ChartTitle(text: "$titulo ($unidad)"),
           legend: Legend(isVisible: true, position: LegendPosition.bottom),
-          series: <ChartSeries<ChartData, String>>[
+          series: <CartesianSeries<ChartData, String>>[
             ColumnSeries<ChartData, String>(
               dataSource: series,
               xValueMapper: (d, _) => d.x,

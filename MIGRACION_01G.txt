@@ -1,0 +1,25 @@
+MegaZIP 01G — Platform, Syncfusion Charts y Carousel
+
+Cambios mínimos:
+1. client_contact_gp.dart
+   - universal_io/prefer_universal/io.dart -> universal_io/io.dart
+   - Platform.localeName y Platform.isIOS siguen funcionando igual.
+
+2. biometrics_page.dart
+   - List<ChartSeries<...>> -> List<CartesianSeries<...>>
+   - Se conserva ColumnSeries, datos, colores, etiquetas, tooltip y leyenda.
+
+3. edit_advert.dart y dialog_select_pictures_finish_work.dart
+   - CarouselController -> CarouselSliderController
+   - Se conservan previousPage(), nextPage(), duración, curva e interacción.
+
+Después de descomprimir:
+flutter clean
+flutter pub get
+flutter analyze
+
+Git:
+git status
+git add .
+git commit -m "fix: update platform charts and carousel APIs"
+git push

@@ -29,7 +29,7 @@ class DialogSelectPicturesFinishWork extends StatefulWidget {
 
 class _DialogSelectPicturesFinishWorkState
     extends State<DialogSelectPicturesFinishWork> {
-  CarouselController buttonCarouselController = CarouselController();
+  CarouselSliderController buttonCarouselController = CarouselSliderController();
   List<dynamic> pictures = [];
   int currentImage = 0;
   List<String> imagesToRemove = [];

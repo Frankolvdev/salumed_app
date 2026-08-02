@@ -50,7 +50,7 @@ class EditAdvert extends StatefulWidget {
 
 class _EditAdvertState extends State<EditAdvert> {
   List<dynamic> pictures = [];
-  CarouselController buttonCarouselController = CarouselController();
+  CarouselSliderController buttonCarouselController = CarouselSliderController();
   int currentImage = 0;
   PageController _pageController = PageController(initialPage: 0);
   List<String> imagesToRemove = [];
