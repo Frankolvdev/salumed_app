@@ -1321,8 +1321,7 @@ if(provider.user.id == null){
             ),
             bottomNavigationBar: _buildBottomAppBar(),
           );
-        },
-      ),
+      },
       onFinish: () {
         seeShowCase();
       },
