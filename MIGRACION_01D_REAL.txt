@@ -1,0 +1,21 @@
+MegaZIP 01D REAL — SaluMed Font Awesome compatibility fix
+
+Archivo modificado:
+- pubspec.yaml
+
+Cambio exacto:
+- font_awesome_flutter: any
++ font_awesome_flutter: 10.12.0
+
+Motivo:
+font_awesome_flutter 11.0.0 cambió FaIconData y dejó de ser compatible
+con IconData. La versión 10.12.0 conserva compatibilidad con el código
+actual de SaluMed sin cambiar iconos ni diseño.
+
+Después de descomprimir en la raíz:
+flutter clean
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+Remove-Item -Force .\pubspec.lock -ErrorAction SilentlyContinue
+flutter pub get
+flutter pub deps | Select-String "font_awesome_flutter"
+flutter analyze

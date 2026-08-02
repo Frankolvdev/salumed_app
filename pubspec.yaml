@@ -18,7 +18,7 @@ dependencies:
   provider: any
   progress_indicators: any
   simple_animations: any
-  font_awesome_flutter: any
+  font_awesome_flutter: 10.12.0
   flutter_login_facebook: any
   socket_io_client: any
   http: any
