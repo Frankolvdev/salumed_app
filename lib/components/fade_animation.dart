@@ -1,43 +1,101 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:simple_animations/simple_animations.dart';
 
-class FadeAnimation extends StatelessWidget {
-
- 
-
+class FadeAnimation extends StatefulWidget {
   final double delay;
   final Widget child;
   final AxisAnimation axis;
   final bool negative;
 
-  FadeAnimation(this.delay, this.child,{ this.axis=AxisAnimation.y, this.negative=false});
+  const FadeAnimation(
+    this.delay,
+    this.child, {
+    super.key,
+    this.axis = AxisAnimation.y,
+    this.negative = false,
+  });
+
+  @override
+  State<FadeAnimation> createState() => _FadeAnimationState();
+}
+
+class _FadeAnimationState extends State<FadeAnimation>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _opacity;
+  late final Animation<double> _offset;
+  Timer? _delayTimer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _opacity = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(_controller);
+
+    _offset = Tween<double>(
+      begin: widget.negative ? 30 : -30,
+      end: 0,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOut,
+      ),
+    );
+
+    final delay = Duration(
+      milliseconds: (500 * widget.delay).round(),
+    );
+
+    if (delay == Duration.zero) {
+      _controller.forward();
+    } else {
+      _delayTimer = Timer(delay, () {
+        if (mounted) {
+          _controller.forward();
+        }
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _delayTimer?.cancel();
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final tween = MultiTrackTween([
-      Track("opacity").add(Duration(milliseconds: 500), Tween(begin: 0.0, end: 1.0)),
-      Track((axis==AxisAnimation.x)?"translateX":"translateY").add(
-        Duration(milliseconds: 500),(negative)?Tween(begin: 30.0, end:0.0) :Tween(begin: -30.0, end: 0.0),
-        curve: Curves.easeOut)
-    ]);
+    return AnimatedBuilder(
+      animation: _controller,
+      child: widget.child,
+      builder: (context, child) {
+        final offset = widget.axis == AxisAnimation.x
+            ? Offset(_offset.value, 0)
+            : Offset(0, _offset.value);
 
-    return ControlledAnimation(
-      delay: Duration(milliseconds: (500 * delay).round()),
-      duration: tween.duration,
-      tween: tween,
-      child: child,
-      builderWithChild: (context, child, animation) => Opacity(
-        opacity: (animation as dynamic)["opacity"],
-        child: Transform.translate(
-          offset:(axis==AxisAnimation.x)? Offset((animation as dynamic)["translateX"], 0):Offset(0,(animation as dynamic)["translateY"]), 
-          child: child
-        ),
-      ),
+        return Opacity(
+          opacity: _opacity.value,
+          child: Transform.translate(
+            offset: offset,
+            child: child,
+          ),
+        );
+      },
     );
   }
 }
 
- enum AxisAnimation {
+enum AxisAnimation {
   x,
   y,
 }

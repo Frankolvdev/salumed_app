@@ -1,0 +1,38 @@
+MegaZIP 01L — FadeAnimation y OverrideDatePicker
+
+Análisis de uso:
+- FadeAnimation NO está sin usar. Se usa en múltiples pantallas.
+- OverrideDatePicker NO está sin usar. Se usa en perfiles, pedidos, promociones,
+  costos y selección de rangos de fecha.
+
+Cambios:
+1. FadeAnimation
+   - Se elimina el uso obsoleto de MultiTrackTween y ControlledAnimation.
+   - Se implementa con AnimationController, Opacity y Transform.translate.
+   - Conserva exactamente:
+     * retraso = 500 ms × delay
+     * duración = 500 ms
+     * movimiento inicial de 30 px
+     * eje X o Y
+     * dirección positive/negative
+     * curva easeOut
+
+2. OverrideDatePicker
+   - Se elimina la copia interna de clases privadas del paquete.
+   - Ahora delega a la API pública DatePicker del mismo paquete.
+   - Conserva showDatePicker, showTimePicker, showTime12hPicker,
+     showDateTimePicker y showPicker.
+   - Conserva LocaleType, minTime, maxTime, currentTime, callbacks y tema.
+   - LegacyDatePickerTheme() mantiene el mismo tema anterior sin colisionar
+     con DatePickerTheme de Flutter Material.
+
+Después de descomprimir:
+flutter clean
+flutter pub get
+flutter analyze
+
+Git:
+git status
+git add .
+git commit -m "fix: modernize fade animation and date picker wrapper"
+git push
