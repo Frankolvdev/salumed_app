@@ -37,13 +37,13 @@ dependencies:
   url_launcher: any
   universal_io: any
   onesignal_flutter: any
-  assets_audio_player: any
+  assets_audio_player: ^3.1.1
   url_strategy: any
   dropdown_search: any
   country_code_picker: any
   syncfusion_flutter_charts: any
   responsive_grid: any
-  uuid: any
+  uuid: ^4.5.1
   timelines: any
   latlong2: ^0.10.1
   geolocator: any
@@ -52,7 +52,7 @@ dependencies:
   editable: any
   back_button_interceptor: any
   file_picker: any
-  syncfusion_flutter_pdfviewer: any
+  syncfusion_flutter_pdfviewer: ^33.2.10
   modal_bottom_sheet: any
   permission_handler: any
   audioplayers: any
@@ -67,6 +67,10 @@ dependencies:
   uni_links: any
   flutter_custom_tabs: any
   webview_flutter: any
+
+dependency_overrides:
+  uuid: ^4.5.1
+
 
 dev_dependencies:
   flutter_test:

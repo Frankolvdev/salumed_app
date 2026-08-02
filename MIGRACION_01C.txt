@@ -1,0 +1,13 @@
+MegaZIP 01C - Compatibilidad audio/PDF/UUID con Dart 3
+
+Cambios:
+- assets_audio_player: ^3.1.1
+- syncfusion_flutter_pdfviewer: ^33.2.10
+- uuid: ^4.5.1
+- dependency_overrides uuid: ^4.5.1
+
+Después de descomprimir en la raíz:
+flutter clean
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+Remove-Item -Force .\pubspec.lock -ErrorAction SilentlyContinue
+flutter pub get
