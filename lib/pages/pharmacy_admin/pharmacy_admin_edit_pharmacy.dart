@@ -916,7 +916,7 @@ class _PharmacyAdminEditPharmacyState extends State<PharmacyAdminEditPharmacy> {
 
   selectDateTime(Function callback) {
     OverrideDatePicker.showDatePicker(context,
-        theme: DatePickerTheme(),
+        theme: LegacyDatePickerTheme(),
         showTitleActions: true,
         maxTime: DateTime.now(),
         minTime: DateTime(1940),

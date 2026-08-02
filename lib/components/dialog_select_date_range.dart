@@ -86,7 +86,7 @@ class _DialogSelectDateRangeState extends State<DialogSelectDateRange> {
                   ),
                   onPressed: () {
                     OverrideDatePicker.showDatePicker(context,
-                        theme: DatePickerTheme(),
+                        theme: LegacyDatePickerTheme(),
                         maxTime: DateTime.now(),
                         showTitleActions: true,
                         onChanged: (date) {}, onConfirm: (dateNew) {
@@ -134,7 +134,7 @@ class _DialogSelectDateRangeState extends State<DialogSelectDateRange> {
                   ),
                   onPressed: () {
                     OverrideDatePicker.showDatePicker(context,
-                        theme: DatePickerTheme(),
+                        theme: LegacyDatePickerTheme(),
                         maxTime: DateTime.now(),
                         showTitleActions: true,
                         onChanged: (date) {}, onConfirm: (dateNew) {

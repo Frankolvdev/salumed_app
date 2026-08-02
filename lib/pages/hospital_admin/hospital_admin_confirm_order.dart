@@ -589,7 +589,7 @@ class _HospitalAdminConfirmOrderState extends State<HospitalAdminConfirmOrder> {
 
   selectDateTime(Function callback) {
     OverrideDatePicker.showDateTimePicker(context,
-        theme: DatePickerTheme(),
+        theme: LegacyDatePickerTheme(),
         showTitleActions: true,
         minTime: DateTime.now().add(Duration(hours: 1)),
         maxTime: DateTime.now().add(Duration(days: 30)),

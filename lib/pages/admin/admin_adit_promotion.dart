@@ -809,7 +809,7 @@ class _AdminEditPromotionState extends State<AdminEditPromotion> {
 
   selectDateTime(Function callback) {
     OverrideDatePicker.showDatePicker(context,
-        theme: DatePickerTheme(),
+        theme: LegacyDatePickerTheme(),
         showTitleActions: true,
         minTime: DateTime.now(),
         onChanged: (date) {}, onConfirm: (date) {

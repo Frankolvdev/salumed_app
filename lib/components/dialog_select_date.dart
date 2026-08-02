@@ -97,7 +97,7 @@ class _DialogSelectDateState extends State<DialogSelectDate> {
                   ),
                   onPressed: () {
                     OverrideDatePicker.showDatePicker(context,
-                        theme: DatePickerTheme(),
+                        theme: LegacyDatePickerTheme(),
                         showTitleActions: true,
                         onChanged: (date) {}, onConfirm: (dateNew) {
                       setState(() {

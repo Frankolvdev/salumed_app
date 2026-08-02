@@ -1829,7 +1829,7 @@ class _EditAdvertState extends State<EditAdvert> {
 
   selectDateTime(Function callback, Duration minTime, Duration maxTime) {
     OverrideDatePicker.showDatePicker(context,
-        theme: DatePickerTheme(),
+        theme: LegacyDatePickerTheme(),
         showTitleActions: true,
         minTime: DateTime.now().add(minTime),
         maxTime: DateTime.now().add(maxTime),

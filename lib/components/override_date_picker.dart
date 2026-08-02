@@ -3,17 +3,21 @@ library flutter_datetime_picker;
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/src/datetime_picker_theme.dart';
+import 'package:flutter_datetime_picker/src/datetime_picker_theme.dart' as legacy_picker;
 import 'package:flutter_datetime_picker/src/date_model.dart';
 import 'package:flutter_datetime_picker/src/i18n_model.dart';
 
-export 'package:flutter_datetime_picker/src/datetime_picker_theme.dart';
 export 'package:flutter_datetime_picker/src/date_model.dart';
 export 'package:flutter_datetime_picker/src/i18n_model.dart';
 
 typedef DateChangedCallback(DateTime time);
 typedef DateCancelledCallback();
 typedef String? StringAtIndexCallBack(int index);
+
+/// Creates the original flutter_datetime_picker theme without colliding
+/// with Flutter's Material DatePickerTheme.
+legacy_picker.DatePickerTheme LegacyDatePickerTheme() =>
+    legacy_picker.DatePickerTheme();
 
 class OverrideDatePicker {
   ///
@@ -29,7 +33,7 @@ class OverrideDatePicker {
     DateCancelledCallback? onCancel,
     locale: LocaleType.en,
     DateTime? currentTime,
-    DatePickerTheme? theme,
+    legacy_picker.DatePickerTheme? theme,
   }) async {
     return await Navigator.push(
       context,
@@ -64,7 +68,7 @@ class OverrideDatePicker {
     DateCancelledCallback? onCancel,
     locale: LocaleType.en,
     DateTime? currentTime,
-    DatePickerTheme? theme,
+    legacy_picker.DatePickerTheme? theme,
   }) async {
     return await Navigator.push(
       context,
@@ -97,7 +101,7 @@ class OverrideDatePicker {
     DateCancelledCallback? onCancel,
     locale: LocaleType.en,
     DateTime? currentTime,
-    DatePickerTheme? theme,
+    legacy_picker.DatePickerTheme? theme,
   }) async {
     return await Navigator.push(
       context,
@@ -131,7 +135,7 @@ class OverrideDatePicker {
     DateCancelledCallback? onCancel,
     locale: LocaleType.en,
     DateTime? currentTime,
-    DatePickerTheme? theme,
+    legacy_picker.DatePickerTheme? theme,
   }) async {
     return await Navigator.push(
       context,
@@ -165,7 +169,7 @@ class OverrideDatePicker {
     DateCancelledCallback? onCancel,
     locale: LocaleType.en,
     BasePickerModel? pickerModel,
-    DatePickerTheme? theme,
+    legacy_picker.DatePickerTheme? theme,
   }) async {
     return await Navigator.push(
       context,
@@ -190,13 +194,13 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
     this.onChanged,
     this.onConfirm,
     this.onCancel,
-    DatePickerTheme? theme,
+    legacy_picker.DatePickerTheme? theme,
     this.barrierLabel,
     this.locale,
     RouteSettings? settings,
     BasePickerModel? pickerModel,
   })  : this.pickerModel = pickerModel ?? DatePickerModel(),
-        this.theme = theme ?? DatePickerTheme(),
+        this.theme = theme ?? legacy_picker.DatePickerTheme(),
         super(settings: settings);
 
   final bool? showTitleActions;
@@ -204,7 +208,7 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
   final DateChangedCallback? onConfirm;
   final DateCancelledCallback? onCancel;
   final LocaleType? locale;
-  final DatePickerTheme theme;
+  final legacy_picker.DatePickerTheme theme;
   final BasePickerModel pickerModel;
 
   @override
@@ -543,7 +547,7 @@ class _BottomPickerLayout extends SingleChildLayoutDelegate {
   final double progress;
   final int? itemCount;
   final bool? showTitleActions;
-  final DatePickerTheme theme;
+  final legacy_picker.DatePickerTheme theme;
   final double bottomPadding;
 
   @override

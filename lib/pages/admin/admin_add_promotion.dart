@@ -985,7 +985,7 @@ class _AdminAddPromotionState extends State<AdminAddPromotion> {
 
   selectDateTime(Function callback) {
     OverrideDatePicker.showDatePicker(context,
-        theme: DatePickerTheme(),
+        theme: LegacyDatePickerTheme(),
         showTitleActions: true,
         minTime: DateTime.now(),
         onChanged: (date) {}, onConfirm: (date) {

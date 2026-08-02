@@ -1347,7 +1347,7 @@ class _AdminDoctorAddUsersState extends State<AdminDoctorAddUsers> {
 
   selectDateTime(Function callback) {
     OverrideDatePicker.showDatePicker(context,
-        theme: DatePickerTheme(),
+        theme: LegacyDatePickerTheme(),
         showTitleActions: true,
         minTime: DateTime(1940),
         maxTime: DateTime.now(),

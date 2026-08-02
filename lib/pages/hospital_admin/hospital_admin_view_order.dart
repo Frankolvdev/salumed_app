@@ -1699,7 +1699,7 @@ class _HospitalAdminViewOrderState extends State<HospitalAdminViewOrder> {
 
   selectDateTime(Function callback) {
     OverrideDatePicker.showDatePicker(context,
-        theme: DatePickerTheme(),
+        theme: LegacyDatePickerTheme(),
         showTitleActions: true,
         maxTime: DateTime.now(),
         onChanged: (date) {}, onConfirm: (date) {
