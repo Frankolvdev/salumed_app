@@ -42,17 +42,20 @@ subprojects {
             compilerOptions {
                 // La app, assets_audio_player y audio_session compilan Java 17.
                 // Los demás plugins heredados, incluido file_picker, compilan Java 11.
-                val target = if (
+                val target = when {
+                    project.name == "flutter_phone_direct_caller" ->
+                        org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+
                     project.name == "app" ||
                     project.name == "assets_audio_player" ||
                     project.name == "audio_session" ||
                     project.name == "audioplayers_android" ||
                     project.name == "device_info_plus" ||
-                    project.name == "flutter_custom_tabs_android"
-                ) {
-                    org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
-                } else {
-                    org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+                    project.name == "flutter_custom_tabs_android" ->
+                        org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+
+                    else ->
+                        org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
                 }
 
                 jvmTarget.set(target)
