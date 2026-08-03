@@ -1,4 +1,4 @@
-import 'package:app/components/fade_animation.dart';
+﻿import 'package:app/components/fade_animation.dart';
 import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/providers/app.dart';
@@ -161,7 +161,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         fillColor: Colors.white,
         focusColor: CustomColors.primary,
         filled: true,
-        prefixIcon: Icon(FontAwesomeIcons.solidEnvelope, size: 20),
+        prefixIcon: FaIcon(FontAwesomeIcons.solidEnvelope, size: 20),
         border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade300, width: 2.0),
             borderRadius: BorderRadius.circular(10.0)),
@@ -194,7 +194,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           children: <Widget>[
             Padding(
                 padding: EdgeInsets.only(right: 8),
-                child: Icon(FontAwesomeIcons.check,
+                child: FaIcon(FontAwesomeIcons.check,
                     size: 20, color: Colors.white)),
             Text(
               "Restablecer",
@@ -328,3 +328,4 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         });
   }
 }
+

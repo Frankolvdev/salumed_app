@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 
 import 'package:app/components/map_location.dart';
 import 'package:app/components/map_selected.dart';
@@ -204,7 +204,7 @@ class _ViewSelectMapState extends State<ViewSelectMap>
               },
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Icon(FontAwesomeIcons.arrowLeft,
+                child: FaIcon(FontAwesomeIcons.arrowLeft,
                     size: 20, color: CustomColors.primary),
               ))),
       body: Stack(
@@ -217,3 +217,4 @@ class _ViewSelectMapState extends State<ViewSelectMap>
     );
   }
 }
+

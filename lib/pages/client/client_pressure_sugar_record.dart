@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 
 import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
@@ -121,7 +121,7 @@ class _ClientPressureSigarRecordState extends State<ClientPressureSigarRecord> {
             children: <Widget>[
               Padding(
                   padding: EdgeInsets.only(right: 8),
-                  child: Icon(FontAwesomeIcons.save,
+                  child: FaIcon(FontAwesomeIcons.save,
                       size: 12, color: Colors.white)),
               Flexible(
                 child: Text(
@@ -148,8 +148,7 @@ class _ClientPressureSigarRecordState extends State<ClientPressureSigarRecord> {
           elevation: 0,
           centerTitle: true,
           leading: new IconButton(
-            icon: new Icon(
-              FontAwesomeIcons.arrowLeft,
+            icon: new FaIcon(FontAwesomeIcons.arrowLeft,
               size: 20,
               color: CustomColors.primary,
             ),
@@ -198,7 +197,7 @@ class _ClientPressureSigarRecordState extends State<ClientPressureSigarRecord> {
                                     children: <Widget>[
                                       Padding(
                                           padding: EdgeInsets.only(right: 8),
-                                          child: Icon(FontAwesomeIcons.save,
+                                          child: FaIcon(FontAwesomeIcons.save,
                                               size: 12, color: Colors.white)),
                                       Flexible(
                                         child: Text(
@@ -245,8 +244,7 @@ class _ClientPressureSigarRecordState extends State<ClientPressureSigarRecord> {
                                             Padding(
                                                 padding:
                                                     EdgeInsets.only(right: 8),
-                                                child: Icon(
-                                                    FontAwesomeIcons.eraser,
+                                                child: FaIcon(FontAwesomeIcons.eraser,
                                                     size: 12,
                                                     color: Colors.white)),
                                             Flexible(
@@ -897,3 +895,4 @@ class _ClientPressureSigarRecordState extends State<ClientPressureSigarRecord> {
     return double.tryParse(s) != null;
   }
 }
+

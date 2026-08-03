@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/models/question.dart';
 import 'package:flutter/material.dart';
@@ -75,8 +75,7 @@ class _GuestPrescriptionDialogState extends State<GuestPrescriptionDialog> {
           hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.envelope,
+          prefixIcon: FaIcon(FontAwesomeIcons.envelope,
             size: 20,
           ),
           border: OutlineInputBorder(
@@ -112,8 +111,7 @@ class _GuestPrescriptionDialogState extends State<GuestPrescriptionDialog> {
           hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.clock,
+          prefixIcon: FaIcon(FontAwesomeIcons.clock,
             size: 20,
           ),
           border: OutlineInputBorder(
@@ -200,3 +198,4 @@ class _GuestPrescriptionDialogState extends State<GuestPrescriptionDialog> {
     );
   }
 }
+

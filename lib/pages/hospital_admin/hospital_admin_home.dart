@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 
 import 'package:app/components/fixed_pharmacies.dart';
@@ -51,7 +51,7 @@ class _HospitalAdminHomeState extends State<HospitalAdminHome> {
     final provider = Provider.of<AppProvider>(context, listen: false);
     contents = [
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Inicio",
         "widget":  StartPage(true),
         "function": () {
@@ -59,7 +59,7 @@ class _HospitalAdminHomeState extends State<HospitalAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.shoppingBasket,
+        "icon": FontAwesomeIcons.shoppingBasket.data,
         "title": "Hacer pedido",
         "widget": HospitalAdminBuyWithoutPrescription(setOrders),
         "function": () {
@@ -102,7 +102,7 @@ class _HospitalAdminHomeState extends State<HospitalAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.comment,
+        "icon": FontAwesomeIcons.comment.data,
         "title": "Ayuda y soporte técnico",
         "widget": HospitalAdminContact(),
         "function": () {
@@ -110,7 +110,7 @@ class _HospitalAdminHomeState extends State<HospitalAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.book,
+        "icon": FontAwesomeIcons.book.data,
         "title": "Mis pedidos",
         "widget": HospitalAdminOrders(),
         "function": () {
@@ -118,7 +118,7 @@ class _HospitalAdminHomeState extends State<HospitalAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.bell,
+        "icon": FontAwesomeIcons.bell.data,
         "title": "Notificaciones",
         "widget":
             Notifications(callbackOpenNotification: ({dynamic element = null}) {
@@ -365,3 +365,4 @@ class _HospitalAdminHomeState extends State<HospitalAdminHome> {
     setContent(4, toNotifications: true);
   }
 }
+

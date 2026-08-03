@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,8 +26,7 @@ class _CategoryQuestionnaireState extends State<CategoryQuestionnaire> {
             elevation: 0,
             centerTitle: true,
             leading: new IconButton(
-              icon: new Icon(
-                FontAwesomeIcons.arrowLeft,
+              icon: new FaIcon(FontAwesomeIcons.arrowLeft,
                 size: 20,
                 color: CustomColors.primary,
               ),
@@ -41,3 +40,4 @@ class _CategoryQuestionnaireState extends State<CategoryQuestionnaire> {
         ));
   }
 }
+

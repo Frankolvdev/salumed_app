@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:app/constants/globals.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/models/user.dart';
@@ -191,7 +191,7 @@ widget.callbackHome();
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 10.0, horizontal: 18),
-                                      child: Icon(FontAwesomeIcons.bars),
+                                      child: FaIcon(FontAwesomeIcons.bars),
                                     ),
                                   )
                                 : Container(),
@@ -207,8 +207,7 @@ widget.callbackHome();
                                   Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 10.0, horizontal: 18),
-                                      child: Icon(
-                                        FontAwesomeIcons.bell,
+                                      child: FaIcon(FontAwesomeIcons.bell,
                                         size: 30,
                                       )),
                                   Positioned(
@@ -391,3 +390,4 @@ widget.callbackHome();
     );
   }
 }
+

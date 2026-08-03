@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -27,8 +27,7 @@ class _PdfViewState extends State<PdfView> {
           elevation: 0,
           centerTitle: true,
           leading: new IconButton(
-            icon: new Icon(
-              FontAwesomeIcons.arrowLeft,
+            icon: new FaIcon(FontAwesomeIcons.arrowLeft,
               size: 20,
               color: CustomColors.primary,
             ),
@@ -38,3 +37,4 @@ class _PdfViewState extends State<PdfView> {
     );
   }
 }
+

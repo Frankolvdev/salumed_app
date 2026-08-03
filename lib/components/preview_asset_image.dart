@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:app/constants/globals.dart';
 import 'package:app/models/asset.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +38,7 @@ class _PreviewAssetImageState extends State<PreviewAssetImage> {
           elevation: 0,
           centerTitle: true,
           leading: new IconButton(
-            icon: new Icon(
-              FontAwesomeIcons.arrowLeft,
+            icon: new FaIcon(FontAwesomeIcons.arrowLeft,
               size: 20,
               color: Colors.white,
             ),
@@ -52,3 +51,4 @@ class _PreviewAssetImageState extends State<PreviewAssetImage> {
     );
   }
 }
+

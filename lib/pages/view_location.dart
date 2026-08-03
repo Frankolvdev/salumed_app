@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:app/models/place.dart';
 import 'package:app/providers/app.dart';
 import 'package:flutter/foundation.dart';
@@ -105,8 +105,7 @@ class _ViewLocationState extends State<ViewLocation> {
             elevation: 0,
             centerTitle: true,
             leading: new IconButton(
-              icon: new Icon(
-                FontAwesomeIcons.arrowLeft,
+              icon: new FaIcon(FontAwesomeIcons.arrowLeft,
                 size: 20,
                 color: CustomColors.primary,
               ),
@@ -135,3 +134,4 @@ class _ViewLocationState extends State<ViewLocation> {
         ));
   }
 }
+

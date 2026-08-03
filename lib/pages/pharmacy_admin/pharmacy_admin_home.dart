@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 
 import 'package:app/components/main_layout.dart';
@@ -45,7 +45,7 @@ class _PharmacyAdminHomeState extends State<PharmacyAdminHome> {
 
     contents = [
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Inicio",
         "widget": StartPage(true),
         "function": () {
@@ -53,7 +53,7 @@ class _PharmacyAdminHomeState extends State<PharmacyAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.chartLine,
+        "icon": FontAwesomeIcons.chartLine.data,
         "title": "Estadísticas",
         "widget": PharmacyAdminStatics(),
         "function": () {
@@ -61,7 +61,7 @@ class _PharmacyAdminHomeState extends State<PharmacyAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.building,
+        "icon": FontAwesomeIcons.building.data,
         "title": "Mi comercio",
         "widget": PharmacyAdminEditPharmacy(),
         "function": () {
@@ -69,7 +69,7 @@ class _PharmacyAdminHomeState extends State<PharmacyAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.book,
+        "icon": FontAwesomeIcons.book.data,
         "title": "Mis pedidos",
         "widget": PharmacyAdminOrders(),
         "function": () {
@@ -77,7 +77,7 @@ class _PharmacyAdminHomeState extends State<PharmacyAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.bell,
+        "icon": FontAwesomeIcons.bell.data,
         "title": "Notificaciones",
         "widget":
             Notifications(callbackOpenNotification: ({dynamic element = null}) {
@@ -304,3 +304,4 @@ class _PharmacyAdminHomeState extends State<PharmacyAdminHome> {
     setContent(4, toNotifications: true);
   }
 }
+

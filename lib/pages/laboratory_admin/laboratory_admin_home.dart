@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 
 import 'package:app/components/main_layout.dart';
@@ -49,7 +49,7 @@ class _LaboratoryAdminHomeState extends State<LaboratoryAdminHome> {
 
     contents = [
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Inicio",
         "widget": StartPage(true),
         "function": () {
@@ -57,7 +57,7 @@ class _LaboratoryAdminHomeState extends State<LaboratoryAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.chartLine,
+        "icon": FontAwesomeIcons.chartLine.data,
         "title": "Estadísticas",
         "widget": LaboratoryAdminStatics(),
         "function": () {
@@ -65,7 +65,7 @@ class _LaboratoryAdminHomeState extends State<LaboratoryAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.building,
+        "icon": FontAwesomeIcons.building.data,
         "title": "Mi comercio",
         "widget": LaboratoryAdminEditLaboratory(),
         "function": () {
@@ -73,7 +73,7 @@ class _LaboratoryAdminHomeState extends State<LaboratoryAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.book,
+        "icon": FontAwesomeIcons.book.data,
         "title": "Mis pedidos",
         "widget": LaboratoryAdminOrders(),
         "function": () {
@@ -81,7 +81,7 @@ class _LaboratoryAdminHomeState extends State<LaboratoryAdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.bell,
+        "icon": FontAwesomeIcons.bell.data,
         "title": "Notificaciones",
         "widget":
             Notifications(callbackOpenNotification: ({dynamic element = null}) {
@@ -308,3 +308,4 @@ class _LaboratoryAdminHomeState extends State<LaboratoryAdminHome> {
     setContent(4, toNotifications: true);
   }
 }
+

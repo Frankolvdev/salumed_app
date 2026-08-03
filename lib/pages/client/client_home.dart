@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 
 import 'package:app/components/buy_without_receipe.dart';
@@ -61,7 +61,7 @@ class _ClientHomeState extends State<ClientHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.fileArchive,
+        "icon": FontAwesomeIcons.fileArchive.data,
         "title": "Archivero",
         "widget": ClientArchivist(),
         "function": () {
@@ -69,7 +69,7 @@ class _ClientHomeState extends State<ClientHome> {
         }
       },
       // {
-      //   "icon": FontAwesomeIcons.hospitalUser,
+      //   "icon": FontAwesomeIcons.hospitalUser.data,
       //   "title": "Médico de cabecera",
       //   "widget": ClientContactGp(),
       //   "function": () {
@@ -77,7 +77,7 @@ class _ClientHomeState extends State<ClientHome> {
       //   }
       // },
       // {
-      //   "icon": FontAwesomeIcons.book,
+      //   "icon": FontAwesomeIcons.book.data,
       //   "title": "Consultas/recetas",
       //   "widget": ClientPrescriptions(setOrders),
       //   "function": () {
@@ -85,7 +85,7 @@ class _ClientHomeState extends State<ClientHome> {
       //   }
       // },
       {
-        "icon": FontAwesomeIcons.shoppingBasket,
+        "icon": FontAwesomeIcons.shoppingBasket.data,
         "title": "Surtir/solicitar",
         "widget": ClientBuyWithoutPrescription(setOrders),
         "function": () {
@@ -113,7 +113,7 @@ class _ClientHomeState extends State<ClientHome> {
         }
       },
       // {
-      //   "icon": FontAwesomeIcons.book,
+      //   "icon": FontAwesomeIcons.book.data,
       //   "title": "Mis pedidos",
       //   "widget": ClientOrders(),
       //   "function": () {
@@ -136,7 +136,7 @@ class _ClientHomeState extends State<ClientHome> {
       //   }
       // },
       // {
-      //   "icon": FontAwesomeIcons.wind,
+      //   "icon": FontAwesomeIcons.wind.data,
       //   "title": "Ejercicios de respiración",
       //   "widget": Breathing(),
       //   "function": () {
@@ -144,7 +144,7 @@ class _ClientHomeState extends State<ClientHome> {
       //   }
       // },
       {
-        "icon": FontAwesomeIcons.comment,
+        "icon": FontAwesomeIcons.comment.data,
         "title": "Ayuda y soporte técnico",
         "widget": ClientContact(),
         "function": () {
@@ -152,7 +152,7 @@ class _ClientHomeState extends State<ClientHome> {
         },
       },
       {
-        "icon": FontAwesomeIcons.bell,
+        "icon": FontAwesomeIcons.bell.data,
         "title": "Notificaciones",
         "widget":
             Notifications(callbackOpenNotification: ({dynamic element = null}) {
@@ -180,14 +180,14 @@ class _ClientHomeState extends State<ClientHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Medicamentos",
         "widget": ClientBuyWithoutPrescription(setOrders),
         "function": () {},
         "hide": true
       },
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Estudios de laboratorio",
         "widget": ClientBuyWithoutPrescriptionStudies(setOrders),
         "function": () {},
@@ -419,3 +419,4 @@ class _ClientHomeState extends State<ClientHome> {
     setContent(8, toNotifications: true);
   }
 }
+

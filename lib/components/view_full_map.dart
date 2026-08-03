@@ -1,4 +1,4 @@
-import 'package:app/components/map_location.dart';
+﻿import 'package:app/components/map_location.dart';
 import 'package:app/constants/colors.dart';
 import 'package:app/models/pharmacy.dart';
 import 'package:app/models/place.dart';
@@ -29,7 +29,7 @@ class _ViewFullMapState extends State<ViewFullMap> {
               },
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Icon(FontAwesomeIcons.arrowLeft,
+                child: FaIcon(FontAwesomeIcons.arrowLeft,
                     size: 20, color: CustomColors.primary),
               ))),
       body: MapLocation(widget.pharmacy.place!, widget.pharmacy.title ?? "",
@@ -37,3 +37,4 @@ class _ViewFullMapState extends State<ViewFullMap> {
     );
   }
 }
+

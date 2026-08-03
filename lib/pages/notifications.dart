@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 
 import 'package:app/components/fade_animation.dart';
 
@@ -207,7 +207,7 @@ class _NotificationsState extends State<Notifications> {
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(FontAwesomeIcons.times,
+                            child: FaIcon(FontAwesomeIcons.times,
                                 color: (notificationTmp.status == "unread")
                                     ? Colors.white
                                     : CustomColors.primary,
@@ -341,3 +341,4 @@ class _NotificationsState extends State<Notifications> {
             )));
   }
 }
+

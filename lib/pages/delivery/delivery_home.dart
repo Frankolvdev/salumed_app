@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 
 import 'package:app/components/main_layout.dart';
@@ -42,7 +42,7 @@ class _DeliveryHomeState extends State<DeliveryHome> {
     super.initState();
     contents = [
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Inicio",
         "widget": StartPage(true),
         "function": () {
@@ -50,7 +50,7 @@ class _DeliveryHomeState extends State<DeliveryHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.book,
+        "icon": FontAwesomeIcons.book.data,
         "title": "Mis pedidos",
         "widget": DeliveryOrders1(),
         "function": () {
@@ -58,7 +58,7 @@ class _DeliveryHomeState extends State<DeliveryHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.bell,
+        "icon": FontAwesomeIcons.bell.data,
         "title": "Notificaciones",
         "widget":
             Notifications(callbackOpenNotification: ({dynamic element = null}) {
@@ -287,3 +287,4 @@ class _DeliveryHomeState extends State<DeliveryHome> {
     setContent(2, toNotifications: true);
   }
 }
+

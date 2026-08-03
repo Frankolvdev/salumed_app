@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/models/user.dart';
 import 'package:app/providers/app.dart';
@@ -127,7 +127,7 @@ class _SelectPictureDialogWecFilesState
                     children: <Widget>[
                       Padding(
                           padding: EdgeInsets.only(right: 8),
-                          child: Icon(FontAwesomeIcons.camera,
+                          child: FaIcon(FontAwesomeIcons.camera,
                               size: 18, color: Colors.white)),
                       Text(
                         "Cámara",
@@ -162,7 +162,7 @@ class _SelectPictureDialogWecFilesState
                     children: <Widget>[
                       Padding(
                           padding: EdgeInsets.only(right: 8),
-                          child: Icon(FontAwesomeIcons.filePdf,
+                          child: FaIcon(FontAwesomeIcons.filePdf,
                               size: 18, color: Colors.white)),
                       Text(
                         "PDF",
@@ -202,3 +202,4 @@ class _SelectPictureDialogWecFilesState
     );
   }
 }
+

@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:app/components/bottom_sheet_pictures.dart';
@@ -262,7 +262,7 @@ class _DoctorViewPrescriptionState extends State<DoctorViewPrescription> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -455,9 +455,7 @@ class _DoctorViewPrescriptionState extends State<DoctorViewPrescription> {
                                                                     padding:
                                                                         const EdgeInsets.all(
                                                                             8.0),
-                                                                    child: Icon(
-                                                                      FontAwesomeIcons
-                                                                          .expandArrowsAlt,
+                                                                    child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                       color: Colors
                                                                           .grey,
                                                                       size: 25,
@@ -616,8 +614,7 @@ class _DoctorViewPrescriptionState extends State<DoctorViewPrescription> {
                                                                             child:
                                                                                 Padding(
                                                                               padding: const EdgeInsets.all(8.0),
-                                                                              child: Icon(
-                                                                                FontAwesomeIcons.expandArrowsAlt,
+                                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                                 color: Colors.grey,
                                                                                 size: 25,
                                                                               ),
@@ -937,3 +934,4 @@ class _DoctorViewPrescriptionState extends State<DoctorViewPrescription> {
     });
   }
 }
+

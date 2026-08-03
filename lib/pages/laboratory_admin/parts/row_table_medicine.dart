@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -216,8 +216,7 @@ class _RowTableMedicineState extends State<RowTableMedicine> {
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 13.5, horizontal: 11.0),
-                                child: Icon(
-                                  FontAwesomeIcons.times,
+                                child: FaIcon(FontAwesomeIcons.times,
                                   color: Colors.red,
                                   size: 25,
                                 ),
@@ -234,3 +233,4 @@ class _RowTableMedicineState extends State<RowTableMedicine> {
     );
   }
 }
+

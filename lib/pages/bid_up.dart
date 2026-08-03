@@ -1,4 +1,4 @@
-import 'package:app/components/custom_dialog.dart';
+﻿import 'package:app/components/custom_dialog.dart';
 import 'package:app/components/dialog_accept_to_bid.dart';
 import 'package:app/components/dialog_select_date.dart';
 import 'package:app/constants/colors.dart';
@@ -168,8 +168,7 @@ class _BidUpState extends State<BidUp> {
           elevation: 0,
           centerTitle: true,
           leading: new IconButton(
-            icon: new Icon(
-              FontAwesomeIcons.arrowLeft,
+            icon: new FaIcon(FontAwesomeIcons.arrowLeft,
               size: 20,
               color: Colors.white,
             ),
@@ -396,7 +395,7 @@ class _BidUpState extends State<BidUp> {
                                 children: <Widget>[
                                   Padding(
                                       padding: EdgeInsets.only(right: 8),
-                                      child: Icon(FontAwesomeIcons.check,
+                                      child: FaIcon(FontAwesomeIcons.check,
                                           size: 20,
                                           color: CustomColors.primary)),
                                   Text(
@@ -516,3 +515,4 @@ class _BidUpState extends State<BidUp> {
     });
   }
 }
+

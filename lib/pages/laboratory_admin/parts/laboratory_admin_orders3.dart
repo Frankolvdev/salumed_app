@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:app/components/custom_dialog.dart';
@@ -560,8 +560,7 @@ class _LaboratoryAdminOrders3State extends State<LaboratoryAdminOrders3> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Icon(
-                                                FontAwesomeIcons.camera,
+                                              child: FaIcon(FontAwesomeIcons.camera,
                                                 color: Colors.white,
                                                 size: 25,
                                               ),
@@ -887,8 +886,7 @@ class _LaboratoryAdminOrders3State extends State<LaboratoryAdminOrders3> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Icon(
-                                                FontAwesomeIcons.camera,
+                                              child: FaIcon(FontAwesomeIcons.camera,
                                                 color: Colors.white,
                                                 size: 25,
                                               ),
@@ -995,3 +993,4 @@ class _LaboratoryAdminOrders3State extends State<LaboratoryAdminOrders3> {
     }
   }
 }
+

@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 
 import 'package:app/components/main_layout.dart';
@@ -43,7 +43,7 @@ class _DoctorHomeState extends State<DoctorHome> {
     super.initState();
     contents = [
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Inicio",
         "widget": StartPage(true),
         "function": () {
@@ -51,7 +51,7 @@ class _DoctorHomeState extends State<DoctorHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.book,
+        "icon": FontAwesomeIcons.book.data,
         "title": "Consultas/recetas",
         "widget": DoctorPrescriptions(),
         "function": () {
@@ -59,7 +59,7 @@ class _DoctorHomeState extends State<DoctorHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.fileArchive,
+        "icon": FontAwesomeIcons.fileArchive.data,
         "title": "Archivero",
         "widget": ClientArchivist(),
         "function": () {
@@ -67,7 +67,7 @@ class _DoctorHomeState extends State<DoctorHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.bell,
+        "icon": FontAwesomeIcons.bell.data,
         "title": "Notificaciones",
         "widget":
             Notifications(callbackOpenNotification: ({dynamic element = null}) {
@@ -298,3 +298,4 @@ class _DoctorHomeState extends State<DoctorHome> {
     setContent(3, toNotifications: true);
   }
 }
+

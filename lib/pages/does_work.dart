@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+﻿import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/providers/app.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +23,7 @@ class DoesWork extends StatelessWidget {
             elevation: 0,
             centerTitle: true,
             leading: new IconButton(
-              icon: new Icon(
-                FontAwesomeIcons.arrowLeft,
+              icon: new FaIcon(FontAwesomeIcons.arrowLeft,
                 size: 20,
                 color: CustomColors.primary,
               ),
@@ -402,3 +401,4 @@ class DoesWork extends StatelessWidget {
     );
   }
 }
+
