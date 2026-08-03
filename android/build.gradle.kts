@@ -47,7 +47,8 @@ subprojects {
                     project.name == "assets_audio_player" ||
                     project.name == "audio_session" ||
                     project.name == "audioplayers_android" ||
-                    project.name == "device_info_plus"
+                    project.name == "device_info_plus" ||
+                    project.name == "flutter_custom_tabs_android"
                 ) {
                     org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
                 } else {
