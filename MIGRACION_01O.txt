@@ -1,0 +1,30 @@
+MegaZIP 01O — compileSdk 37 para app y plugins Android heredados
+
+El log confirma:
+- app_links 7.2.1 ya está instalado.
+- uni_links ya no participa en la compilación.
+- permission_handler_android exige compileSdk 37.
+- assets_audio_player_web queda con un compileSdk inválido bajo AGP 9.
+
+Cambios:
+1. android/app/build.gradle.kts
+   - compileSdk = 37
+   - targetSdk permanece sin cambio y sigue tomando el valor de Flutter.
+
+2. android/build.gradle.kts
+   - Todos los subproyectos Android de tipo library se compilan con SDK 37.
+   - Esto permite mantener assets_audio_player 3.1.1 sin cambiar su API ni
+     modificar archivos dentro de Pub Cache.
+
+Después de descomprimir:
+flutter clean
+Remove-Item -Recurse -Force .\android\.gradle -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\build -ErrorAction SilentlyContinue
+flutter pub get
+flutter run
+
+Git:
+git status
+git add .
+git commit -m "fix: compile app and legacy plugins against Android SDK 37"
+git push

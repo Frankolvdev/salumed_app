@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.salumed.app"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

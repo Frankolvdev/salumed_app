@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.LibraryExtension
+
 allprojects {
     repositories {
         google()
@@ -21,4 +23,14 @@ subprojects {
 
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
+}
+
+// Algunos plugins heredados no declaran compileSdk correctamente bajo AGP 9.
+// Esto no cambia targetSdk ni comportamiento; solo permite compilar sus módulos Android.
+subprojects {
+    plugins.withId("com.android.library") {
+        extensions.configure<LibraryExtension> {
+            compileSdk = 37
+        }
+    }
 }
