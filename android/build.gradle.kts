@@ -35,32 +35,38 @@ subprojects {
     }
 }
 
-// BEGIN SALUMED JVM POR MODULO
+// BEGIN SALUMED JVM AUTOMATICA
+// Alinea cada tarea Kotlin con la tarea Java equivalente del mismo módulo.
+// Evita mantener listas manuales de plugins con JVM 1.8, 11, 17 o 21.
 subprojects {
     plugins.withId("org.jetbrains.kotlin.android") {
-        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-            compilerOptions {
-                // La app, assets_audio_player y audio_session compilan Java 17.
-                // Los demás plugins heredados, incluido file_picker, compilan Java 11.
-                val target = when {
-                    project.name == "flutter_phone_direct_caller" ->
-                        org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+        afterEvaluate {
+            tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+                val javaTaskName = name.replace("Kotlin", "JavaWithJavac")
+                val javaTask =
+                    project.tasks.findByName(javaTaskName) as? org.gradle.api.tasks.compile.JavaCompile
 
-                    project.name == "app" ||
-                    project.name == "assets_audio_player" ||
-                    project.name == "audio_session" ||
-                    project.name == "audioplayers_android" ||
-                    project.name == "device_info_plus" ||
-                    project.name == "flutter_custom_tabs_android" ->
-                        org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+                val javaTarget = javaTask?.targetCompatibility ?: "17"
 
-                    else ->
-                        org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+                val kotlinTarget =
+                    when (javaTarget) {
+                        "1.8", "8" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+                        "11" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+                        "17" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+                        "21" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
+                        else ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(javaTarget)
+                    }
+
+                compilerOptions {
+                    jvmTarget.set(kotlinTarget)
                 }
-
-                jvmTarget.set(target)
             }
         }
     }
 }
-// END SALUMED JVM POR MODULO
+// END SALUMED JVM AUTOMATICA
