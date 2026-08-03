@@ -1035,9 +1035,7 @@ class _GuestPrescriptionState extends State<GuestPrescription> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child: Icon(
-                                                                FontAwesomeIcons
-                                                                    .expandArrowsAlt,
+                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                 color:
                                                                     Colors.grey,
                                                                 size: 25,

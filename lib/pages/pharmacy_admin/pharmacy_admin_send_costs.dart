@@ -768,9 +768,7 @@ class _PharmacyAdminSendCostsState extends State<PharmacyAdminSendCosts> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child: Icon(
-                                                                FontAwesomeIcons
-                                                                    .expandArrowsAlt,
+                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                 color:
                                                                     Colors.grey,
                                                                 size: 25,

@@ -315,9 +315,7 @@ class _AdminViewOrderApproveState extends State<AdminViewOrderApprove> {
                                                             "hospital_admin")
                                                         ? "Paciente"
                                                         : "Hospital/Clínica"),
-                                                    Icon(
-                                                        FontAwesomeIcons
-                                                            .whatsapp,
+                                                    FaIcon(FontAwesomeIcons.whatsapp,
                                                         color: Colors.green,
                                                         size: 30)
                                                   ],
@@ -353,9 +351,7 @@ class _AdminViewOrderApproveState extends State<AdminViewOrderApprove> {
                                                       child: Column(
                                                         children: [
                                                           Text("Repartidor"),
-                                                          Icon(
-                                                              FontAwesomeIcons
-                                                                  .whatsapp,
+                                                          FaIcon(FontAwesomeIcons.whatsapp,
                                                               color:
                                                                   Colors.green,
                                                               size: 30)
@@ -648,9 +644,7 @@ class _AdminViewOrderApproveState extends State<AdminViewOrderApprove> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child: Icon(
-                                                                FontAwesomeIcons
-                                                                    .expandArrowsAlt,
+                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                 color:
                                                                     Colors.grey,
                                                                 size: 25,

@@ -330,9 +330,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                                             "hospital_admin")
                                                         ? "Paciente"
                                                         : "Hospital/Clínica"),
-                                                    Icon(
-                                                        FontAwesomeIcons
-                                                            .whatsapp,
+                                                    FaIcon(FontAwesomeIcons.whatsapp,
                                                         color: Colors.green,
                                                         size: 30)
                                                   ],
@@ -368,9 +366,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                                       child: Column(
                                                         children: [
                                                           Text("Repartidor"),
-                                                          Icon(
-                                                              FontAwesomeIcons
-                                                                  .whatsapp,
+                                                          FaIcon(FontAwesomeIcons.whatsapp,
                                                               color:
                                                                   Colors.green,
                                                               size: 30)
@@ -1194,9 +1190,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child: Icon(
-                                                                FontAwesomeIcons
-                                                                    .expandArrowsAlt,
+                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                 color:
                                                                     Colors.grey,
                                                                 size: 25,
@@ -1968,9 +1962,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                                       padding:
                                                           const EdgeInsets.all(
                                                               8.0),
-                                                      child: Icon(
-                                                          FontAwesomeIcons
-                                                              .chevronRight,
+                                                      child: FaIcon(FontAwesomeIcons.chevronRight,
                                                           size: 25,
                                                           color: Colors.grey),
                                                     )

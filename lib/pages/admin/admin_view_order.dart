@@ -273,9 +273,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                                             "hospital_admin")
                                                         ? "Paciente"
                                                         : "Hospital/Clínica"),
-                                                    Icon(
-                                                        FontAwesomeIcons
-                                                            .whatsapp,
+                                                    FaIcon(FontAwesomeIcons.whatsapp,
                                                         color: Colors.green,
                                                         size: 30)
                                                   ],
@@ -311,9 +309,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                                       child: Column(
                                                         children: [
                                                           Text("Repartidor"),
-                                                          Icon(
-                                                              FontAwesomeIcons
-                                                                  .whatsapp,
+                                                          FaIcon(FontAwesomeIcons.whatsapp,
                                                               color:
                                                                   Colors.green,
                                                               size: 30)
@@ -1135,9 +1131,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Icon(
-                                                        FontAwesomeIcons
-                                                            .filePdf,
+                                                      FaIcon(FontAwesomeIcons.filePdf,
                                                         size: 16,
                                                       ),
                                                       Padding(
@@ -1244,9 +1238,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child: Icon(
-                                                                FontAwesomeIcons
-                                                                    .expandArrowsAlt,
+                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                 color:
                                                                     Colors.grey,
                                                                 size: 25,
@@ -1810,9 +1802,7 @@ class _AdminViewOrderState extends State<AdminViewOrder> {
                                                       padding:
                                                           const EdgeInsets.all(
                                                               8.0),
-                                                      child: Icon(
-                                                          FontAwesomeIcons
-                                                              .chevronRight,
+                                                      child: FaIcon(FontAwesomeIcons.chevronRight,
                                                           size: 25,
                                                           color: Colors.grey),
                                                     )

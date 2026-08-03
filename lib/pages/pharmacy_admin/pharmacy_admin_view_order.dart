@@ -329,9 +329,7 @@ class _PharmacyAdminViewOrderState extends State<PharmacyAdminViewOrder> {
                                                             "hospital_admin")
                                                         ? "Paciente"
                                                         : "Hospital/Clínica"),
-                                                    Icon(
-                                                        FontAwesomeIcons
-                                                            .whatsapp,
+                                                    FaIcon(FontAwesomeIcons.whatsapp,
                                                         color: Colors.green,
                                                         size: 30)
                                                   ],
@@ -367,9 +365,7 @@ class _PharmacyAdminViewOrderState extends State<PharmacyAdminViewOrder> {
                                                       child: Column(
                                                         children: [
                                                           Text("Repartidor"),
-                                                          Icon(
-                                                              FontAwesomeIcons
-                                                                  .whatsapp,
+                                                          FaIcon(FontAwesomeIcons.whatsapp,
                                                               color:
                                                                   Colors.green,
                                                               size: 30)
@@ -1207,9 +1203,7 @@ class _PharmacyAdminViewOrderState extends State<PharmacyAdminViewOrder> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child: Icon(
-                                                                FontAwesomeIcons
-                                                                    .expandArrowsAlt,
+                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                 color:
                                                                     Colors.grey,
                                                                 size: 25,
@@ -1940,9 +1934,7 @@ class _PharmacyAdminViewOrderState extends State<PharmacyAdminViewOrder> {
                                                       padding:
                                                           const EdgeInsets.all(
                                                               8.0),
-                                                      child: Icon(
-                                                          FontAwesomeIcons
-                                                              .chevronRight,
+                                                      child: FaIcon(FontAwesomeIcons.chevronRight,
                                                           size: 25,
                                                           color: Colors.grey),
                                                     )

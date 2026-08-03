@@ -787,9 +787,7 @@ class _AdminSendCostsState extends State<AdminSendCosts> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child: Icon(
-                                                                FontAwesomeIcons
-                                                                    .expandArrowsAlt,
+                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                 color:
                                                                     Colors.grey,
                                                                 size: 25,
@@ -899,9 +897,7 @@ class _AdminSendCostsState extends State<AdminSendCosts> {
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Icon(
-                                                        FontAwesomeIcons
-                                                            .filePdf,
+                                                      FaIcon(FontAwesomeIcons.filePdf,
                                                         size: 16,
                                                       ),
                                                       Padding(

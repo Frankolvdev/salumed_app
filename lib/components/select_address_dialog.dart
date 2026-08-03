@@ -102,9 +102,7 @@ class _SelectAddressState extends State<SelectAddress> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: Icon(
-                                                    FontAwesomeIcons
-                                                        .chevronRight,
+                                                  child: FaIcon(FontAwesomeIcons.chevronRight,
                                                     color: Colors.grey.shade300,
                                                   ),
                                                 ),

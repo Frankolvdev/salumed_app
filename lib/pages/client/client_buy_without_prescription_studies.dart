@@ -286,9 +286,7 @@ class _ClientBuyWithoutPrescriptionStudiesState
                                                                     padding:
                                                                         const EdgeInsets.all(
                                                                             8.0),
-                                                                    child: Icon(
-                                                                      FontAwesomeIcons
-                                                                          .camera,
+                                                                    child: FaIcon(FontAwesomeIcons.camera,
                                                                       color: Colors
                                                                           .white,
                                                                       size: 25,
