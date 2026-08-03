@@ -1,4 +1,4 @@
-﻿import 'package:app/constants/colors.dart';
+import 'package:app/constants/colors.dart';
 import 'package:app/constants/globals.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/models/user.dart';

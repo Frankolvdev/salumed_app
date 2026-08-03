@@ -1,4 +1,4 @@
-﻿import 'package:app/components/fade_animation.dart';
+import 'package:app/components/fade_animation.dart';
 import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/providers/app.dart';

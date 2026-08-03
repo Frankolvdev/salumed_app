@@ -1,4 +1,4 @@
-﻿import 'package:app/constants/colors.dart';
+import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';
 import 'package:app/models/question.dart';
 import 'package:flutter/material.dart';

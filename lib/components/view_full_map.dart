@@ -1,4 +1,4 @@
-﻿import 'package:app/components/map_location.dart';
+import 'package:app/components/map_location.dart';
 import 'package:app/constants/colors.dart';
 import 'package:app/models/pharmacy.dart';
 import 'package:app/models/place.dart';

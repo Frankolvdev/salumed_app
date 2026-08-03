@@ -1,4 +1,4 @@
-﻿import 'package:app/constants/colors.dart';
+import 'package:app/constants/colors.dart';
 import 'package:app/models/place.dart';
 import 'package:app/providers/app.dart';
 import 'package:flutter/foundation.dart';

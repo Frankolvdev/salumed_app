@@ -1,4 +1,4 @@
-﻿import 'package:app/components/custom_dialog.dart';
+import 'package:app/components/custom_dialog.dart';
 import 'package:app/components/dialog_accept_to_bid.dart';
 import 'package:app/components/dialog_select_date.dart';
 import 'package:app/constants/colors.dart';

@@ -1,4 +1,4 @@
-﻿import 'dart:convert';
+import 'dart:convert';
 
 import 'package:app/constants/colors.dart';
 import 'package:app/helpers/helpers.dart';

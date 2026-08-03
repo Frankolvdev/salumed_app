@@ -1,4 +1,4 @@
-﻿import com.android.build.gradle.LibraryExtension
+import com.android.build.gradle.LibraryExtension
 
 allprojects {
     repositories {
@@ -35,17 +35,15 @@ subprojects {
     }
 }
 
-// BEGIN SALUMED JVM TARGET 17
+// Plugins Android heredados: AGP 9 necesita compileSdk explícito.
 subprojects {
-    tasks.withType<JavaCompile>().configureEach {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
-    }
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    plugins.withId("org.jetbrains.kotlin.android") {
+        if (name != "app" && name != "assets_audio_player") {
+            tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+                compilerOptions {
+                    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+                }
+            }
         }
     }
 }
-// END SALUMED JVM TARGET 17

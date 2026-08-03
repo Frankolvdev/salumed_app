@@ -1,4 +1,4 @@
-﻿import 'package:app/constants/colors.dart';
+import 'package:app/constants/colors.dart';
 import 'package:app/constants/globals.dart';
 import 'package:app/models/asset.dart';
 import 'package:flutter/material.dart';

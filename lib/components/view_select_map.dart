@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 
 import 'package:app/components/map_location.dart';
 import 'package:app/components/map_selected.dart';
