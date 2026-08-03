@@ -523,45 +523,16 @@ if (!permission) {
     provider.setConfig(jsonDecode(jsonEncode(responses[5])));
 
     callback();
-  }).catchError((err) {
-    print("error al cargar la información inicial");
-    print(err);
+  }).catchError((err, stackTrace) {
+    // El inicio de sesión ya fue validado por WebService.signIn().
+    // Estas cargas son auxiliares; un fallo en mapas, notificaciones,
+    // anuncios, configuración u OneSignal no debe cerrar la sesión.
+    debugPrint("Error no fatal al cargar la información inicial: $err");
+    debugPrintStack(stackTrace: stackTrace);
 
-    simpleLoading(context, (BuildContext loadingContext) async {
-      try {
-        UserModel user = provider.user;
-
-        UserModel userTmp = UserModel(roles: []);
-        userTmp.id = null;
-        await provider.setUser(userTmp);
-
-        Navigator.pop(loadingContext);
-
-        SchedulerBinding.instance.addPostFrameCallback((_) {
-          Navigator.pushAndRemoveUntil(
-              context,
-              PageTransition(
-                  child: Login(),
-                  type: PageTransitionType.slideInUp,
-                  duration: Duration(milliseconds: 250)),
-              (Route<dynamic> route) => false);
-        });
-      } catch (e) {
-        print(e);
-
-        Navigator.pop(loadingContext);
-
-        SchedulerBinding.instance?.addPostFrameCallback((_) {
-          Navigator.pushAndRemoveUntil(
-              context,
-              PageTransition(
-                  child: Login(),
-                  type: PageTransitionType.slideInUp,
-                  duration: Duration(milliseconds: 250)),
-              (Route<dynamic> route) => false);
-        });
-      }
-    });
+    if (context.mounted) {
+      callback();
+    }
   });
 }
 

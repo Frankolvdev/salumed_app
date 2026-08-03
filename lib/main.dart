@@ -4,8 +4,6 @@ import 'package:app/helpers/mercadopago_helper.dart';
 import 'package:app/pages/hero.dart';
 import 'package:app/pages/open.dart';
 import 'package:app/pages/splash.dart';
-import 'package:app/providers/app.dart';
-import 'package:app_links/app_links.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,36 +12,53 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:showcaseview/showcaseview.dart';
-
-import 'configure_nonweb.dart'
-    if (dart.library.html) 'configure_web.dart';
-
+import 'providers/app.dart';
+import 'configure_nonweb.dart' if (dart.library.html) 'configure_web.dart';
+//import 'package:uni_links/uni_links.dart';
 //import 'dart:html' as html;
 
 Map<String, String>? resultadoPagoPendiente;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (!kIsWeb) {
-    OneSignal.initialize(oneSignalAppIdAndroid);
-    OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
+ if(!kIsWeb){
+OneSignal.initialize(oneSignalAppIdAndroid);
+OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
 
-    // Conserva el retorno de Mercado Pago tanto con la app cerrada como abierta.
-    // AppLinks.uriLinkStream entrega el enlace inicial y los enlaces posteriores.
-    final appLinks = AppLinks();
-    appLinks.uriLinkStream.listen(
-      (Uri uri) {
+ } 
+
+
+//PaymentMiddleware.initDeepLinkListener(); 
+// ← Estas líneas nuevas (reemplazan o complementan tu initDeepLinkListener)
+
+// 1. Detectar link inicial (app cerrada → abre con link)
+ /* try {
+    final initialLink = await getInitialLink();
+    if (initialLink != null) {
+      _procesarDeepLink(initialLink);
+    }
+  } catch (e) {
+    // Ignorar
+  }*/
+
+  /*if (!kIsWeb) {
+  // 2. Escuchar links mientras la app está viva (¡esto es lo que te faltaba!)
+  uriLinkStream.listen((Uri? uri) {
+    if (uri != null) {
+      _procesarDeepLink(uri.toString());
+    }
+  });
+
+
+      uriLinkStream.listen((Uri? uri) {
+      if (uri != null) {
         _procesarDeepLink(uri.toString());
-      },
-      onError: (_) {
-        // Mantiene el comportamiento anterior: ignorar errores de deep link.
-      },
-    );
+      }
+    });
   } else {
-    // Web: si quieres, puedes usar HTML para leer query params.
+    // Web: si quieres, puedes usar HTML para leer query params
     _procesarWebQueryParams();
-  }
+  }*/
 
   configureApp();
 
@@ -55,7 +70,7 @@ void main() async {
 }
 
 void _procesarWebQueryParams() {
-  /* final uri = Uri.parse(html.window.location.href);
+ /* final uri = Uri.parse(html.window.location.href);
   if (uri.queryParameters.isNotEmpty) {
     final params = uri.queryParameters;
     // Tu lógica adaptada para Web
@@ -68,42 +83,36 @@ void _procesarWebQueryParams() {
 void _procesarDeepLink(String link) {
   if (!link.startsWith('myapp://subscription')) return;
 
-  final uri = Uri.parse(link);
-  final status = uri.queryParameters['status'];
-  final preapprovalId = uri.queryParameters['preapproval_id'];
+  Uri uri = Uri.parse(link);
+  String? status = uri.queryParameters['status'];
+  String? preapprovalId = uri.queryParameters['preapproval_id'];
 
-  print("Deep link recibido: $link");
-
-  // También chequea que preapproval_id exista.
+print("Deep link recibido: $link");
+ 
+  // Opcional: también chequea que preapproval_id no sea vacío o "0"
   if (preapprovalId == null) {
     print("Deep link ignorado: preapproval_id inválido");
     return;
   }
 
-  resultadoPagoPendiente = {
-    "titulo": "Exitoso",
-    "mensaje": "Pago completado correctamente. ¡Gracias!",
-  };
 
-  print(
-    "Deep link válido procesado: status=$status, "
-    "preapproval_id=$preapprovalId",
-  );
+   resultadoPagoPendiente = {
+      "titulo": "Exitoso",
+      "mensaje": "Pago completado correctamente. ¡Gracias!",
+    };
+
+  print("Deep link válido procesado: status=$status, preapproval_id=$preapprovalId");
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
   final AppProvider appChangeProvider = AppProvider();
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.light,
-      ),
-    );
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.light,
+    ));
 
     return ChangeNotifierProvider.value(
       value: appChangeProvider,
@@ -111,13 +120,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'SaluMeD',
 
-        // Esta línea bloquea el cambio de tamaño de texto del sistema.
+        // 👇 Esta línea bloquea el cambio de tamaño de texto del sistema
         builder: (context, child) {
           final mediaQuery = MediaQuery.of(context);
           return MediaQuery(
             data: mediaQuery.copyWith(
-              textScaler: const TextScaler.linear(0.9),
-              boldText: false,
+              textScaleFactor: 0.9, // siempre usa tamaño normal
+              boldText: false, // desactiva texto en negrita
               highContrast: false,
             ),
             child: child!,
@@ -126,8 +135,8 @@ class MyApp extends StatelessWidget {
 
         onGenerateRoute: (settings) {
           if (kIsWeb) {
-            final uriData = Uri.parse(settings.name ?? "");
-            final params = uriData.queryParameters;
+            Uri uriData = Uri.parse(settings.name ?? "");
+            var params = uriData.queryParameters;
             if (params.isNotEmpty) {
               queryParams = params;
               if (queryParams.containsKey("action") &&
@@ -146,16 +155,15 @@ class MyApp extends StatelessWidget {
               }
             }
           }
-          return null;
         },
 
         theme: ThemeData(
-          fontFamily: 'Roboto',
+          fontFamily: 'Roboto', // Fuente base (la predeterminada de Flutter)
           useMaterial3: false,
           brightness: Brightness.light,
           primaryColor: CustomColors.primary,
           primarySwatch: CustomColors.primary,
-          textTheme: const TextTheme(),
+          textTheme: const TextTheme(), // Respeta tus estilos locales
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,

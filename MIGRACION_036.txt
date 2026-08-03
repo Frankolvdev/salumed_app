@@ -1,0 +1,49 @@
+MegaZIP 036 — Evitar regreso incorrecto al login después de autenticar
+
+Base:
+- salumed_app-main (12).zip
+- comparación con salumed_flutter_app-main (2).zip
+
+Diagnóstico:
+El login por correo y contraseña es prácticamente idéntico en ambas apps.
+El regreso al login ocurre después, dentro de initProcess().
+
+initProcess agrupa seis cargas auxiliares en Future.wait:
+1. actualizar token push
+2. cargar pin de Google Maps
+3. cargar anuncios
+4. cargar calificaciones pendientes
+5. cargar notificaciones
+6. cargar configuración
+
+El código heredado trataba cualquier fallo auxiliar como si la autenticación hubiera
+fallado: borraba provider.user y navegaba de nuevo a Login().
+
+Corrección:
+- conserva intacto el flujo exitoso;
+- registra el fallo auxiliar;
+- no borra al usuario autenticado;
+- continúa a goHome() con los roles obtenidos en signIn();
+- no cambia diseño, endpoints, roles ni pantallas.
+
+Archivo modificado:
+lib/helpers/helpers.dart
+
+Aplicación:
+1. Descomprimir encima de F:\SALUMED\CODE\APP
+2. Ejecutar:
+
+flutter clean
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+flutter pub get
+flutter analyze
+flutter build apk --debug
+
+Git:
+git status
+git add .
+git commit -m "fix: keep authenticated session when optional initialization fails"
+git push
+
+Para identificar el servicio auxiliar que falla, revisa la consola buscando:
+Error no fatal al cargar la información inicial:
