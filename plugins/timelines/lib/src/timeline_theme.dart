@@ -297,7 +297,7 @@ class TimelineThemeData with Diagnosticable {
   static TimelineThemeData lerp(
       TimelineThemeData a, TimelineThemeData b, double t) {
     // Warning: make sure these properties are in the exact same order as in
-    // hashValues() and in the raw constructor and in the order of fields in
+    // Object.hash() and in the raw constructor and in the order of fields in
     // the class and in the lerp() method.
     return TimelineThemeData.raw(
       direction: t < 0.5 ? a.direction : b.direction,
@@ -317,7 +317,7 @@ class TimelineThemeData with Diagnosticable {
   bool operator ==(Object other) {
     if (other.runtimeType != runtimeType) return false;
     // Warning: make sure these properties are in the exact same order as in
-    // hashValues() and in the raw constructor and in the order of fields in
+    // Object.hash() and in the raw constructor and in the order of fields in
     // the class and in the lerp() method.
     return other is TimelineThemeData &&
         other.direction == direction &&

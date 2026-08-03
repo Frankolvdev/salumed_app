@@ -35,14 +35,13 @@ subprojects {
     }
 }
 
-// Plugins Android heredados: AGP 9 necesita compileSdk explícito.
+// AGP 9 compila los módulos Android con Java 17.
+// Kotlin debe generar el mismo bytecode para evitar incompatibilidades JVM.
 subprojects {
     plugins.withId("org.jetbrains.kotlin.android") {
-        if (name != "app" && name != "assets_audio_player") {
-            tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-                compilerOptions {
-                    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
-                }
+        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+            compilerOptions {
+                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
             }
         }
     }

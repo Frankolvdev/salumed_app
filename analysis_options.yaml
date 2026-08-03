@@ -1,3 +1,10 @@
+analyzer:
+  exclude:
+    - plugins/**/example/**
+    - plugins/**/test/**
+    - plugins/**/.dart_tool/**
+    - plugins/**/build/**
+
 # This file configures the analyzer, which statically analyzes Dart code to
 # check for errors, warnings, and lints.
 #
