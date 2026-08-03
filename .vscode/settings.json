@@ -1,0 +1,8 @@
+{
+  "dart.flutterSdkPath": "C:\\flutter_sdks\\flutter_3.44.8-stable",
+  "dart.projectSearchDepth": 1,
+  "dart.runPubGetOnPubspecChanges": true,
+  "dart.flutterHotReloadOnSave": "all",
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false
+}

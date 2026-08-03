@@ -51,3 +51,11 @@ build_*.log
 Pasted text*.txt
 MegaZIP_*.zip
 build_*.log
+
+# Keystore
+/upload-keystore.jks
+*.jks
+*.keystore
+
+# Credenciales Android
+android/key.properties

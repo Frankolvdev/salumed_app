@@ -26,22 +26,29 @@ class NotificationModel {
     this.updated_at,
   });
 
-  factory NotificationModel.fromJson(Map<String, dynamic> json) {
-    if (json == null) return NotificationModel();
+  factory NotificationModel.fromJson(dynamic json) {
+    if (json is! Map<String, dynamic>) {
+      return NotificationModel();
+    }
+
+    final dynamic imageJson = json["image"];
+    final dynamic userJson = json["user"];
+
     return NotificationModel(
-        id: (json.containsKey("_id")) ? json["_id"] : json["id"],
-        title: json["title"],
-        content: json["content"],
-        data: json["data"],
-        link: json["link"],
-        image: (json.containsKey("image"))
-            ? AssetModel.fromJson(json["image"])
-            : null,
-        user: (json.containsKey("user"))
-            ? UserModel.fromJson(json["user"])
-            : null,
-        status: json["status"],
-        created_at: json["createdAt"],
-        updated_at: json["updatedAt"]);
+      id: json["_id"] ?? json["id"],
+      title: json["title"]?.toString(),
+      content: json["content"]?.toString(),
+      data: json["data"],
+      link: json["link"]?.toString(),
+      image: imageJson is Map<String, dynamic>
+          ? AssetModel.fromJson(imageJson)
+          : null,
+      user: userJson is Map<String, dynamic>
+          ? UserModel.fromJson(userJson)
+          : null,
+      status: json["status"]?.toString(),
+      created_at: json["createdAt"]?.toString(),
+      updated_at: json["updatedAt"]?.toString(),
+    );
   }
 }
