@@ -37,36 +37,38 @@ subprojects {
 
 // BEGIN SALUMED JVM AUTOMATICA
 // Alinea cada tarea Kotlin con la tarea Java equivalente del mismo módulo.
-// Guarda explícitamente la tarea Kotlin antes de configurar JavaCompile.
+// El target se obtiene mediante Provider cuando Gradle necesita el valor.
+// No usa afterEvaluate ni configura colecciones de tareas dentro de otras tareas.
 subprojects {
     plugins.withId("org.jetbrains.kotlin.android") {
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-            val kotlinTask = this
             val javaTaskName = name.replace("Kotlin", "JavaWithJavac")
 
-            project.tasks.withType<org.gradle.api.tasks.compile.JavaCompile>()
-                .matching { it.name == javaTaskName }
-                .configureEach {
-                    val javaTarget = targetCompatibility
+            val kotlinTargetProvider =
+                project.providers.provider {
+                    val javaTask =
+                        project.tasks.findByName(javaTaskName)
+                            as? org.gradle.api.tasks.compile.JavaCompile
 
-                    val kotlinTarget =
-                        when (javaTarget) {
-                            "1.8", "8" ->
-                                org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
-                            "11" ->
-                                org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
-                            "17" ->
-                                org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
-                            "21" ->
-                                org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
-                            else ->
-                                org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(javaTarget)
-                        }
+                    val javaTarget = javaTask?.targetCompatibility ?: "17"
 
-                    kotlinTask.compilerOptions {
-                        jvmTarget.set(kotlinTarget)
+                    when (javaTarget) {
+                        "1.8", "8" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+                        "11" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+                        "17" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+                        "21" ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
+                        else ->
+                            org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(javaTarget)
                     }
                 }
+
+            compilerOptions {
+                jvmTarget.set(kotlinTargetProvider)
+            }
         }
     }
 }
