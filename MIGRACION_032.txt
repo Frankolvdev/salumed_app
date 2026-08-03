@@ -1,0 +1,69 @@
+MegaZIP 032 — Configuración segura de Google Maps API Key
+
+Este parche deja un único lugar para pegar la API key:
+
+android/local.properties
+
+Después de ejecutar el script encontrarás:
+
+GOOGLE_MAPS_API_KEY=PEGA_AQUI_TU_API_KEY
+
+Solo reemplaza PEGA_AQUI_TU_API_KEY por la clave real, sin comillas:
+
+GOOGLE_MAPS_API_KEY=AIza...
+
+La clave NO se subirá a Git porque android/local.properties está ignorado.
+
+El parche modifica:
+- android/app/build.gradle.kts
+- android/.gitignore, solo si faltaba /local.properties
+- android/local.properties, preservando sdk.dir y otras propiedades existentes
+
+El AndroidManifest puede conservar:
+
+android:value="${GOOGLE_MAPS_API_KEY}"
+
+Aplicación:
+
+1. Descomprimir en:
+   F:\SALUMED\CODE\APP
+
+2. Ejecutar:
+
+Set-ExecutionPolicy -Scope Process Bypass
+.\CONFIGURAR_GOOGLE_MAPS_API_KEY_032.ps1
+
+3. Abrir:
+
+android\local.properties
+
+4. Reemplazar:
+
+GOOGLE_MAPS_API_KEY=PEGA_AQUI_TU_API_KEY
+
+por:
+
+GOOGLE_MAPS_API_KEY=TU_CLAVE_REAL
+
+5. Compilar:
+
+cd .\android
+.\gradlew.bat --stop
+cd ..
+
+flutter clean
+Remove-Item -Recurse -Force .\build -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\android\.gradle -ErrorAction SilentlyContinue
+
+flutter pub get
+flutter build apk --debug -v *> build_032.log
+
+Git:
+git status
+git add .
+git commit -m "fix: load Google Maps API key from local properties"
+git push
+
+Importante:
+android/local.properties no aparecerá en el commit.

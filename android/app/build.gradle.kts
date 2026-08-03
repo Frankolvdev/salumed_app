@@ -1,3 +1,29 @@
+import java.util.Properties
+
+// BEGIN SALUMED GOOGLE MAPS API KEY
+val salumedLocalProperties = Properties()
+val salumedLocalPropertiesFile = rootProject.file("local.properties")
+
+if (salumedLocalPropertiesFile.exists()) {
+    salumedLocalPropertiesFile.inputStream().use { input ->
+        salumedLocalProperties.load(input)
+    }
+}
+
+val salumedGoogleMapsApiKey =
+    salumedLocalProperties.getProperty("GOOGLE_MAPS_API_KEY")?.trim().orEmpty()
+
+if (
+    salumedGoogleMapsApiKey.isBlank() ||
+    salumedGoogleMapsApiKey == "PEGA_AQUI_TU_API_KEY"
+) {
+    throw GradleException(
+        "Falta GOOGLE_MAPS_API_KEY. Abre android/local.properties y reemplaza " +
+            "PEGA_AQUI_TU_API_KEY por tu clave real de Google Maps."
+    )
+}
+// END SALUMED GOOGLE MAPS API KEY
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
@@ -15,6 +41,8 @@ android {
     }
 
     defaultConfig {
+
+        manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = salumedGoogleMapsApiKey
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.salumed.app"
         // You can update the following values to match your application needs.
