@@ -51,7 +51,7 @@ dependencies:
   firebase_messaging: any
   editable: any
   back_button_interceptor: any
-  file_picker: any
+  file_picker: 10.3.10
   syncfusion_flutter_pdfviewer: ^33.2.10
   modal_bottom_sheet: any
   permission_handler: any
