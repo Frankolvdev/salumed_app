@@ -37,10 +37,11 @@ subprojects {
 
 // BEGIN SALUMED JVM AUTOMATICA
 // Alinea cada tarea Kotlin con la tarea Java equivalente del mismo módulo.
-// Usa configuración diferida segura, incluso si el subproyecto ya fue evaluado.
+// Guarda explícitamente la tarea Kotlin antes de configurar JavaCompile.
 subprojects {
     plugins.withId("org.jetbrains.kotlin.android") {
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+            val kotlinTask = this
             val javaTaskName = name.replace("Kotlin", "JavaWithJavac")
 
             project.tasks.withType<org.gradle.api.tasks.compile.JavaCompile>()
@@ -62,7 +63,7 @@ subprojects {
                                 org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(javaTarget)
                         }
 
-                    this@configureEach.compilerOptions {
+                    kotlinTask.compilerOptions {
                         jvmTarget.set(kotlinTarget)
                     }
                 }
