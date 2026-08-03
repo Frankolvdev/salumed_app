@@ -45,7 +45,8 @@ subprojects {
                 val target = if (
                     project.name == "app" ||
                     project.name == "assets_audio_player" ||
-                    project.name == "audio_session"
+                    project.name == "audio_session" ||
+                    project.name == "audioplayers_android"
                 ) {
                     org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
                 } else {
