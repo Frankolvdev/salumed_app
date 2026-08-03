@@ -67,8 +67,7 @@ class _setChangePasswordState extends State<setChangePassword> {
           focusColor: CustomColors.primary,
           hoverColor: CustomColors.primary,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -109,8 +108,7 @@ class _setChangePasswordState extends State<setChangePassword> {
           focusColor: CustomColors.primary,
           hoverColor: CustomColors.primary,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -155,8 +153,7 @@ class _setChangePasswordState extends State<setChangePassword> {
         focusColor: CustomColors.primary,
         hoverColor: CustomColors.primary,
         filled: true,
-        prefixIcon: Icon(
-          FontAwesomeIcons.lock,
+        prefixIcon: FaIcon(FontAwesomeIcons.lock,
           size: 20,
         ),
         suffixIcon: IconButton(

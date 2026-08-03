@@ -368,7 +368,7 @@ class _TilingQuestionnaireState extends State<TilingQuestionnaire> {
                             ),
                             Padding(
                                 padding: EdgeInsets.only(left: 8),
-                                child: Icon(FontAwesomeIcons.arrowRight,
+                                child: FaIcon(FontAwesomeIcons.arrowRight,
                                     size: 12, color: Colors.white)),
                           ],
                         ),
@@ -402,7 +402,7 @@ class _TilingQuestionnaireState extends State<TilingQuestionnaire> {
                           children: <Widget>[
                             Padding(
                                 padding: EdgeInsets.only(right: 8),
-                                child: Icon(FontAwesomeIcons.save,
+                                child: FaIcon(FontAwesomeIcons.save,
                                     size: 12, color: Colors.white)),
                             Flexible(
                               child: Text(

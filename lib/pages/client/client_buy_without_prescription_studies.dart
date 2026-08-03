@@ -132,8 +132,7 @@ class _ClientBuyWithoutPrescriptionStudiesState
                                       onTap: () {
                                         showTakePictureSt();
                                       },
-                                      child: Icon(
-                                        FontAwesomeIcons.camera,
+                                      child: FaIcon(FontAwesomeIcons.camera,
                                         color: CustomColors.primary,
                                       ),
                                     )
@@ -276,8 +275,7 @@ class _ClientBuyWithoutPrescriptionStudiesState
                                                                             padding:
                                                                                 const EdgeInsets.all(8.0),
                                                                             child:
-                                                                                Icon(
-                                                                              FontAwesomeIcons.expandArrowsAlt,
+                                                                                FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                               color: Colors.grey,
                                                                               size: 25,
                                                                             ),

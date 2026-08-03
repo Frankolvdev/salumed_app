@@ -116,8 +116,7 @@ class _AdminAddUserState extends State<AdminAddUser> {
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -157,8 +156,7 @@ class _AdminAddUserState extends State<AdminAddUser> {
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Confirmar contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -408,7 +406,7 @@ class _AdminAddUserState extends State<AdminAddUser> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -501,8 +499,7 @@ class _AdminAddUserState extends State<AdminAddUser> {
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      FontAwesomeIcons.camera,
+                                    child: FaIcon(FontAwesomeIcons.camera,
                                       color: Colors.white,
                                       size: 25,
                                     ),

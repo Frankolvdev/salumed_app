@@ -213,8 +213,7 @@ bool cancelScroll=false;
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Nueva contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -254,8 +253,7 @@ bool cancelScroll=false;
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Confirmar nueva contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -494,8 +492,7 @@ bool cancelScroll=false;
               });
               FocusScope.of(context).unfocus();
             },
-            child: Icon(
-              FontAwesomeIcons.times,
+            child: FaIcon(FontAwesomeIcons.times,
               size: 20,
               color: Colors.grey.shade400,
             ),
@@ -567,7 +564,7 @@ bool cancelScroll=false;
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -671,8 +668,7 @@ bool cancelScroll=false;
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      FontAwesomeIcons.camera,
+                                    child: FaIcon(FontAwesomeIcons.camera,
                                       color: Colors.white,
                                       size: 25,
                                     ),
@@ -1351,8 +1347,7 @@ bool cancelScroll=false;
                   });
                   FocusScope.of(context).unfocus();
                 },
-                child: Icon(
-                  FontAwesomeIcons.times,
+                child: FaIcon(FontAwesomeIcons.times,
                   size: 20,
                   color: Colors.grey.shade400,
                 ),
@@ -1404,7 +1399,7 @@ bool cancelScroll=false;
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Icon(FontAwesomeIcons.times,
+                      child: FaIcon(FontAwesomeIcons.times,
                           color: CustomColors.primary, size: 30),
                     ),
                   )

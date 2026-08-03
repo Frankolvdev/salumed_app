@@ -352,8 +352,7 @@ class _ClientConfirmOrderState extends State<ClientConfirmOrder> {
               });
               FocusScope.of(context).unfocus();
             },
-            child: Icon(
-              FontAwesomeIcons.times,
+            child: FaIcon(FontAwesomeIcons.times,
               size: 20,
               color: Colors.grey.shade400,
             ),
@@ -395,7 +394,7 @@ class _ClientConfirmOrderState extends State<ClientConfirmOrder> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -731,8 +730,7 @@ class _ClientConfirmOrderState extends State<ClientConfirmOrder> {
                   });
                   FocusScope.of(context).unfocus();
                 },
-                child: Icon(
-                  FontAwesomeIcons.times,
+                child: FaIcon(FontAwesomeIcons.times,
                   size: 20,
                   color: Colors.grey.shade400,
                 ),
@@ -784,7 +782,7 @@ class _ClientConfirmOrderState extends State<ClientConfirmOrder> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Icon(FontAwesomeIcons.times,
+                      child: FaIcon(FontAwesomeIcons.times,
                           color: CustomColors.primary, size: 30),
                     ),
                   )

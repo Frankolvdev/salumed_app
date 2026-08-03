@@ -294,7 +294,7 @@ class _ClientContactState extends State<ClientContact> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(FontAwesomeIcons.whatsapp,
+                                FaIcon(FontAwesomeIcons.whatsapp,
                                     color: Colors.white, size: 30),
                                 Text(
                                   "Chatea con nosotros",

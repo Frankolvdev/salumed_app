@@ -568,8 +568,7 @@ class _ChatPageState extends State<ChatPage> {
         return Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(
-              FontAwesomeIcons.check,
+            FaIcon(FontAwesomeIcons.check,
               size: 9,
               color: Colors.white,
             )
@@ -580,13 +579,11 @@ class _ChatPageState extends State<ChatPage> {
         return Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(
-              FontAwesomeIcons.check,
+            FaIcon(FontAwesomeIcons.check,
               size: 9,
               color: Colors.white,
             ),
-            Icon(
-              FontAwesomeIcons.check,
+            FaIcon(FontAwesomeIcons.check,
               size: 9,
               color: Colors.white,
             )
@@ -597,13 +594,11 @@ class _ChatPageState extends State<ChatPage> {
         return Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(
-              FontAwesomeIcons.check,
+            FaIcon(FontAwesomeIcons.check,
               size: 9,
               color: Colors.blue,
             ),
-            Icon(
-              FontAwesomeIcons.check,
+            FaIcon(FontAwesomeIcons.check,
               size: 9,
               color: Colors.blue,
             )

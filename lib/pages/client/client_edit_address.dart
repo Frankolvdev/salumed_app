@@ -271,8 +271,7 @@ bool cancelScroll=false;
               });
               FocusScope.of(context).unfocus();
             },
-            child: Icon(
-              FontAwesomeIcons.times,
+            child: FaIcon(FontAwesomeIcons.times,
               size: 20,
               color: Colors.grey.shade400,
             ),
@@ -672,8 +671,7 @@ bool cancelScroll=false;
                   });
                   FocusScope.of(context).unfocus();
                 },
-                child: Icon(
-                  FontAwesomeIcons.times,
+                child: FaIcon(FontAwesomeIcons.times,
                   size: 20,
                   color: Colors.grey.shade400,
                 ),
@@ -725,7 +723,7 @@ bool cancelScroll=false;
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Icon(FontAwesomeIcons.times,
+                      child: FaIcon(FontAwesomeIcons.times,
                           color: CustomColors.primary, size: 30),
                     ),
                   )

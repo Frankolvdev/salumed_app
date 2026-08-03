@@ -258,7 +258,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -1270,8 +1270,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    Icon(
-                                                      FontAwesomeIcons.filePdf,
+                                                    FaIcon(FontAwesomeIcons.filePdf,
                                                       size: 16,
                                                     ),
                                                     Padding(
@@ -1397,8 +1396,7 @@ class _LaboratoryAdminViewOrderState extends State<LaboratoryAdminViewOrder> {
                                                                                   },
                                                                                   child: Padding(
                                                                                     padding: const EdgeInsets.all(8.0),
-                                                                                    child: Icon(
-                                                                                      FontAwesomeIcons.expandArrowsAlt,
+                                                                                    child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                                       color: Colors.grey,
                                                                                       size: 25,
                                                                                     ),

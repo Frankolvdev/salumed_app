@@ -302,7 +302,7 @@ class _AdminUsersState extends State<AdminUsers> {
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(FontAwesomeIcons.bell,
+                                    child: FaIcon(FontAwesomeIcons.bell,
                                         color: CustomColors.primary, size: 17),
                                   ),
                                 ),
@@ -314,7 +314,7 @@ class _AdminUsersState extends State<AdminUsers> {
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(FontAwesomeIcons.edit,
+                                    child: FaIcon(FontAwesomeIcons.edit,
                                         color: CustomColors.primary, size: 17),
                                   ),
                                 ),
@@ -324,7 +324,7 @@ class _AdminUsersState extends State<AdminUsers> {
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(FontAwesomeIcons.times,
+                                    child: FaIcon(FontAwesomeIcons.times,
                                         color: CustomColors.primary, size: 17),
                                   ),
                                 )
@@ -852,8 +852,7 @@ class _AdminUsersState extends State<AdminUsers> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Icon(
-                                                FontAwesomeIcons.camera,
+                                              child: FaIcon(FontAwesomeIcons.camera,
                                                 color: Colors.white,
                                                 size: 25,
                                               ),
@@ -1179,8 +1178,7 @@ class _AdminUsersState extends State<AdminUsers> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Icon(
-                                                FontAwesomeIcons.camera,
+                                              child: FaIcon(FontAwesomeIcons.camera,
                                                 color: Colors.white,
                                                 size: 25,
                                               ),

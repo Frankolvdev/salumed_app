@@ -691,8 +691,7 @@ class _HomeClientState extends State<HomeClient> {
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 8.0),
-                                          child: Icon(
-                                              FontAwesomeIcons.arrowRight,
+                                          child: FaIcon(FontAwesomeIcons.arrowRight,
                                               size: 15,
                                               color: Colors.white),
                                         ),
@@ -810,17 +809,17 @@ class _HomeClientState extends State<HomeClient> {
                               ratingWidget: RatingWidget(
                                   full: Padding(
                                     padding: const EdgeInsets.all(2.0),
-                                    child: Icon(FontAwesomeIcons.solidStar,
+                                    child: FaIcon(FontAwesomeIcons.solidStar,
                                         color: CustomColors.primary, size: 10),
                                   ),
                                   half: Padding(
                                     padding: const EdgeInsets.all(2.0),
-                                    child: Icon(FontAwesomeIcons.starHalfAlt,
+                                    child: FaIcon(FontAwesomeIcons.starHalfAlt,
                                         color: CustomColors.primary, size: 10),
                                   ),
                                   empty: Padding(
                                     padding: const EdgeInsets.all(2.0),
-                                    child: Icon(FontAwesomeIcons.star,
+                                    child: FaIcon(FontAwesomeIcons.star,
                                         color: CustomColors.primary, size: 10),
                                   )),
                               onRatingUpdate: (double rating) {
@@ -1039,8 +1038,7 @@ class _HomeClientState extends State<HomeClient> {
                                               Padding(
                                                 padding: const EdgeInsets.only(
                                                     left: 8.0),
-                                                child: Icon(
-                                                    FontAwesomeIcons.arrowRight,
+                                                child: FaIcon(FontAwesomeIcons.arrowRight,
                                                     size: 15,
                                                     color: Colors.white),
                                               ),
@@ -1286,7 +1284,7 @@ class _HomeClientState extends State<HomeClient> {
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 8.0),
-                                          child: Icon(FontAwesomeIcons.times,
+                                          child: FaIcon(FontAwesomeIcons.times,
                                               size: 15,
                                               color: CustomColors.primary),
                                         ),
@@ -1341,8 +1339,7 @@ class _HomeClientState extends State<HomeClient> {
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
-                                            child: Icon(
-                                                FontAwesomeIcons.arrowRight,
+                                            child: FaIcon(FontAwesomeIcons.arrowRight,
                                                 size: 15,
                                                 color: Colors.white),
                                           ),
@@ -1455,7 +1452,7 @@ class _HomeClientState extends State<HomeClient> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 8.0),
-                          child: Icon(FontAwesomeIcons.images,
+                          child: FaIcon(FontAwesomeIcons.images,
                               size: 15, color: Colors.white),
                         ),
                         Text(
@@ -1605,7 +1602,7 @@ class _HomeClientState extends State<HomeClient> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(FontAwesomeIcons.hourglassHalf,
+                      FaIcon(FontAwesomeIcons.hourglassHalf,
                           size: 20, color: CustomColors.primary),
                       Text(getDateFromStringFormat(bid.proposed_date ?? ""),
                           style: TextStyle(
@@ -1723,8 +1720,7 @@ class _HomeClientState extends State<HomeClient> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: CircleAvatar(
                                   backgroundColor: CustomColors.primary,
-                                  child: Icon(
-                                    FontAwesomeIcons.times,
+                                  child: FaIcon(FontAwesomeIcons.times,
                                     color: Colors.white,
                                   ),
                                 ),

@@ -329,7 +329,7 @@ class _ClientContactGpState extends State<ClientContactGp> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(FontAwesomeIcons.whatsapp,
+                                      FaIcon(FontAwesomeIcons.whatsapp,
                                           color: Colors.white, size: 30),
                                       Text(
                                         "Chatea con tu médico de cabecera",

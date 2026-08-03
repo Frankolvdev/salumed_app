@@ -355,8 +355,7 @@ class _SelectLocationWebState extends State<SelectLocationWeb>
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Icon(
-                            FontAwesomeIcons.mapPin,
+                          child: FaIcon(FontAwesomeIcons.mapPin,
                             size: 20,
                             color: CustomColors.primary,
                           ),
@@ -512,9 +511,8 @@ class _SelectLocationWebState extends State<SelectLocationWeb>
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
-                    //icon: Icon(FontAwesomeIcons.shoppingBag),
-                    icon: Icon(
-                      FontAwesomeIcons.filter,
+                    //icon: FaIcon(FontAwesomeIcons.shoppingBag),
+                    icon: FaIcon(FontAwesomeIcons.filter,
                       color: Colors.transparent,
                     ),
                     onPressed: () {},
@@ -699,8 +697,7 @@ class _SelectLocationWebState extends State<SelectLocationWeb>
                                         CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      Icon(
-                                        FontAwesomeIcons.arrowRight,
+                                      FaIcon(FontAwesomeIcons.arrowRight,
                                         color: Colors.white,
                                         size: 15.0,
                                       ),

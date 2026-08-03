@@ -114,8 +114,7 @@ class _LoginState extends State<Login> {
           hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -154,8 +153,7 @@ class _LoginState extends State<Login> {
           hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.envelope,
+          prefixIcon: FaIcon(FontAwesomeIcons.envelope,
             size: 20,
           ),
           border: OutlineInputBorder(
@@ -541,8 +539,7 @@ class _LoginState extends State<Login> {
                               onTap: () {
                                 Navigator.pop(context);
                               },
-                              child: Icon(
-                                FontAwesomeIcons.times,
+                              child: FaIcon(FontAwesomeIcons.times,
                                 size: 30,
                                 color: CustomColors.primary,
                               ),

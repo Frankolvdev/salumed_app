@@ -200,8 +200,7 @@ class _LaboratoryAdminEditLaboratoryState
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Nueva contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -241,8 +240,7 @@ class _LaboratoryAdminEditLaboratoryState
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Confirmar nueva contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -488,8 +486,7 @@ class _LaboratoryAdminEditLaboratoryState
             FocusScope.of(context).unfocus();
             */
             },
-            child: Icon(
-              FontAwesomeIcons.times,
+            child: FaIcon(FontAwesomeIcons.times,
               size: 20,
               color: Colors.grey.shade400,
             ),
@@ -649,8 +646,7 @@ class _LaboratoryAdminEditLaboratoryState
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      FontAwesomeIcons.camera,
+                                    child: FaIcon(FontAwesomeIcons.camera,
                                       color: Colors.white,
                                       size: 25,
                                     ),
@@ -1083,8 +1079,7 @@ class _LaboratoryAdminEditLaboratoryState
                   });
                   FocusScope.of(context).unfocus();
                 },
-                child: Icon(
-                  FontAwesomeIcons.times,
+                child: FaIcon(FontAwesomeIcons.times,
                   size: 20,
                   color: Colors.grey.shade400,
                 ),
@@ -1136,7 +1131,7 @@ class _LaboratoryAdminEditLaboratoryState
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Icon(FontAwesomeIcons.times,
+                      child: FaIcon(FontAwesomeIcons.times,
                           color: CustomColors.primary, size: 30),
                     ),
                   )

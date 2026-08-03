@@ -147,8 +147,7 @@ class _EditAdvertState extends State<EditAdvert> {
         elevation: 0,
         centerTitle: true,
         leading: new IconButton(
-          icon: new Icon(
-            FontAwesomeIcons.arrowLeft,
+          icon: new FaIcon(FontAwesomeIcons.arrowLeft,
             size: 20,
             color: CustomColors.primary,
           ),
@@ -264,8 +263,7 @@ class _EditAdvertState extends State<EditAdvert> {
                                                           picture.key, pictures)
                                                       .showBottomSheetPictures();
                                                 },
-                                                child: Icon(
-                                                  FontAwesomeIcons.expandAlt,
+                                                child: FaIcon(FontAwesomeIcons.expandAlt,
                                                   color: Colors.grey.shade400,
                                                 )),
                                           )
@@ -368,7 +366,7 @@ class _EditAdvertState extends State<EditAdvert> {
                                     children: <Widget>[
                                       Padding(
                                           padding: EdgeInsets.only(right: 8),
-                                          child: Icon(FontAwesomeIcons.camera,
+                                          child: FaIcon(FontAwesomeIcons.camera,
                                               size: 12, color: Colors.white)),
                                       Flexible(
                                         child: Text(
@@ -765,7 +763,7 @@ class _EditAdvertState extends State<EditAdvert> {
                               ),
                               Padding(
                                   padding: EdgeInsets.only(left: 8),
-                                  child: Icon(FontAwesomeIcons.map,
+                                  child: FaIcon(FontAwesomeIcons.map,
                                       size: 12, color: Colors.white)),
                             ],
                           ),
@@ -1333,7 +1331,7 @@ class _EditAdvertState extends State<EditAdvert> {
                     children: <Widget>[
                       Padding(
                           padding: EdgeInsets.only(right: 8),
-                          child: Icon(FontAwesomeIcons.save,
+                          child: FaIcon(FontAwesomeIcons.save,
                               size: 12, color: Colors.white)),
                       Flexible(
                         child: Text(

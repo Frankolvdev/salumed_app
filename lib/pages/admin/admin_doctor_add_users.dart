@@ -161,8 +161,7 @@ class _AdminDoctorAddUsersState extends State<AdminDoctorAddUsers> {
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Nueva contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -202,8 +201,7 @@ class _AdminDoctorAddUsersState extends State<AdminDoctorAddUsers> {
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Confirmar nueva contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -506,7 +504,7 @@ class _AdminDoctorAddUsersState extends State<AdminDoctorAddUsers> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -612,8 +610,7 @@ class _AdminDoctorAddUsersState extends State<AdminDoctorAddUsers> {
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      FontAwesomeIcons.camera,
+                                    child: FaIcon(FontAwesomeIcons.camera,
                                       color: Colors.white,
                                       size: 25,
                                     ),

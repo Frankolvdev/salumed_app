@@ -511,7 +511,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -780,7 +780,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                           color: Colors.white,
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Icon(FontAwesomeIcons.times,
+                                        child: FaIcon(FontAwesomeIcons.times,
                                             color: Colors.red),
                                       ),
                                     ),
@@ -980,8 +980,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                                       padding:
                                                           const EdgeInsets.all(
                                                               8.0),
-                                                      child: Icon(
-                                                        FontAwesomeIcons.camera,
+                                                      child: FaIcon(FontAwesomeIcons.camera,
                                                         color: Colors.white,
                                                         size: 25,
                                                       ),
@@ -1048,8 +1047,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                             onTap: () {
                                               showTakePictureSt();
                                             },
-                                            child: Icon(
-                                              FontAwesomeIcons.camera,
+                                            child: FaIcon(FontAwesomeIcons.camera,
                                               color: CustomColors.primary,
                                             ),
                                           )
@@ -1181,8 +1179,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                                                                 },
                                                                                 child: Padding(
                                                                                   padding: const EdgeInsets.all(8.0),
-                                                                                  child: Icon(
-                                                                                    FontAwesomeIcons.expandArrowsAlt,
+                                                                                  child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                                     color: Colors.grey,
                                                                                     size: 25,
                                                                                   ),
@@ -1193,8 +1190,7 @@ class _DoctorAddPrescriptionState extends State<DoctorAddPrescription> {
                                                                           padding:
                                                                               const EdgeInsets.all(8.0),
                                                                           child:
-                                                                              Icon(
-                                                                            FontAwesomeIcons.camera,
+                                                                              FaIcon(FontAwesomeIcons.camera,
                                                                             color:
                                                                                 Colors.white,
                                                                             size:

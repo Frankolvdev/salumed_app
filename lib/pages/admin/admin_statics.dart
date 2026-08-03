@@ -299,7 +299,7 @@ class _AdminStaticsState extends State<AdminStatics> {
             padding: const EdgeInsets.all(20.0),
             child: Row(
               children: [
-                Icon(FontAwesomeIcons.hourglassHalf,
+                FaIcon(FontAwesomeIcons.hourglassHalf,
                     size: 20, color: CustomColors.primary),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
@@ -328,7 +328,7 @@ class _AdminStaticsState extends State<AdminStatics> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Icon(FontAwesomeIcons.chevronDown,
+                  child: FaIcon(FontAwesomeIcons.chevronDown,
                       size: 20, color: CustomColors.primary),
                 ),
               ],
@@ -597,7 +597,7 @@ class _AdminStaticsState extends State<AdminStatics> {
             padding: const EdgeInsets.all(20.0),
             child: Row(
               children: [
-                Icon(FontAwesomeIcons.hourglassHalf,
+                FaIcon(FontAwesomeIcons.hourglassHalf,
                     size: 20, color: CustomColors.primary),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
@@ -626,7 +626,7 @@ class _AdminStaticsState extends State<AdminStatics> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Icon(FontAwesomeIcons.chevronDown,
+                  child: FaIcon(FontAwesomeIcons.chevronDown,
                       size: 20, color: CustomColors.primary),
                 ),
               ],
@@ -818,7 +818,7 @@ class _AdminStaticsState extends State<AdminStatics> {
                                   ),
                                 ),
                                 Row(children: [
-                                  Icon(FontAwesomeIcons.userCog,
+                                  FaIcon(FontAwesomeIcons.userCog,
                                       color: CustomColors.secondary, size: 40),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -860,7 +860,7 @@ class _AdminStaticsState extends State<AdminStatics> {
                                   ),
                                 ),
                                 Row(children: [
-                                  Icon(FontAwesomeIcons.userCheck,
+                                  FaIcon(FontAwesomeIcons.userCheck,
                                       color: CustomColors.secondary, size: 40),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -902,7 +902,7 @@ class _AdminStaticsState extends State<AdminStatics> {
                                   ),
                                 ),
                                 Row(children: [
-                                  Icon(FontAwesomeIcons.pills,
+                                  FaIcon(FontAwesomeIcons.pills,
                                       color: CustomColors.secondary, size: 40),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -937,7 +937,7 @@ class _AdminStaticsState extends State<AdminStatics> {
                                   ),
                                 ),
                                 Row(children: [
-                                  Icon(FontAwesomeIcons.userAlt,
+                                  FaIcon(FontAwesomeIcons.userAlt,
                                       color: CustomColors.secondary, size: 40),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -1007,7 +1007,7 @@ class _AdminStaticsState extends State<AdminStatics> {
                                   ),
                                 ),
                                 Row(children: [
-                                  Icon(FontAwesomeIcons.userMd,
+                                  FaIcon(FontAwesomeIcons.userMd,
                                       color: CustomColors.secondary, size: 40),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),

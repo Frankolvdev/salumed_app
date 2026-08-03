@@ -216,7 +216,7 @@ class _DeliveryViewOrderState extends State<DeliveryViewOrder> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -274,7 +274,7 @@ class _DeliveryViewOrderState extends State<DeliveryViewOrder> {
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: Icon(FontAwesomeIcons.whatsapp,
+                                          child: FaIcon(FontAwesomeIcons.whatsapp,
                                               color: Colors.green, size: 30),
                                         ),
                                       ),

@@ -324,7 +324,7 @@ class _IntegralQuestionnaireState extends State<IntegralQuestionnaire> {
                             ),
                             Padding(
                                 padding: EdgeInsets.only(left: 8),
-                                child: Icon(FontAwesomeIcons.arrowRight,
+                                child: FaIcon(FontAwesomeIcons.arrowRight,
                                     size: 12, color: Colors.white)),
                           ],
                         ),
@@ -358,7 +358,7 @@ class _IntegralQuestionnaireState extends State<IntegralQuestionnaire> {
                           children: <Widget>[
                             Padding(
                                 padding: EdgeInsets.only(right: 8),
-                                child: Icon(FontAwesomeIcons.save,
+                                child: FaIcon(FontAwesomeIcons.save,
                                     size: 12, color: Colors.white)),
                             Flexible(
                               child: Text(

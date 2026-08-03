@@ -113,7 +113,7 @@ class _ClientAddArchiveState extends State<ClientAddArchive> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -165,8 +165,7 @@ class _ClientAddArchiveState extends State<ClientAddArchive> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Icon(
-                                              FontAwesomeIcons.fileUpload,
+                                            FaIcon(FontAwesomeIcons.fileUpload,
                                               color: Colors.black,
                                               size: 50,
                                             ),

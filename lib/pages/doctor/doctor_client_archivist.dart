@@ -339,7 +339,7 @@ class _DoctorClientArchivistState extends State<DoctorClientArchivist> {
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(FontAwesomeIcons.times,
+                                    child: FaIcon(FontAwesomeIcons.times,
                                         color: CustomColors.primary, size: 17),
                                   ),
                                 )
@@ -535,8 +535,7 @@ class _DoctorClientArchivistState extends State<DoctorClientArchivist> {
             elevation: 0,
             centerTitle: true,
             leading: new IconButton(
-              icon: new Icon(
-                FontAwesomeIcons.arrowLeft,
+              icon: new FaIcon(FontAwesomeIcons.arrowLeft,
                 size: 20,
                 color: CustomColors.primary,
               ),

@@ -378,7 +378,7 @@ class _laboratoryAdminSendCostsState extends State<laboratoryAdminSendCosts> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -436,7 +436,7 @@ class _laboratoryAdminSendCostsState extends State<laboratoryAdminSendCosts> {
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: Icon(FontAwesomeIcons.whatsapp,
+                                          child: FaIcon(FontAwesomeIcons.whatsapp,
                                               color: Colors.green, size: 30),
                                         ),
                                       ),
@@ -736,8 +736,7 @@ class _laboratoryAdminSendCostsState extends State<laboratoryAdminSendCosts> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    Icon(
-                                                      FontAwesomeIcons.filePdf,
+                                                    FaIcon(FontAwesomeIcons.filePdf,
                                                       size: 16,
                                                     ),
                                                     Padding(
@@ -863,8 +862,7 @@ class _laboratoryAdminSendCostsState extends State<laboratoryAdminSendCosts> {
                                                                                   },
                                                                                   child: Padding(
                                                                                     padding: const EdgeInsets.all(8.0),
-                                                                                    child: Icon(
-                                                                                      FontAwesomeIcons.expandArrowsAlt,
+                                                                                    child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                                       color: Colors.grey,
                                                                                       size: 25,
                                                                                     ),

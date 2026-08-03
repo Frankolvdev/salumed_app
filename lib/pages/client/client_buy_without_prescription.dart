@@ -115,7 +115,7 @@ class _ClientBuyWithoutPrescriptionState
                                           color: Colors.white,
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Icon(FontAwesomeIcons.times,
+                                        child: FaIcon(FontAwesomeIcons.times,
                                             color: Colors.red),
                                       ),
                                     ),

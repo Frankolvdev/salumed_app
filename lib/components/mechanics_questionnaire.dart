@@ -503,7 +503,7 @@ class _MechanicsQuestionnaireState extends State<MechanicsQuestionnaire> {
                             ),
                             Padding(
                                 padding: EdgeInsets.only(left: 8),
-                                child: Icon(FontAwesomeIcons.arrowRight,
+                                child: FaIcon(FontAwesomeIcons.arrowRight,
                                     size: 12, color: Colors.white)),
                           ],
                         ),
@@ -537,7 +537,7 @@ class _MechanicsQuestionnaireState extends State<MechanicsQuestionnaire> {
                           children: <Widget>[
                             Padding(
                                 padding: EdgeInsets.only(right: 8),
-                                child: Icon(FontAwesomeIcons.save,
+                                child: FaIcon(FontAwesomeIcons.save,
                                     size: 12, color: Colors.white)),
                             Flexible(
                               child: Text(

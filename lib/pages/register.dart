@@ -95,8 +95,7 @@ class _RegisterState extends State<Register> {
           hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.user,
+          prefixIcon: FaIcon(FontAwesomeIcons.user,
             size: 20,
           ),
           border: OutlineInputBorder(
@@ -125,8 +124,7 @@ class _RegisterState extends State<Register> {
           hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.envelope,
+          prefixIcon: FaIcon(FontAwesomeIcons.envelope,
             size: 20,
           ),
           border: OutlineInputBorder(
@@ -158,8 +156,7 @@ class _RegisterState extends State<Register> {
           hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -202,8 +199,7 @@ class _RegisterState extends State<Register> {
             fontSize: 14),
         fillColor: Colors.white,
         filled: true,
-        prefixIcon: Icon(
-          FontAwesomeIcons.lock,
+        prefixIcon: FaIcon(FontAwesomeIcons.lock,
           size: 20,
         ),
         suffixIcon: IconButton(
@@ -270,8 +266,7 @@ class _RegisterState extends State<Register> {
           elevation: 0,
           centerTitle: true,
           leading: new IconButton(
-            icon: new Icon(
-              FontAwesomeIcons.arrowLeft,
+            icon: new FaIcon(FontAwesomeIcons.arrowLeft,
               size: 20,
               color: CustomColors.primary,
             ),

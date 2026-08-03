@@ -31,8 +31,7 @@ class _ViewContractState extends State<ViewContract> {
             elevation: 0,
             centerTitle: true,
             leading: new IconButton(
-              icon: new Icon(
-                FontAwesomeIcons.arrowLeft,
+              icon: new FaIcon(FontAwesomeIcons.arrowLeft,
                 size: 20,
                 color: CustomColors.primary,
               ),

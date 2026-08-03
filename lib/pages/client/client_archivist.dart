@@ -324,7 +324,7 @@ class _ClientArchivistState extends State<ClientArchivist> {
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(FontAwesomeIcons.times,
+                                    child: FaIcon(FontAwesomeIcons.times,
                                         color: CustomColors.primary, size: 17),
                                   ),
                                 )

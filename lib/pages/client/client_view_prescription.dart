@@ -280,7 +280,7 @@ class _ClientViewPrescriptionState extends State<ClientViewPrescription> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
@@ -657,8 +657,7 @@ class _ClientViewPrescriptionState extends State<ClientViewPrescription> {
                                                                             child:
                                                                                 Padding(
                                                                               padding: const EdgeInsets.all(8.0),
-                                                                              child: Icon(
-                                                                                FontAwesomeIcons.expandArrowsAlt,
+                                                                              child: FaIcon(FontAwesomeIcons.expandArrowsAlt,
                                                                                 color: Colors.grey,
                                                                                 size: 25,
                                                                               ),

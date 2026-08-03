@@ -222,7 +222,7 @@ class _LaboratoryAdminStaticsState extends State<LaboratoryAdminStatics> {
             padding: const EdgeInsets.all(20.0),
             child: Row(
               children: [
-                Icon(FontAwesomeIcons.hourglassHalf,
+                FaIcon(FontAwesomeIcons.hourglassHalf,
                     size: 20, color: CustomColors.primary),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
@@ -251,7 +251,7 @@ class _LaboratoryAdminStaticsState extends State<LaboratoryAdminStatics> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Icon(FontAwesomeIcons.chevronDown,
+                  child: FaIcon(FontAwesomeIcons.chevronDown,
                       size: 20, color: CustomColors.primary),
                 ),
               ],

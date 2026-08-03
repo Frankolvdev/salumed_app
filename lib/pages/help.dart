@@ -35,8 +35,7 @@ class _HelpState extends State<Help> {
             elevation: 0,
             centerTitle: true,
             leading: new IconButton(
-              icon: new Icon(
-                FontAwesomeIcons.arrowLeft,
+              icon: new FaIcon(FontAwesomeIcons.arrowLeft,
                 size: 20,
                 color: CustomColors.primary,
               ),
@@ -222,8 +221,7 @@ class _HelpState extends State<Help> {
             )),
             Container(
               width: 18,
-              child: Icon(
-                FontAwesomeIcons.chevronRight,
+              child: FaIcon(FontAwesomeIcons.chevronRight,
                 size: 18,
                 color: Colors.grey.shade400,
               ),

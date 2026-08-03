@@ -18,7 +18,7 @@ dependencies:
   provider: any
   progress_indicators: any
   simple_animations: any
-  font_awesome_flutter: 10.12.0
+  font_awesome_flutter: 11.0.0
   flutter_login_facebook: any
   socket_io_client: any
   http: any
@@ -69,6 +69,10 @@ dependencies:
   webview_flutter: any
 
 dependency_overrides:
+  flutter_datetime_picker:
+    path: plugins/flutter_datetime_picker
+  timelines:
+    path: plugins/timelines
   assets_audio_player_web:
     path: plugins/assets_audio_player_web
   uuid: ^4.5.1

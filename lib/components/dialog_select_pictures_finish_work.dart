@@ -85,8 +85,7 @@ class _DialogSelectPicturesFinishWorkState
                         width: 30,
                         child: CircleAvatar(
                           backgroundColor: CustomColors.primary,
-                          child: Icon(
-                            FontAwesomeIcons.times,
+                          child: FaIcon(FontAwesomeIcons.times,
                             color: Colors.white,
                             size: 18,
                           ),
@@ -122,7 +121,7 @@ class _DialogSelectPicturesFinishWorkState
                         children: <Widget>[
                           Padding(
                               padding: EdgeInsets.only(right: 8, left: 5),
-                              child: Icon(FontAwesomeIcons.camera,
+                              child: FaIcon(FontAwesomeIcons.camera,
                                   size: 12, color: Colors.white)),
                           Flexible(
                             child: Padding(
@@ -227,8 +226,7 @@ class _DialogSelectPicturesFinishWorkState
                                               context, picture.key, pictures)
                                           .showBottomSheetPictures();
                                     },
-                                    child: Icon(
-                                      FontAwesomeIcons.expandAlt,
+                                    child: FaIcon(FontAwesomeIcons.expandAlt,
                                       color: Colors.grey.shade400,
                                     )),
                               )
@@ -317,8 +315,7 @@ class _DialogSelectPicturesFinishWorkState
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          FontAwesomeIcons.save,
+                        FaIcon(FontAwesomeIcons.save,
                           size: 18,
                           color: Colors.white,
                         ),

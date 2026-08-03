@@ -1301,8 +1301,7 @@ openMedals(BuildContext context, UserModel user) {
                                 onTap: () {
                                   Navigator.pop(context);
                                 },
-                                child: Icon(
-                                  FontAwesomeIcons.times,
+                                child: FaIcon(FontAwesomeIcons.times,
                                   size: 30,
                                   color: CustomColors.primary,
                                 ),
@@ -2208,8 +2207,7 @@ registerLocation(BuildContext context, {dynamic contextDialog = null}) async {
                               ),
                               Container(
                                   width: 20,
-                                  child: Icon(
-                                    FontAwesomeIcons.chevronRight,
+                                  child: FaIcon(FontAwesomeIcons.chevronRight,
                                     color: Colors.white,
                                     size: 20,
                                   )),
@@ -2341,8 +2339,7 @@ registerLocation(BuildContext context, {dynamic contextDialog = null}) async {
                               ),
                               Container(
                                   width: 20,
-                                  child: Icon(
-                                    FontAwesomeIcons.chevronRight,
+                                  child: FaIcon(FontAwesomeIcons.chevronRight,
                                     color: Colors.white,
                                     size: 20,
                                   )),
@@ -2491,8 +2488,7 @@ registerLocation(BuildContext context, {dynamic contextDialog = null}) async {
                               ),
                               Container(
                                   width: 20,
-                                  child: Icon(
-                                    FontAwesomeIcons.chevronRight,
+                                  child: FaIcon(FontAwesomeIcons.chevronRight,
                                     color: Colors.white,
                                     size: 20,
                                   )),

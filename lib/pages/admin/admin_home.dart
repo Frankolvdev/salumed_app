@@ -53,7 +53,7 @@ class _AdminHomeState extends State<AdminHome> {
     final provider = Provider.of<AppProvider>(context, listen: false);
     contents = [
       {
-        "icon": FontAwesomeIcons.userAlt,
+        "icon": FontAwesomeIcons.userAlt.data,
         "title": "Mi cuenta",
         "widget": AdminEditProfile(),
         "function": () {
@@ -61,7 +61,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.chartLine,
+        "icon": FontAwesomeIcons.chartLine.data,
         "title": "Estadísticas",
         "widget": AdminStatics(),
         "function": () {
@@ -69,7 +69,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.cog,
+        "icon": FontAwesomeIcons.cog.data,
         "title": "Configuraciones",
         "widget": AdminConfig(),
         "function": () {
@@ -77,7 +77,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.folder,
+        "icon": FontAwesomeIcons.folder.data,
         "title": "Categorías",
         "widget": AdminCategories(),
         "function": () {
@@ -85,7 +85,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.users,
+        "icon": FontAwesomeIcons.users.data,
         "title": "Usuarios",
         "widget": AdminUsers(),
         "function": () {
@@ -93,7 +93,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.building,
+        "icon": FontAwesomeIcons.building.data,
         "title": "Farmacias",
         "widget": AdminPharmacy(),
         "function": () {
@@ -101,7 +101,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.building,
+        "icon": FontAwesomeIcons.building.data,
         "title": "Laboratorios",
         "widget": AdminLaboratory(),
         "function": () {
@@ -109,7 +109,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.tag,
+        "icon": FontAwesomeIcons.tag.data,
         "title": "Promociones",
         "widget": AdminPromotions(),
         "function": () {
@@ -117,7 +117,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.book,
+        "icon": FontAwesomeIcons.book.data,
         "title": "Pedidos",
         "widget": AdminOrders(),
         "function": () {
@@ -129,7 +129,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.bell,
+        "icon": FontAwesomeIcons.bell.data,
         "title": "Notificaciones",
         "widget":
             Notifications(callbackOpenNotification: ({dynamic element = null}) {
@@ -146,7 +146,7 @@ class _AdminHomeState extends State<AdminHome> {
         }
       },
       {
-        "icon": FontAwesomeIcons.book,
+        "icon": FontAwesomeIcons.book.data,
         "title": "Pedidos por aprobar",
         "widget": AdminApproveOrder(),
         "function": () {

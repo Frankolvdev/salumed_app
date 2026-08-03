@@ -797,8 +797,7 @@ class _AdminLaboratoryState extends State<AdminLaboratory> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Icon(
-                                                FontAwesomeIcons.camera,
+                                              child: FaIcon(FontAwesomeIcons.camera,
                                                 color: Colors.white,
                                                 size: 25,
                                               ),
@@ -1179,8 +1178,7 @@ class _AdminLaboratoryState extends State<AdminLaboratory> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Icon(
-                                                FontAwesomeIcons.camera,
+                                              child: FaIcon(FontAwesomeIcons.camera,
                                                 color: Colors.white,
                                                 size: 25,
                                               ),

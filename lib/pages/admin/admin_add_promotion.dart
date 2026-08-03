@@ -151,8 +151,7 @@ class _AdminAddPromotionState extends State<AdminAddPromotion> {
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -192,8 +191,7 @@ class _AdminAddPromotionState extends State<AdminAddPromotion> {
             borderSide: BorderSide(color: Colors.grey),
           ),
           labelText: "Confirmar contraseña",
-          prefixIcon: Icon(
-            FontAwesomeIcons.lock,
+          prefixIcon: FaIcon(FontAwesomeIcons.lock,
             size: 20,
           ),
           suffixIcon: IconButton(
@@ -544,7 +542,7 @@ class _AdminAddPromotionState extends State<AdminAddPromotion> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Icon(FontAwesomeIcons.arrowLeft,
+                        child: FaIcon(FontAwesomeIcons.arrowLeft,
                             size: 20, color: CustomColors.primary),
                       ))
                 ],
