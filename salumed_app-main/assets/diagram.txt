@@ -1,0 +1,100 @@
+
+1. HOME  
+   • Hero: fondo natural + “Bienestar a tu alcance” + subtítulo “Elige tu práctica de hoy”  
+   • Carrusel “Destacados” con 3 cards: rutina recomendada, sonido relajante, frase estoica.  
+   • Atajos: Última rutina usada + botón “Ver todos los Temas”  
+   • Barra inferior fija con íconos (sin texto):  
+     – 🏠 Home  
+     – 🔖 Temas  
+     – 🔘 Comenzar  
+     – 🔔 Biometría  
+     – 👤 Perfil  
+
+2. TEMAS  
+   • Grid 3×4 de tarjetas (icono + color + título):  
+     1. Bienestar General  
+     2. Mindfulness  
+     3. Meditación  
+     4. Respiración  
+     5. Calma Interior  
+     6. Serenidad  
+     7. Buen Dormir  
+     8. Estrés  
+     9. Ansiedad  
+     10. Superación Personal  
+     11. Filosofía Estoica  
+     12. Ejercicios de Respiración  
+   • Subpantallas de cada tarjeta:  
+     – Bienestar General → Artículos y tips / Recomendaciones personalizadas  
+     – Mindfulness → Listado de rutinas Mindfulness / Detalle (audio-video + beneficios) / Favoritos & Historial  
+     – Meditación → Listado (básico/avanzado) / Detalle paso a paso / Modo “Meditación para dormir”  
+     – Respiración → Listado de ejercicios / Temporizador guiado / Gráfica de ritmo respiratorio  
+     – Calma Interior → Micro-prácticas de 5 min / Consejos rápidos  
+     – Serenidad → Listado de sesiones cortas / Player de “momento de calma”  
+     – Buen Dormir → Rutinas nocturnas / Player de sonidos (+ temporizador de apagado)  
+     – Estrés → Técnicas exprés anti-estrés / Seguimiento de episodios  
+     – Ansiedad → Ejercicios anti-ansiedad / Tips de respiración y visualización  
+     – Superación Personal → Retos semanales / Diario personal guiado  
+     – Filosofía Estoica → Frase del día + reflexión / Mini-podcast estoico / Ejercicio práctico  
+     – Ejercicios de Respiración → Listado de patrones / Demo animada / Guardar secuencias favoritas  
+
+3. COMENZAR  
+   • Icono 🔘 despliega menú radial con 4 opciones:  
+     – 🧘 Mindfulness → listado de rutinas Mindfulness  
+     – 🪷 Meditación → listado de meditaciones  
+     – 🌬️ Respiración → listado de ejercicios respiratorios  
+     – 🏃 Calistenia → listado de ejercicios de calistenia  
+
+4. BIOMETRÍA  
+   • Registro de glucosa (campo + guardar)  
+   • Registro de presión arterial (sistólica/diastólica)  
+   • Gráficas de evolución (línea y barra)  
+   • Alertas inamovibles para registros  
+
+5. PERFIL / AJUSTES  
+   • Datos personales (foto, nombre, email)  
+   • Preferencias (modo oscuro, idioma)  
+   • Alarmas forzadas (lista deshabilitada hasta completar rutina)  
+   • Suscripciones y pagos:  
+     – Plan mensual ($90 MXN + IVA) con botón “Renovar”  
+     – Pago por sesión ($20 MXN) con opción de carrito  
+   • Sección “Asistente ChatGPT” para futura integración  
+
+
+
+
+
+   Icons.health_and_safety	Bienestar General	• Artículos y tips de salud integral
+• Recomendaciones personalizadas (AI)
+Icons.self_improvement	Mindfulness	• Listado de rutinas Mindfulness
+• Detalle de rutina (audio/video + beneficios)
+• Favoritos & Historial
+Icons.spa	Meditación	• Listado (básico / avanzado)
+• Guía paso a paso
+• Modo “Meditación para dormir”
+Icons.air	Respiración	• Listado de ejercicios respiratorios
+• Temporizador guiado
+• Gráfica de ritmo
+Icons.sentiment_satisfied_alt	Calma Interior	• Micro-prácticas de 5 min
+• Consejos rápidos
+Icons.water_drop	Serenidad	• Sesiones cortas de “momento de calma” (audio)
+• Favoritos
+Icons.nightlight_round	Buen Dormir	• Rutinas nocturnas
+• Player de sonidos para dormir
+• Temporizador de apagado automático
+Icons.bolt	Estrés	• Técnicas exprés anti-estrés
+• Seguimiento de episodios
+Icons.mood_bad	Ansiedad	• Ejercicios anti-ansiedad
+• Tips de respiración y visualización
+Icons.upgrade	Superación Personal	• Retos semanales
+• Diario personal guiado
+Icons.auto_stories	Filosofía Estoica	• Frase del día + reflexión diaria
+• Mini-podcast estoico
+• Ejercicio práctico
+Icons.restaurant_menu	Nutrición y Recetas	• Listado de alimentos frescos y de pastoreo
+• Recetas rápidas (sin cocción)
+• Sustitutos de carbohidratos con +5 g proteína
+Icons.music_note	Sonidos Relajantes	• Colección de audios: cantos tibetanos, lluvia, arroyo, grillos…
+• Frecuencias (432 Hz…)
+Icons.psychology	IA recomienda	• Sugerencias de prácticas basadas en tu historial
+• Contenido dinámico conforme a tu nivel

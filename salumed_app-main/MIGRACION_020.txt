@@ -1,0 +1,45 @@
+MegaZIP 020 — Corrección consolidada basada en los dos proyectos reales
+
+Base analizada:
+- Proyecto antiguo funcional: salumed_flutter_app-main (1).zip
+- Proyecto nuevo actualizado: salumed_app-main (1).zip
+
+Problemas corregidos:
+1. Elimina BOM UTF-8 introducidos en pubspec, Gradle, plugins y archivos Dart.
+2. Retira el bloque global que forzaba JVM 17 a todos los plugins.
+3. Mantiene JVM 17 solo en la app y assets_audio_player local.
+4. Alinea plugins Kotlin externos a JVM 11 para evitar incompatibilidad Java 11/Kotlin 17.
+5. Desactiva caché incremental Kotlin para evitar errores entre C:\Pub\Cache y F:\SALUMED.
+6. Corrige assets_audio_player local:
+   - compileSdk 37
+   - Java/Kotlin 17
+   - recursos ExoPlayer namespaced (ExoUiR.drawable)
+   - rango SDK compatible con Dart 3
+   - uuid 4.5.1
+7. Conserva flutter_datetime_picker y timelines locales, limpiando sus BOM.
+8. No cambia diseño, flujos de pago, pantallas ni lógica funcional.
+
+Aplicación:
+- Descomprime encima de F:\SALUMED\CODE\APP
+- Confirma reemplazo de archivos.
+
+Después ejecuta:
+
+cd F:\SALUMED\CODE\APP\android
+.\gradlew.bat --stop
+cd ..
+
+flutter clean
+Remove-Item -Recurse -Force .\build -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\android\.gradle -ErrorAction SilentlyContinue
+Remove-Item -Force .\pubspec.lock -ErrorAction SilentlyContinue
+
+flutter pub get
+flutter run
+
+Git:
+git status
+git add .
+git commit -m "fix: consolidate Flutter 3.44 Android migration"
+git push

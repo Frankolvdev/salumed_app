@@ -1,0 +1,29 @@
+MegaZIP 01N CORREGIDO — Migración de uni_links a app_links
+
+Alcance exacto:
+- Se reemplaza uni_links por app_links 7.2.1.
+- Se modifica únicamente main.dart para conservar el retorno de Mercado Pago.
+- Se elimina el listener duplicado.
+- PayPal no se modifica: sigue usando su flujo actual de aprobación y consulta
+  al backend.
+- Se conserva el deep link myapp://subscription.
+- Se conservan status y preapproval_id.
+- Se conserva resultadoPagoPendiente y el mismo mensaje de éxito.
+- AndroidManifest.xml no se modifica.
+
+Nota:
+app_links.uriLinkStream entrega el enlace inicial y los enlaces posteriores, por
+lo que una sola suscripción cubre app cerrada y app abierta.
+
+Después de descomprimir:
+flutter clean
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+Remove-Item -Force .\pubspec.lock -ErrorAction SilentlyContinue
+flutter pub get
+flutter run
+
+Git:
+git status
+git add .
+git commit -m "fix: migrate Mercado Pago deep links to app links"
+git push

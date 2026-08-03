@@ -1,0 +1,27 @@
+MegaZIP 01H — Fix completo de Syncfusion Charts y dart:convert
+
+Cambios:
+- Se corrigieron las 4 páginas que usan SfCartesianChart.
+- ChartSeries se cambió por CartesianSeries.
+- Las series concretas LineSeries/ColumnSeries, MarkerSettings, datos, colores,
+  leyendas y tooltips permanecen iguales.
+- En start.dart se ordenaron dart:convert y dart:math al inicio del bloque de
+  imports Dart. No se eliminó ninguna funcionalidad JSON.
+
+Archivos modificados:
+- lib/pages/admin/admin_statics.dart
+- lib/pages/biometrics_page.dart
+- lib/pages/laboratory_admin/laboratory_admin_statics.dart
+- lib/pages/pharmacy_admin/pharmacy_admin_statics.dart
+- lib/pages/start.dart
+
+Después de descomprimir:
+flutter clean
+flutter pub get
+flutter analyze
+
+Git:
+git status
+git add .
+git commit -m "fix: migrate all Syncfusion chart series types"
+git push

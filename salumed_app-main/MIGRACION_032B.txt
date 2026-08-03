@@ -1,0 +1,26 @@
+MegaZIP 032B — Corrección de validación local.properties
+
+El script anterior podía escribir correctamente GOOGLE_MAPS_API_KEY y aun así
+fallar porque su expresión regular exigía un formato exacto de fin de línea.
+
+Este parche:
+- preserva sdk.dir y todas las demás propiedades;
+- reemplaza una línea GOOGLE_MAPS_API_KEY existente;
+- la agrega si no existe;
+- verifica línea por línea, aceptando CRLF y espacios;
+- guarda UTF-8 sin BOM.
+
+Aplicación:
+
+Set-ExecutionPolicy -Scope Process Bypass
+.\CORREGIR_LOCAL_PROPERTIES_GOOGLE_MAPS_032B.ps1
+
+Después abre:
+
+android\local.properties
+
+y reemplaza:
+
+GOOGLE_MAPS_API_KEY=PEGA_AQUI_TU_API_KEY
+
+por tu clave real, sin comillas.

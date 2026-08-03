@@ -1,0 +1,33 @@
+MegaZIP 01U — Migración final Font Awesome sobre el repositorio actual
+
+Este parche no contiene copias antiguas de archivos Dart. Ejecuta un script
+directamente sobre el estado actual de F:\SALUMED\CODE\APP.
+
+Corrige:
+- Icon(FontAwesomeIcons.foo) -> FaIcon(FontAwesomeIcons.foo)
+- Referencias FontAwesomeIcons.foo usadas como IconData -> .data
+- También detecta llamadas divididas en varias líneas.
+
+Al terminar, verifica todo lib/ y detiene la ejecución si encuentra:
+- Icon(FontAwesomeIcons...) restante
+- FontAwesomeIcons que no esté dentro de FaIcon ni termine en .data
+
+Aplicación:
+1. Descomprimir en F:\SALUMED\CODE\APP
+2. Ejecutar:
+
+   Set-ExecutionPolicy -Scope Process Bypass
+   .\CORREGIR_FONTAWESOME_REPO_ACTUAL_01U.ps1
+
+3. Después:
+
+   flutter clean
+   Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+   flutter pub get
+   flutter run
+
+Git:
+git status
+git add .
+git commit -m "fix: finish Font Awesome migration on current repository"
+git push

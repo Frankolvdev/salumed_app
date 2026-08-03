@@ -1,0 +1,19 @@
+MegaZIP 01J — Fix Dead code en start.dart
+
+Cambio:
+- Se eliminó la comprobación duplicada de resultadoPagoPendiente.
+- Se guarda el valor actual en una variable local.
+- Si el State ya no está montado o no existe pago pendiente, se retorna.
+- El mismo CustomDialog sigue mostrándose con el mismo título, mensaje y botón.
+- Al pulsar OK, resultadoPagoPendiente sigue limpiándose como antes.
+
+Después de descomprimir:
+flutter clean
+flutter pub get
+flutter analyze
+
+Git:
+git status
+git add .
+git commit -m "fix: remove unreachable payment dialog branch"
+git push

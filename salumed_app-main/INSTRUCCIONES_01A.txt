@@ -1,0 +1,14 @@
+MEGAZIP 01A - REEMPLAZO FLUTTER_PAGE_TRANSITION
+
+1. Descomprime este ZIP en la raíz de la app nueva y permite reemplazar archivos.
+2. Ejecuta:
+   flutter clean
+   Remove-Item -Recurse -Force .dart_tool -ErrorAction SilentlyContinue
+   Remove-Item -Force pubspec.lock -ErrorAction SilentlyContinue
+   flutter pub get
+
+Cambios:
+- Se eliminó flutter_page_transition de pubspec.yaml porque no soporta null safety.
+- Se agregó un reemplazo local compatible con Dart 3.
+- Se actualizaron únicamente los imports de los archivos que usaban ese paquete.
+- Se conservan slideInRight, slideInUp y duration.

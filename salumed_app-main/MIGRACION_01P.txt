@@ -1,0 +1,35 @@
+MegaZIP 01P — Fix real de compileSdk para assets_audio_player_web
+
+Causa:
+android.newDsl=false está activo. Bajo ese modo, AGP 9 expone la extensión
+Android legacy (com.android.build.gradle.LibraryExtension), no la extensión
+nueva com.android.build.api.dsl.LibraryExtension.
+
+El parche anterior configuró la extensión nueva, por eso assets_audio_player_web
+siguió sin recibir compileSdk y falló con:
+
+In order to compile Java 9+ source, please set compileSdkVersion to 30 or above
+
+Corrección:
+- Se usa com.android.build.gradle.LibraryExtension.
+- Se aplica compileSdkVersion(37) a todos los plugins com.android.library.
+- Se conserva compileSdk = 37 en la app.
+- No se cambia assets_audio_player ni su API.
+- No se modifica código Dart ni funcionalidad de audio.
+
+Después de descomprimir:
+cd F:\SALUMED\CODE\APP\android
+.\gradlew.bat --stop
+cd ..
+
+flutter clean
+Remove-Item -Recurse -Force .\android\.gradle -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\build -ErrorAction SilentlyContinue
+flutter pub get
+flutter run
+
+Git:
+git status
+git add .
+git commit -m "fix: apply legacy compile SDK configuration to Android plugins"
+git push

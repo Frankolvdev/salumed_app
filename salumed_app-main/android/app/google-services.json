@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "98567959383",
+    "project_id": "salumed-65fc3",
+    "storage_bucket": "salumed-65fc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98567959383:android:a1b3f0b684d560e1d10412",
+        "android_client_info": {
+          "package_name": "com.salumed.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98567959383-dcuvjsf1mf4ofvbn7i14m2sho90epps3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.salumed.app",
+            "certificate_hash": "ac2fa774d8857eb10139db0470f058b6cf80d792"
+          }
+        },
+        {
+          "client_id": "98567959383-sej53qltmggn6c5mmruueg7igm8n91uu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.salumed.app",
+            "certificate_hash": "9bf0642e5e592b36701f58c7b67d43696753ecb7"
+          }
+        },
+        {
+          "client_id": "98567959383-8fsrjqq1g4f2b0702ujk3ghbmvsbi7cs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7yc6uyVguy2qbpLUGZS5O8Q9c1h1ErzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98567959383-8fsrjqq1g4f2b0702ujk3ghbmvsbi7cs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

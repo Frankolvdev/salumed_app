@@ -1,0 +1,48 @@
+MegaZIP 01Q — assets_audio_player_web 3.1.1 local
+
+Objetivo:
+Mantener exactamente el reproductor actual para Android y Web, pero dejar de
+compilar assets_audio_player_web desde Pub Cache con su Gradle antiguo.
+
+Contenido:
+- pubspec.yaml:
+    dependency_overrides:
+      assets_audio_player_web:
+        path: plugins/assets_audio_player_web
+- INSTALAR_PLUGIN_AUDIO_WEB_LOCAL.ps1
+
+El instalador:
+1. Copia la versión exacta 3.1.1 desde:
+   %LOCALAPPDATA%\Pub\Cache\hosted\pub.dev\assets_audio_player_web-3.1.1
+2. La guarda en:
+   plugins\assets_audio_player_web
+3. Cambia únicamente su configuración Android:
+   - compileSdkVersion/compileSdk = 37
+   - namespace si faltaba
+   - jcenter() -> mavenCentral() si aparecía
+4. No modifica su código Dart ni la implementación Web.
+
+Aplicación:
+1. Descomprime este ZIP en F:\SALUMED\CODE\APP
+2. Ejecuta desde PowerShell:
+
+   Set-ExecutionPolicy -Scope Process Bypass
+   .\INSTALAR_PLUGIN_AUDIO_WEB_LOCAL.ps1
+
+3. Luego:
+
+   flutter clean
+   Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+   Remove-Item -Force .\pubspec.lock -ErrorAction SilentlyContinue
+   flutter pub get
+   flutter run
+
+Git:
+git status
+git add .
+git commit -m "fix: vendor assets audio player web for AGP 9"
+git push
+
+Importante:
+La carpeta plugins/assets_audio_player_web debe subirse a Git. Así Android y Web
+usarán siempre la misma copia corregida y no dependerán del Pub Cache.

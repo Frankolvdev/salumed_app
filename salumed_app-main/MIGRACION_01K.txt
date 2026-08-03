@@ -1,0 +1,25 @@
+MegaZIP 01K — Fix cierre de ShowCaseWidget en start.dart
+
+Problema:
+El callback builder de ShowCaseWidget quedó cerrado con un paréntesis extra.
+Por eso Dart interpretaba onFinish: como una etiqueta y mostraba:
+
+The label 'onFinish' isn't used.
+
+Corrección:
+- Se elimina únicamente el paréntesis sobrante.
+- builder sigue devolviendo el mismo Scaffold.
+- onFinish vuelve a ser un parámetro válido de ShowCaseWidget.
+- seeShowCase() permanece intacto.
+- No cambia diseño ni funcionalidad.
+
+Después de descomprimir:
+flutter clean
+flutter pub get
+flutter analyze
+
+Git:
+git status
+git add .
+git commit -m "fix: close ShowCaseWidget builder correctly"
+git push

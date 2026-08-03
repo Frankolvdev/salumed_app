@@ -1,0 +1,36 @@
+MegaZIP 01Z — Eliminar BOM de assets_audio_player
+
+Error:
+Unexpected character: '﻿' @ line 1, column 1
+
+Causa:
+El archivo:
+plugins/assets_audio_player/android/build.gradle
+
+quedó guardado con BOM UTF-8 (bytes EF BB BF). Groovy no acepta ese carácter
+invisible al inicio del archivo.
+
+Corrección:
+- Elimina únicamente el BOM.
+- No cambia ninguna línea del Gradle.
+- No cambia Java 17.
+- No cambia código Dart ni audio.
+
+Aplicación:
+Set-ExecutionPolicy -Scope Process Bypass
+.\ELIMINAR_BOM_ASSETS_AUDIO_PLAYER_01Z.ps1
+
+Después:
+cd .\android
+.\gradlew.bat --stop
+cd ..
+flutter clean
+Remove-Item -Recurse -Force .\android\.gradle -ErrorAction SilentlyContinue
+flutter pub get
+flutter run
+
+Git:
+git status
+git add .
+git commit -m "fix: remove BOM from assets audio player Gradle file"
+git push

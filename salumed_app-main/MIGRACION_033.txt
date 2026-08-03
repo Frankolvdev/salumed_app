@@ -1,0 +1,43 @@
+MegaZIP 033 — Google Maps API Key compatible con AGP 9
+
+Base:
+- salumed_app-main (10).zip
+
+Corrige:
+- Unresolved reference 'util'
+- Cannot infer type for this parameter
+- lectura de local.properties en Kotlin DSL
+
+Implementación:
+- import java.util.Properties
+- Properties()
+- inputStream().use { input -> ... }
+- manifestPlaceholders["GOOGLE_MAPS_API_KEY"]
+
+Uso:
+1. Descomprimir sobre F:\SALUMED\CODE\APP
+2. Ejecutar:
+   Set-ExecutionPolicy -Scope Process Bypass
+   .\PREPARAR_GOOGLE_MAPS_LOCAL_PROPERTIES_033.ps1
+3. Abrir android\local.properties
+4. Reemplazar:
+   GOOGLE_MAPS_API_KEY=PEGA_AQUI_TU_API_KEY
+   por tu clave real, sin comillas.
+5. Compilar:
+   cd .\android
+   .\gradlew.bat --stop
+   cd ..
+   flutter clean
+   Remove-Item -Recurse -Force .\build -ErrorAction SilentlyContinue
+   Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+   Remove-Item -Recurse -Force .\android\.gradle -ErrorAction SilentlyContinue
+   flutter pub get
+   flutter build apk --debug -v *> build_033.log
+
+Git:
+git status
+git add .
+git commit -m "fix: load Google Maps API key with AGP 9 compatible Kotlin DSL"
+git push
+
+android/local.properties no debe subirse a Git.
