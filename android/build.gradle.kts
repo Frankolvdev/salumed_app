@@ -35,14 +35,26 @@ subprojects {
     }
 }
 
-// AGP 9 compila los módulos Android con Java 17.
-// Kotlin debe generar el mismo bytecode para evitar incompatibilidades JVM.
+// BEGIN SALUMED JVM POR MODULO
 subprojects {
     plugins.withId("org.jetbrains.kotlin.android") {
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
             compilerOptions {
-                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+                // La app, assets_audio_player y audio_session compilan Java 17.
+                // Los demás plugins heredados, incluido file_picker, compilan Java 11.
+                val target = if (
+                    project.name == "app" ||
+                    project.name == "assets_audio_player" ||
+                    project.name == "audio_session"
+                ) {
+                    org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+                } else {
+                    org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+                }
+
+                jvmTarget.set(target)
             }
         }
     }
 }
+// END SALUMED JVM POR MODULO
