@@ -64,7 +64,6 @@ dependencies:
   hive_flutter: any
   path_provider: any
   fl_chart: any
-  uni_links: any
   flutter_custom_tabs: any
   webview_flutter: any
 
