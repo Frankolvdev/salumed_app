@@ -1,4 +1,4 @@
-import com.android.build.api.dsl.LibraryExtension
+import com.android.build.gradle.LibraryExtension
 
 allprojects {
     repositories {
@@ -30,7 +30,7 @@ tasks.register<Delete>("clean") {
 subprojects {
     plugins.withId("com.android.library") {
         extensions.configure<LibraryExtension> {
-            compileSdk = 37
+            compileSdkVersion(37)
         }
     }
 }
