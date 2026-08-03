@@ -69,6 +69,8 @@ dependencies:
   webview_flutter: any
 
 dependency_overrides:
+  assets_audio_player_web:
+    path: plugins/assets_audio_player_web
   uuid: ^4.5.1
 
 
