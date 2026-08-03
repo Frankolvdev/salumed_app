@@ -45,3 +45,7 @@ app.*.map.json
 /android/app/release
 lib/constants/globals.dart
 lib/constants/globals.dart
+
+MegaZIP_*.zip
+build_*.log
+Pasted text*.txt

@@ -1,0 +1,39 @@
+MegaZIP 037 — Mostrar error y permanecer en Login
+
+Base exacta:
+- salumed_app-main (13).zip
+
+Comportamiento final:
+- éxito total: entra a la vista correcta según el rol;
+- falla una carga inicial:
+  - cierra el loading;
+  - muestra showErrorsDialog existente;
+  - permanece en la misma pantalla de login;
+  - no ejecuta goHome();
+  - no borra provider.user;
+  - no navega al login anterior.
+
+Se cubren:
+- acceso sin registro;
+- correo y contraseña;
+- autenticación externa.
+
+Archivos:
+- lib/helpers/helpers.dart
+- lib/pages/login.dart
+
+Aplicación:
+1. Descomprimir encima de F:\SALUMED\CODE\APP
+2. Ejecutar:
+
+flutter clean
+Remove-Item -Recurse -Force .\.dart_tool -ErrorAction SilentlyContinue
+flutter pub get
+flutter analyze
+flutter build apk --debug
+
+Git:
+git status
+git add .
+git commit -m "fix: show initialization errors and remain on login"
+git push

@@ -467,7 +467,12 @@ openSlideInUpPage(BuildContext context, Widget page) {
           duration: Duration(milliseconds: 250)));
 }
 
-initProcess(BuildContext context, String token, Function callback) async {
+initProcess(
+  BuildContext context,
+  String token,
+  Function callback, {
+  Function(dynamic error)? onError,
+}) async {
   final provider = Provider.of<AppProvider>(context, listen: false);
 
     /*    if(!kIsWeb){
@@ -524,14 +529,18 @@ if (!permission) {
 
     callback();
   }).catchError((err, stackTrace) {
-    // El inicio de sesión ya fue validado por WebService.signIn().
-    // Estas cargas son auxiliares; un fallo en mapas, notificaciones,
-    // anuncios, configuración u OneSignal no debe cerrar la sesión.
-    debugPrint("Error no fatal al cargar la información inicial: $err");
+    debugPrint("Error al cargar la información inicial: $err");
     debugPrintStack(stackTrace: stackTrace);
 
+    if (onError != null) {
+      onError(err);
+      return;
+    }
+
     if (context.mounted) {
-      callback();
+      final errors =
+          err is List<dynamic> ? err : <dynamic>[err.toString()];
+      showErrorsDialog(context, errors);
     }
   });
 }

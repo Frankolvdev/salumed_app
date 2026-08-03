@@ -615,10 +615,21 @@ class _LoginState extends State<Login> {
           .signIn(emailUserUnregister, passwordUserUnregister)
           .then((user) async {
         await provider.setUser(user);
-        initProcess(context, user.token ?? "", () {
-          Navigator.pop(loadingContext);
-          goHome(context, provider.user.roles);
-        });
+        initProcess(
+          context,
+          user.token ?? "",
+          () {
+            Navigator.pop(loadingContext);
+            goHome(context, provider.user.roles);
+          },
+          onError: (error) {
+            Navigator.pop(loadingContext);
+            final errors = error is List<dynamic>
+                ? error
+                : <dynamic>[error.toString()];
+            showErrorsDialog(context, errors);
+          },
+        );
       }).catchError((e) {
         print(e);
         Navigator.pop(loadingContext);
@@ -763,10 +774,21 @@ class _LoginState extends State<Login> {
         WebService(context).signIn(cEmail.text, cPass.text).then((user) async {
           await provider.setUser(user);
 
-          initProcess(context, user.token ?? "", () {
+          initProcess(
+          context,
+          user.token ?? "",
+          () {
             Navigator.pop(loadingContext);
             goHome(context, provider.user.roles);
-          });
+          },
+          onError: (error) {
+            Navigator.pop(loadingContext);
+            final errors = error is List<dynamic>
+                ? error
+                : <dynamic>[error.toString()];
+            showErrorsDialog(context, errors);
+          },
+        );
         }).catchError((e) {
           print(e);
           Navigator.pop(loadingContext);
@@ -787,10 +809,21 @@ class _LoginState extends State<Login> {
           .then((user) async {
         await provider.setUser(user);
 
-        initProcess(context, user.token ?? "", () {
-          Navigator.pop(loadingContext);
-          goHome(context, provider.user.roles);
-        });
+        initProcess(
+          context,
+          user.token ?? "",
+          () {
+            Navigator.pop(loadingContext);
+            goHome(context, provider.user.roles);
+          },
+          onError: (error) {
+            Navigator.pop(loadingContext);
+            final errors = error is List<dynamic>
+                ? error
+                : <dynamic>[error.toString()];
+            showErrorsDialog(context, errors);
+          },
+        );
       }).catchError((e) {
         print(e);
         Navigator.pop(loadingContext);
