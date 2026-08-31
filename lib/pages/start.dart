@@ -856,8 +856,7 @@ class _StartPageState extends State<StartPage>
   }
 
   checkSubscriptionAndRedirect(Function callback) async {
-    callback();
-    return;
+
     MercadoPagoHelper(context).checkSubscription(
       callback: () {
       
