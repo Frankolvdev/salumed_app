@@ -855,17 +855,16 @@ class _StartPageState extends State<StartPage>
     );
   }
 
-  checkSubscriptionAndRedirect(Function callback) async {
-
-    MercadoPagoHelper(context).checkSubscription(
-      callback: () {
-      
-      },
-      callbackLogin: () {
-        _mostrarTipoUsuarioPopup();
-      },
-    );
-  }
+checkSubscriptionAndRedirect(Function callback) async {
+  MercadoPagoHelper(context).checkSubscription(
+    callback: () {
+      callback();
+    },
+    callbackLogin: () {
+      _mostrarTipoUsuarioPopup();
+    },
+  );
+}
 
   Widget _buildDashboard() {
     return Center(
