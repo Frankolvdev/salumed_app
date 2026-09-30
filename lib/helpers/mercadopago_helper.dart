@@ -12,6 +12,12 @@ import 'package:app/services/web_service.dart';
 import '../components/custom_dialog_payment.dart';
 
 class MercadoPagoHelper {
+  // MEGAZIP SPECIAL FREE ACCESS:
+  // Esta compilacion omite el cobro de suscripcion, pero conserva el requisito
+  // de que exista un usuario autenticado. La version normal de Google Play no
+  // se modifica.
+  static const bool _specialFreeAccessBuild = true;
+
   final BuildContext context;
 
   MercadoPagoHelper(this.context);
@@ -34,6 +40,14 @@ Future<void> checkSubscription({
       if (user.id == null) {
         Navigator.pop(loadingContext);
         _showNotLoggedDialog(callbackLogin);
+        return;
+      }
+
+      // Compilacion especial: si hay un usuario autenticado, permite el acceso
+      // premium sin consultar ni abrir ningun flujo de pago.
+      if (_specialFreeAccessBuild) {
+        Navigator.pop(loadingContext);
+        callback();
         return;
       }
 
@@ -158,6 +172,10 @@ PaypalHelper(context).checkSubscription(callback:   callback,callbackLogin: call
 
       if (user.id == null || user.token == null) {
         return false;
+      }
+
+      if (_specialFreeAccessBuild) {
+        return true;
       }
 
       final userId = user.id!;
