@@ -1,3 +1,6 @@
+import 'package:flutter/foundation.dart';
+import 'package:universal_io/io.dart' show Platform;
+import 'package:app/helpers/store_purchase_helper.dart';
 // mercadopago_helper.dart → NUEVO FLUJO: Usa init_point y url_launcher (diciembre 2025)
 import 'dart:async';
 import 'package:app/helpers/paypal_helper.dart';
@@ -143,6 +146,12 @@ Future<void> checkSubscription({
   }
 
   showSelectPayment(callback,callbackLogin ) {
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+      StorePurchaseHelper(context).purchase(onPremiumActivated: callback).catchError((error) {
+        showErrorsDialog(context, [error.toString()]);
+      });
+      return;
+    }
     showDialog(
       context: context,
       builder: (_) => CustomDialogPayment(

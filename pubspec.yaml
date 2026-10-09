@@ -34,6 +34,7 @@ dependencies:
   sliding_up_panel: any
   flutter_phone_direct_caller: any
   in_app_review: any
+  in_app_purchase: ^3.2.3
   url_launcher: any
   universal_io: any
   onesignal_flutter: any

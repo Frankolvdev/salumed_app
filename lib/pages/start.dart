@@ -960,23 +960,33 @@ checkSubscriptionAndRedirect(Function callback) async {
               }
 
               if (isActivePlan == "Activa") {
-                showDialog(
-                  barrierDismissible: true,
-                  context: context,
-                  builder: (contextDialog) {
-                    return CustomDialog(
-                      "",
-                      "¿Desea cancelar su suscripción?",
-                      "Cancelar Suscripción",
-                      () {
+                try {
+                  final plan = await WebService(context).getUserSubscription(
+                    provider.user.id!, provider.user.token!);
+                  if (!mounted) return;
+                  final paymentProvider = (plan['provider'] ?? 'desconocido').toString();
+                  final store = paymentProvider == 'google_play' || paymentProvider == 'apple';
+                  final free = paymentProvider == 'admin';
+                  final providerName = paymentProvider == 'google_play' ? 'Google Play' :
+                    paymentProvider == 'apple' ? 'App Store' :
+                    paymentProvider == 'paypal' ? 'PayPal' :
+                    paymentProvider == 'mercadopago' ? 'Mercado Pago' : 'Administración';
+                  final expiration = plan['expires_at'];
+                  showDialog(context: context, builder: (dialogContext) => AlertDialog(
+                    title: const Text('Mi plan'),
+                    content: Text('Estado: Activa\nProveedor: $providerName'
+                      '${expiration == null ? '' : '\nVigente hasta: $expiration'}'
+                      '${store ? '\nPara cancelar la renovación, abre las suscripciones de $providerName.' : ''}'
+                      '${free ? '\nPremium otorgado por el administrador.' : ''}'),
+                    actions: [
+                      TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cerrar')),
+                      if (!store && !free) TextButton(onPressed: () {
+                        Navigator.pop(dialogContext);
                         confirmCancel();
-                      },
-                      useBtnCancel: true,
-                      textBtnCancel: "Permanecer Suscrito",
-                      image: '',
-                    );
-                  },
-                );
+                      }, child: const Text('Cancelar suscripción')),
+                    ],
+                  ));
+                } catch (e) { if (mounted) showErrorsDialog(context, e); }
               } else {
                 MercadoPagoHelper(context).checkSubscription(
                   callback: () async {

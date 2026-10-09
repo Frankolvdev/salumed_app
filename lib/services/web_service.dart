@@ -3498,6 +3498,17 @@ Future<Map<String, dynamic>> createPaypalSubscription(
 
 
 
+Future<Map<String, dynamic>> verifyStorePurchase(String token, String provider, String productId, String proof) async {
+  dio.options.headers["x-access-token"] = token;
+  dio.options.headers["Content-type"] = "application/json";
+  final response = await dio.post(apiUrl + "payment/subscription/store/verify", data: {
+    "provider": provider, "productId": productId,
+    if (provider == "google_play") "purchaseToken": proof,
+    if (provider == "apple") "receipt": proof,
+  });
+  return Map<String, dynamic>.from(response.data);
+}
+
 // Consultar estado de la suscripción (sin cambios)
 Future<Map<String, dynamic>> getUserSubscription(String userId, String token) async {
   dio.options.headers["Accept"] = "application/json";
@@ -3514,7 +3525,11 @@ Future<Map<String, dynamic>> getUserSubscription(String userId, String token) as
         "active": response.data["active"],
         "status": response.data["status"],
         "next_payment": response.data["next_payment"],
-        "preapproval_id": response.data["preapproval_id"]
+        "preapproval_id": response.data["preapproval_id"],
+        "provider": response.data["provider"],
+        "environment": response.data["environment"],
+        "expires_at": response.data["expires_at"],
+        "auto_renew": response.data["auto_renew"]
       };
     } else {
       return Future.error(checkErrors(response.data));
