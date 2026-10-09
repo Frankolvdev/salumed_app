@@ -106,26 +106,65 @@ class _StartPageState extends State<StartPage>
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
-      builder: (dialogContext) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Bienvenido a SaluMeD'),
-        content: const Text(
-          'Regístrate o inicia sesión para guardar tu progreso y acceder a todos los beneficios de SaluMeD.',
+      builder: (dialogContext) => Dialog(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        insetPadding: getDialogInsetPaddin(dialogContext),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(17),
+                boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0, 10))],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.favorite_border, color: CustomColors.primary, size: 42),
+                  const SizedBox(height: 14),
+                  const Text('Bienvenido a SaluMeD', textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.w700, color: CustomColors.secondary)),
+                  const SizedBox(height: 12),
+                  const Text('Regístrate o inicia sesión para guardar tu progreso y acceder a los beneficios de SaluMeD.',
+                    textAlign: TextAlign.center, style: TextStyle(fontSize: 15)),
+                  const SizedBox(height: 24),
+                  SizedBox(width: double.infinity, height: 48,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(backgroundColor: CustomColors.primary,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                      onPressed: () {
+                        Navigator.pop(dialogContext);
+                        if (mounted) _mostrarTipoUsuarioPopup(startWithRegister: true);
+                      },
+                      child: const Text('Regístrate', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
+                    )),
+                  const SizedBox(height: 10),
+                  SizedBox(width: double.infinity, height: 48,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(side: const BorderSide(color: CustomColors.primary),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                      onPressed: () {
+                        Navigator.pop(dialogContext);
+                        if (mounted) _mostrarTipoUsuarioPopup(startWithRegister: false);
+                      },
+                      child: const Text('Inicia sesión', style: TextStyle(color: CustomColors.primary, fontWeight: FontWeight.w600)),
+                    )),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 3, right: 3,
+              child: IconButton(
+                tooltip: 'Cerrar',
+                icon: const Icon(Icons.close, color: CustomColors.secondary),
+                onPressed: () => Navigator.pop(dialogContext),
+              ),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Ahora no'),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: CustomColors.primary),
-            onPressed: () {
-              Navigator.pop(dialogContext);
-              if (mounted) _mostrarTipoUsuarioPopup();
-            },
-            child: const Text('Registrarme o iniciar sesión'),
-          ),
-        ],
       ),
     );
   }
@@ -463,11 +502,12 @@ class _StartPageState extends State<StartPage>
     await prefs.setBool('show_case', true);
   }
 
-  void _mostrarTipoUsuarioPopup() {
+  void _mostrarTipoUsuarioPopup({bool startWithRegister = false}) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (_) => LoginTypeDialog(
+        startWithRegister: startWithRegister,
         onLogin: (email, pass) => processSignInEmailPassword(email, pass),
         onForgotPassword: () {
           Navigator.pop(context);
@@ -1505,12 +1545,14 @@ class _DashboardCard extends StatelessWidget {
 }
 
 class LoginTypeDialog extends StatefulWidget {
+  final bool startWithRegister;
   final void Function(String email, String pass) onLogin;
   final VoidCallback onForgotPassword;
   final void Function(String role) onSelectType;
   final VoidCallback onRefreshDashboard;
 
   const LoginTypeDialog({
+    this.startWithRegister = false,
     required this.onLogin,
     required this.onForgotPassword,
     required this.onSelectType,
@@ -1527,6 +1569,12 @@ class _LoginTypeDialogState extends State<LoginTypeDialog> {
   final _cEmail = TextEditingController();
   final _cPass = TextEditingController();
   bool _showLogin = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _showLogin = !widget.startWithRegister;
+  }
   bool _passwordVisible = false;
 
   @override
