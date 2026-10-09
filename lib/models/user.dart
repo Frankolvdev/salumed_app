@@ -64,6 +64,7 @@ class UserModel {
   String? rfc;
   String? fiscal_address;
   String? request_invoice;
+  bool premium_granted_by_admin = false;
   List<dynamic>? records_pressure_sugar;
 
   List<AddressModel>? addresses;
@@ -122,6 +123,7 @@ class UserModel {
     this.rfc,
     this.fiscal_address,
     this.request_invoice,
+    this.premium_granted_by_admin = false,
     this.records_pressure_sugar,
     this.addresses,
     this.archives,
@@ -223,6 +225,7 @@ class UserModel {
         rfc: (json.containsKey("rfc")) ? json["rfc"] : "",
         fiscal_address:
             (json.containsKey("fiscal_address")) ? json["fiscal_address"] : "",
+        premium_granted_by_admin: json["premium_granted_by_admin"] == true,
         request_invoice: (json.containsKey("request_invoice"))
             ? json["request_invoice"]
             : "",

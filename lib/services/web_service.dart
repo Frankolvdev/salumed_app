@@ -1954,6 +1954,18 @@ class WebService {
     }
   }
 
+  Future<Map<String, dynamic>> getPremiumAdmin(String userId, String token) async {
+    final response = await dio.get(apiUrl + 'user/premium/admin/' + userId,
+        options: Options(headers: {'x-access-token': token}));
+    return Map<String, dynamic>.from(response.data);
+  }
+
+  Future<void> setPremiumAdmin(String userId, String token, bool enabled) async {
+    await dio.patch(apiUrl + 'user/premium/admin/' + userId,
+        data: {'premium_granted_by_admin': enabled},
+        options: Options(headers: {'x-access-token': token}));
+  }
+
   Future<UserModel> updateUserAdmin(
     String id_user,
     String email,

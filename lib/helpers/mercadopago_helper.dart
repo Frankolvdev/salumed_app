@@ -16,7 +16,7 @@ class MercadoPagoHelper {
   // Esta compilacion omite el cobro de suscripcion, pero conserva el requisito
   // de que exista un usuario autenticado. La version normal de Google Play no
   // se modifica.
-  static const bool _specialFreeAccessBuild = true;
+  static const bool _specialFreeAccessBuild = false;
 
   final BuildContext context;
 

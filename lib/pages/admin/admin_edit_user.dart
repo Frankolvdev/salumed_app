@@ -85,6 +85,9 @@ class _AdminEditUserState extends State<AdminEditUser> {
   bool isHospital = false;
 
   bool requestInvoice = false;
+  bool premiumGranted = false;
+  bool premiumLoaded = false;
+  List<dynamic> premiumSubscriptions = [];
 
   @override
   void initState() {
@@ -117,6 +120,22 @@ class _AdminEditUserState extends State<AdminEditUser> {
     cFiscalAddress.text = user.fiscal_address ?? "";
     requestInvoice = user.request_invoice == "yes" ? true : false;
     BackButtonInterceptor.add(myInterceptor);
+    _loadPremiumAdmin();
+  }
+
+  Future<void> _loadPremiumAdmin() async {
+    try {
+      final token = Provider.of<AppProvider>(context, listen: false).user.token ?? '';
+      final result = await WebService(context).getPremiumAdmin(widget.user.id ?? '', token);
+      if (!mounted) return;
+      setState(() {
+        premiumGranted = result['premium_granted_by_admin'] == true;
+        premiumSubscriptions = result['subscriptions'] is List ? result['subscriptions'] : [];
+        premiumLoaded = true;
+      });
+    } catch (error) {
+      if (mounted) setState(() => premiumLoaded = false);
+    }
   }
 
   @override
@@ -975,6 +994,28 @@ class _AdminEditUserState extends State<AdminEditUser> {
                             ])
                           : Container(),
 
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            Text('Suscripcion y acceso Premium', style: TextStyle(fontWeight: FontWeight.bold, color: CustomColors.primary)),
+                            CheckboxListTile(
+                              contentPadding: EdgeInsets.zero,
+                              title: Text('Premium gratuito (autorizado por administrador)'),
+                              subtitle: Text('No cancela cobros ni suscripciones existentes.'),
+                              value: premiumGranted,
+                              onChanged: premiumLoaded ? (value) => setState(() => premiumGranted = value == true) : null,
+                            ),
+                            if (!premiumLoaded) Text('No se pudo consultar el permiso. No se modificara.'),
+                            Text('Suscripciones registradas: ${premiumSubscriptions.length}'),
+                            ...premiumSubscriptions.map((entry) => ListTile(
+                              dense: true,
+                              title: Text('${entry['provider'] ?? 'Proveedor desconocido'} - ${entry['status'] ?? 'Sin estado'}'),
+                              subtitle: Text('Entorno: ${entry['environment'] ?? 'sin identificar'} · Proximo cobro: ${entry['next_payment_date'] ?? 'sin datos'}'),
+                            )),
+                          ]),
+                        ),
+                      ),
                       SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -1531,6 +1572,10 @@ class _AdminEditUserState extends State<AdminEditUser> {
               fiscal_address: cFiscalAddress.text,
               request_invoice: requestInvoice ? "yes" : "no");
 
+          if (premiumLoaded) {
+            await WebService(context).setPremiumAdmin(
+                widget.user.id ?? '', provider.user.token ?? '', premiumGranted);
+          }
           Navigator.pop(loadingContext);
           SnackBar(
                   content: Text("Se ha guardado con éxito",
