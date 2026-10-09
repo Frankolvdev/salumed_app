@@ -96,6 +96,40 @@ class _StartPageState extends State<StartPage>
   String calmaInterior = 'Prueba ahora';
   String progresoGym = 'Inicia ahora';
   var timerPushService = null;
+  bool _welcomePromptShown = false;
+
+  Future<void> _showWelcomeRegistrationIfNeeded() async {
+    if (!mounted || _welcomePromptShown) return;
+    final user = await AppPreferences().getUser();
+    if (!mounted || user.id != null) return;
+    _welcomePromptShown = true;
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (dialogContext) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: const Text('Bienvenido a SaluMeD'),
+        content: const Text(
+          'Regístrate o inicia sesión para guardar tu progreso y acceder a todos los beneficios de SaluMeD.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Ahora no'),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: CustomColors.primary),
+            onPressed: () {
+              Navigator.pop(dialogContext);
+              if (mounted) _mostrarTipoUsuarioPopup();
+            },
+            child: const Text('Registrarme o iniciar sesión'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -109,7 +143,10 @@ class _StartPageState extends State<StartPage>
       Future.delayed(const Duration(milliseconds: 1000), () async {
         final prefs = await SharedPreferences.getInstance();
         final show_case = prefs.getBool('show_case') ?? false;
-        if (!show_case) {
+        if (show_case) {
+          await _showWelcomeRegistrationIfNeeded();
+        }
+        if (!show_case && mounted) {
           ShowCaseWidget.of(contextShowCase!).startShowCase([
             _saludBottomBar,
             _temasBottomBar,
@@ -1402,8 +1439,13 @@ checkSubscriptionAndRedirect(Function callback) async {
           bottomNavigationBar: _buildBottomAppBar(),
         );
       },
-      onFinish: () {
-        seeShowCase();
+      onFinish: () async {
+        await seeShowCase();
+        if (mounted) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _showWelcomeRegistrationIfNeeded();
+          });
+        }
       },
     );
   }

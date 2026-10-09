@@ -6,6 +6,7 @@ import 'package:app/helpers/helpers.dart';
 import 'package:app/models/app_preferences.dart';
 import 'package:app/models/user.dart';
 import 'package:app/pages/featured.dart';
+import 'package:app/pages/start.dart';
 import 'package:app/pages/guest_prescription.dart';
 import 'package:app/providers/app.dart';
 import 'package:app/services/web_service.dart';
@@ -94,6 +95,24 @@ if (!permission) {
             }
             return;
           } catch (e) {}
+        }
+        // Inicio rapido: conserva la carga de configuracion y el flujo
+        // especial de recetas, pero omite frase diaria y bienvenida.
+        if (inicioRapido) {
+          if (!mounted) return;
+          if (user.id == null) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => StartPage(false)),
+              (route) => false,
+            );
+          } else {
+            await provider.setUser(user);
+            initProcess(context, user.token ?? "", () {
+              if (mounted) goHome(context, provider.user.roles);
+            });
+          }
+          return;
         }
         setState(() { endLoading = true; });
         await _getDailyQuote(); // Carga frase
