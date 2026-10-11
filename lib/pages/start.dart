@@ -1060,10 +1060,10 @@ checkSubscriptionAndRedirect(Function callback) async {
             SizedBox(width: double.infinity, height: 46,
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF91C8E4),
-                  foregroundColor: CustomColors.secondary,
-                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  backgroundColor: CustomColors.primary,
+                  foregroundColor: Colors.white,
+                  textStyle: const TextStyle(fontSize: 14),
+                  shape: const StadiumBorder(),
                   elevation: 2),
                 onPressed: () {
                   Navigator.pop(dialogContext);
@@ -1162,21 +1162,24 @@ checkSubscriptionAndRedirect(Function callback) async {
 
   Widget _planActionButton(String label, IconData icon,
       VoidCallback onPressed, {bool outlined = false}) {
-    const skyBlue = Color(0xFF91C8E4);
-    return SizedBox(
-      width: double.infinity,
-      height: 48,
-      child: ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: skyBlue,
-          foregroundColor: CustomColors.secondary,
-          elevation: 0,
-          textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        ),
-        onPressed: onPressed,
-        icon: Icon(icon, size: 20),
-        label: Text(label),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        elevation: 2,
+        backgroundColor: CustomColors.primary,
+        foregroundColor: Colors.white,
+        shape: const StadiumBorder(),
+      ),
+      onPressed: onPressed,
+      child: SizedBox(
+        width: double.infinity,
+        height: 35,
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(icon, color: Colors.white, size: 18),
+          const SizedBox(width: 8),
+          Flexible(child: Text(label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.white, fontSize: 14))),
+        ]),
       ),
     );
   }
@@ -1227,10 +1230,10 @@ checkSubscriptionAndRedirect(Function callback) async {
               SizedBox(width: double.infinity, height: 48,
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF91C8E4),
-                    foregroundColor: CustomColors.secondary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12))),
+                    backgroundColor: CustomColors.primary,
+                    foregroundColor: Colors.white,
+                    elevation: 2,
+                    shape: const StadiumBorder()),
                   onPressed: () {
                     Navigator.pop(dialogContext);
                     SubscriptionHelper(context).checkSubscription(

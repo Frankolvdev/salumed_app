@@ -1151,6 +1151,31 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 18),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            elevation: 2,
+                            backgroundColor: CustomColors.primary,
+                            foregroundColor: Colors.white,
+                            shape: const StadiumBorder(),
+                          ),
+                          onPressed: () => logout(context),
+                          child: const SizedBox(
+                            width: double.infinity,
+                            height: 35,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.logout, color: Colors.white, size: 18),
+                                SizedBox(width: 8),
+                                Text('Cerrar sesión',
+                                  style: TextStyle(color: Colors.white, fontSize: 14)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
