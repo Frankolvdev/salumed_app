@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:app/components/fade_animation.dart';
 import 'package:app/constants/colors.dart';
-import 'package:app/helpers/helpers.dart';
+import 'package:app/helpers/helpers.dart' hide showErrorsDialog, simpleLoading;
+import 'package:app/helpers/helpers.dart' as salumedHelpers show showErrorsDialog, simpleLoading;
 import 'package:app/providers/app.dart';
 import 'package:app/services/web_service.dart';
 import 'package:flutter/foundation.dart';
@@ -478,7 +479,7 @@ class _RegisterState extends State<Register> {
            
            }).catchError((e){
                Navigator.pop(loadingContext);
-            showErrorsDialog(
+            salumedHelpers.showErrorsDialog(
                 context, ["Ocurrió un error desconocido, intente de nuevo."]);
            });
           
@@ -490,7 +491,7 @@ class _RegisterState extends State<Register> {
             break;
           case FacebookLoginStatus.error:
             Navigator.pop(loadingContext);
-            showErrorsDialog(
+            salumedHelpers.showErrorsDialog(
                 context, ["Ocurrió un error desconocido, intente de nuevo."]);
             debugPrint(result.errorMessage);
 
@@ -501,7 +502,7 @@ class _RegisterState extends State<Register> {
           break;
         }
       } catch (error) {
-        showErrorsDialog(context, [error.toString()]);
+        salumedHelpers.showErrorsDialog(context, [error.toString()]);
         Navigator.pop(loadingContext);
         debugPrint(error.toString());
       }
@@ -510,7 +511,7 @@ class _RegisterState extends State<Register> {
 
     //for app
 
-    simpleLoading(context, (BuildContext loadingContext) async {
+    salumedHelpers.simpleLoading(context, (BuildContext loadingContext) async {
       try {
         await FacebookLogin().logOut();
 
@@ -552,7 +553,7 @@ class _RegisterState extends State<Register> {
             break;
           case FacebookLoginStatus.error:
             Navigator.pop(loadingContext);
-            showErrorsDialog(
+            salumedHelpers.showErrorsDialog(
                 context, ["Ocurrió un error desconocido, intente de nuevo."]);
             print(result.error);
 
@@ -568,7 +569,7 @@ class _RegisterState extends State<Register> {
   processSignInAuth(
       String token, String name, String email, String providerAuth,
       {String phone = "", String picture = ""}) {
-    simpleLoading(context, (BuildContext loadingContext) {
+    salumedHelpers.simpleLoading(context, (BuildContext loadingContext) {
       final provider = Provider.of<AppProvider>(context, listen: false);
       WebService(context)
           .signInAuth(token, formatFirstUpper(name), email, providerAuth, phone,
@@ -582,7 +583,7 @@ class _RegisterState extends State<Register> {
       }).catchError((e) {
         print(e);
         Navigator.pop(loadingContext);
-        showErrorsDialog(context, e);
+        salumedHelpers.showErrorsDialog(context, e);
       });
     });
   }
@@ -595,7 +596,7 @@ class _RegisterState extends State<Register> {
 
     if (widget.type == "pharmacy_admin") {
       if (pharmacyOrLaboratory == "") {
-        showErrorsDialog(
+        salumedHelpers.showErrorsDialog(
             context, ["Debe seleccionar si es laboratorio o farmacia"]);
         return;
       }
@@ -610,7 +611,7 @@ class _RegisterState extends State<Register> {
 
     if (form!.validate()) {
       form.save();
-      simpleLoading(context, (BuildContext loadingContext) {
+      salumedHelpers.simpleLoading(context, (BuildContext loadingContext) {
         final provider = Provider.of<AppProvider>(context, listen: false);
         WebService(context)
             .signUp(cEmail.text, formatFirstUpper(cName.text), cPass.text, rol,
@@ -624,7 +625,7 @@ class _RegisterState extends State<Register> {
           });
         }).catchError((e) {
           Navigator.pop(loadingContext);
-          showErrorsDialog(context, e);
+          salumedHelpers.showErrorsDialog(context, e);
         });
       });
     }

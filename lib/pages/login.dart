@@ -7,7 +7,7 @@ import 'package:app/helpers/helpers.dart';
 import 'package:app/models/role.dart';
 import 'package:app/pages/forgot_password.dart';
 import 'package:app/pages/home_client.dart';
-import 'package:app/pages/register.dart';
+import 'package:app/pages/register.dart' show Register;
 
 import 'package:app/pages/select_type_user.dart';
 import 'package:app/providers/app.dart';

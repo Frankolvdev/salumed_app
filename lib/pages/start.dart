@@ -22,7 +22,7 @@ import 'package:app/pages/hospital_admin/hospital_admin_edit_profile.dart';
 import 'package:app/pages/laboratory_admin/laboratory_admin_profile.dart';
 import 'package:app/pages/meditation_screen.dart';
 import 'package:app/pages/pharmacy_admin/pharmacy_admin_profile.dart';
-import 'package:app/pages/register.dart';
+import 'package:app/pages/register.dart' show Register;
 import 'package:app/pages/relaxing_audios.dart';
 import 'package:app/pages/serenity_screen.dart';
 import 'package:app/pages/stress_screen.dart';
@@ -1015,9 +1015,18 @@ checkSubscriptionAndRedirect(Function callback) async {
       context: context,
       builder: (dialogContext) => Dialog(
         insetPadding: getDialogInsetPaddin(dialogContext),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-        child: Padding(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
           padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(17),
+            boxShadow: const [
+              BoxShadow(color: Colors.black26, blurRadius: 10,
+                offset: Offset(0, 10)),
+            ],
+          ),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             Row(children: [
               const Expanded(child: Text('Recuperar mi compra',
@@ -1050,6 +1059,7 @@ checkSubscriptionAndRedirect(Function callback) async {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: CustomColors.primary,
                   foregroundColor: Colors.white,
+                  textStyle: const TextStyle(fontSize: 14),
                   shape: const StadiumBorder(),
                   elevation: 2),
                 onPressed: () {
@@ -1078,9 +1088,18 @@ checkSubscriptionAndRedirect(Function callback) async {
       context: context,
       builder: (dialogContext) => Dialog(
         insetPadding: getDialogInsetPaddin(dialogContext),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-        child: Padding(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
           padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(17),
+            boxShadow: const [
+              BoxShadow(color: Colors.black26, blurRadius: 10,
+                offset: Offset(0, 10)),
+            ],
+          ),
           child: Column(mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
@@ -1155,6 +1174,7 @@ checkSubscriptionAndRedirect(Function callback) async {
             style: ElevatedButton.styleFrom(
               backgroundColor: CustomColors.primary,
               foregroundColor: Colors.white,
+              textStyle: const TextStyle(fontSize: 14),
               shape: const StadiumBorder(),
               elevation: 2),
             onPressed: onPressed, icon: Icon(icon), label: Text(label)),
