@@ -1,3 +1,4 @@
+import 'package:app/helpers/premium_welcome_helper.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
@@ -201,6 +202,7 @@ class _StartPageState extends State<StartPage>
           ]);
         }
         _loadDashboardData(); // Cargar datos del dashboard
+        if (widget.isLogged) _showPremiumWelcomeIfQueued();
       });
     });
     subscriptionStatus();
@@ -539,9 +541,10 @@ class _StartPageState extends State<StartPage>
           .signIn(email, password)
           .then((user) async {
             await provider.setUser(user);
-            initProcess(context, user.token ?? "", () {
+            initProcess(context, user.token ?? "", () async {
               Navigator.pop(loadingContext);
-              goHome(context, provider.user.roles);
+              await queuePremiumWelcome();
+              if (mounted) goHome(context, provider.user.roles);
             });
           })
           .catchError((e) {
@@ -1057,10 +1060,10 @@ checkSubscriptionAndRedirect(Function callback) async {
             SizedBox(width: double.infinity, height: 46,
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: CustomColors.primary,
-                  foregroundColor: Colors.white,
-                  textStyle: const TextStyle(fontSize: 14),
-                  shape: const StadiumBorder(),
+                  backgroundColor: const Color(0xFF91C8E4),
+                  foregroundColor: CustomColors.secondary,
+                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   elevation: 2),
                 onPressed: () {
                   Navigator.pop(dialogContext);
@@ -1159,25 +1162,114 @@ checkSubscriptionAndRedirect(Function callback) async {
 
   Widget _planActionButton(String label, IconData icon,
       VoidCallback onPressed, {bool outlined = false}) {
+    const skyBlue = Color(0xFF91C8E4);
     return SizedBox(
       width: double.infinity,
-      height: 46,
-      child: outlined
-        ? OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              foregroundColor: CustomColors.primary,
-              side: const BorderSide(color: CustomColors.primary),
-              shape: const StadiumBorder(),
-              elevation: 2),
-            onPressed: onPressed, icon: Icon(icon), label: Text(label))
-        : ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: CustomColors.primary,
-              foregroundColor: Colors.white,
-              textStyle: const TextStyle(fontSize: 14),
-              shape: const StadiumBorder(),
-              elevation: 2),
-            onPressed: onPressed, icon: Icon(icon), label: Text(label)),
+      height: 48,
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: skyBlue,
+          foregroundColor: CustomColors.secondary,
+          elevation: 0,
+          textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+        onPressed: onPressed,
+        icon: Icon(icon, size: 20),
+        label: Text(label),
+      ),
+    );
+  }
+
+  Future<void> _showPremiumWelcomeIfQueued() async {
+    final pending = await consumePremiumWelcome();
+    if (!pending || !mounted) return;
+    final provider = Provider.of<AppProvider>(context, listen: false);
+    if (provider.user.id == null) return;
+    bool premiumActive = false;
+    try {
+      premiumActive = await SubscriptionHelper(context).isSubscriptionActive();
+    } catch (_) {
+      // A temporary network failure should not prevent the home screen.
+      return;
+    }
+    if (!mounted || premiumActive) return;
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (dialogContext) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
+        child: Stack(children: [
+          SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(24, 36, 24, 24),
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFE3F2FD), shape: BoxShape.circle),
+                child: const Icon(Icons.workspace_premium,
+                  color: Color(0xFF0245A3), size: 42)),
+              const SizedBox(height: 16),
+              const Text('¡Descubre SaluMeD Premium!',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold,
+                  color: CustomColors.secondary)),
+              const SizedBox(height: 10),
+              const Text('Disfruta de una experiencia de bienestar más completa.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14, height: 1.4)),
+              const SizedBox(height: 20),
+              _premiumBenefit(Icons.auto_awesome, 'Accede a contenido Premium'),
+              _premiumBenefit(Icons.self_improvement, 'Disfruta de experiencias de bienestar'),
+              _premiumBenefit(Icons.favorite_outline, 'Aprovecha los beneficios de tu plan'),
+              const SizedBox(height: 22),
+              SizedBox(width: double.infinity, height: 48,
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF91C8E4),
+                    foregroundColor: CustomColors.secondary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12))),
+                  onPressed: () {
+                    Navigator.pop(dialogContext);
+                    SubscriptionHelper(context).checkSubscription(
+                      callback: () async {
+                        if (mounted) await subscriptionStatus();
+                      });
+                  },
+                  icon: const Icon(Icons.workspace_premium),
+                  label: const Text('Suscríbete',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                )),
+              const SizedBox(height: 8),
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext),
+                child: const Text('Ahora no')),
+            ]),
+          ),
+          Positioned(right: 8, top: 8,
+            child: IconButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              icon: const Icon(Icons.close, size: 20),
+              style: IconButton.styleFrom(
+                backgroundColor: const Color(0xFFF0F3F8),
+                shape: const CircleBorder())),
+          ),
+        ]),
+      ),
+    );
+  }
+
+  Widget _premiumBenefit(IconData icon, String description) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 7),
+      child: Row(children: [
+        Icon(icon, color: const Color(0xFF0245A3), size: 21),
+        const SizedBox(width: 12),
+        Expanded(child: Text(description,
+          style: const TextStyle(fontSize: 14))),
+      ]),
     );
   }
 

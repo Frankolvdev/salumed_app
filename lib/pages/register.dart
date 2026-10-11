@@ -1,3 +1,4 @@
+import 'package:app/helpers/premium_welcome_helper.dart';
 import 'dart:async';
 
 import 'package:app/components/fade_animation.dart';
@@ -482,9 +483,10 @@ class _RegisterState extends State<Register> {
             .then((user) async {
           await provider.setUser(user);
 
-          initProcess(context, user.token ?? "", () {
+          initProcess(context, user.token ?? "", () async {
             Navigator.pop(loadingContext);
-            goHome(context, provider.user.roles);
+            await queuePremiumWelcome();
+            if (mounted) goHome(context, provider.user.roles);
           });
         }).catchError((e) {
           Navigator.pop(loadingContext);

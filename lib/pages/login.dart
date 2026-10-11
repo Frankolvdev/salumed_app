@@ -1,3 +1,4 @@
+import 'package:app/helpers/premium_welcome_helper.dart';
 import 'dart:async';
 
 import 'package:app/components/fade_animation.dart';
@@ -668,9 +669,10 @@ class _LoginState extends State<Login> {
           initProcess(
           context,
           user.token ?? "",
-          () {
+          () async {
             Navigator.pop(loadingContext);
-            goHome(context, provider.user.roles);
+            await queuePremiumWelcome();
+            if (mounted) goHome(context, provider.user.roles);
           },
           onError: (error) {
             Navigator.pop(loadingContext);
@@ -703,9 +705,10 @@ class _LoginState extends State<Login> {
         initProcess(
           context,
           user.token ?? "",
-          () {
+          () async {
             Navigator.pop(loadingContext);
-            goHome(context, provider.user.roles);
+            await queuePremiumWelcome();
+            if (mounted) goHome(context, provider.user.roles);
           },
           onError: (error) {
             Navigator.pop(loadingContext);
