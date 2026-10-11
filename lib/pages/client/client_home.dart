@@ -104,7 +104,7 @@ class _ClientHomeState extends State<ClientHome> {
                             await launch(linkStudies);
                           }
                     } else {
-                      setContent(10);
+                      setContent(6);
                     }
                     Navigator.pop(contextDialog);
                   },
@@ -127,7 +127,7 @@ class _ClientHomeState extends State<ClientHome> {
       //               if (type == "laboratory_studies") {
       //                 setContent(11);
       //               } else {
-      //                 setContent(10);
+      //                 setContent(6);
       //               }
       //               Navigator.pop(contextDialog);
       //             },
@@ -148,7 +148,7 @@ class _ClientHomeState extends State<ClientHome> {
         "title": "Ayuda y soporte técnico",
         "widget": ClientContact(),
         "function": () {
-          setContent(7);
+          setContent(3);
         },
       },
       {
@@ -385,7 +385,7 @@ class _ClientHomeState extends State<ClientHome> {
       (){
          setContent(0, toNotifications: true);
       },
-      hideMenus: [8],
+      hideMenus: [5, 6, 7],
     );
   }
 
@@ -416,7 +416,7 @@ class _ClientHomeState extends State<ClientHome> {
   }
 
   callback() {
-    setContent(8, toNotifications: true);
+    setContent(4, toNotifications: true);
   }
 }
 

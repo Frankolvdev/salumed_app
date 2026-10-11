@@ -11,7 +11,7 @@ import 'package:app/services/web_service.dart';
 class StorePurchaseHelper {
   StorePurchaseHelper(this.context);
   final BuildContext context;
-  static const googleProductId = String.fromEnvironment('GOOGLE_PLAY_SUBSCRIPTION_PRODUCT_ID', defaultValue: '');
+  static const googleProductId = String.fromEnvironment('GOOGLE_PLAY_SUBSCRIPTION_PRODUCT_ID', defaultValue: 'salumed_premium_monthly');
   static const appleProductId = String.fromEnvironment('APPLE_SUBSCRIPTION_PRODUCT_ID', defaultValue: '');
   StreamSubscription<List<PurchaseDetails>>? _subscription;
   bool _processing = false;

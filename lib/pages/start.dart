@@ -99,6 +99,8 @@ class _StartPageState extends State<StartPage>
   String progresoGym = 'Inicia ahora';
   var timerPushService = null;
   bool _welcomePromptShown = false;
+  bool _openingPlan = false;
+  bool _restoringPurchase = false;
 
   Future<void> _showWelcomeRegistrationIfNeeded() async {
     if (!mounted || _welcomePromptShown) return;
@@ -945,6 +947,156 @@ checkSubscriptionAndRedirect(Function callback) async {
   );
 }
 
+  Future<void> _openPlanDialog() async {
+    if (_openingPlan) return;
+    setState(() => _openingPlan = true);
+    try {
+      final provider = Provider.of<AppProvider>(context, listen: false);
+      if (provider.user.id == null || provider.user.token == null) {
+        if (mounted) {
+          await SubscriptionHelper(context).checkSubscription(callback: () {});
+        }
+        return;
+      }
+      // A single authenticated request supplies the plan state; avoid a second
+      // subscriptionStatus() request before showing the dialog.
+      final plan = await WebService(context).getUserSubscription(
+          provider.user.id!, provider.user.token!);
+      if (!mounted) return;
+      final active = plan['active'] == true;
+      setState(() => isActivePlan = active ? 'Activa' : 'Inactiva');
+      await _showPlanDetails(plan, active);
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('No se pudo consultar Mi plan: $error'),
+        ));
+      }
+    } finally {
+      if (mounted) setState(() => _openingPlan = false);
+    }
+  }
+
+  Future<void> _restoreFromPlan() async {
+    if (_restoringPurchase) return;
+    setState(() => _restoringPurchase = true);
+    try {
+      await StorePurchaseHelper(context).restorePurchases(
+        onPremiumActivated: () async {
+          if (!mounted) return;
+          await subscriptionStatus();
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Compra verificada. Tu plan Premium está actualizado.'),
+            ));
+          }
+        },
+      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Consulta enviada a la tienda. Si existe una compra vigente, se verificará automáticamente.'),
+        ));
+      }
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('No se pudo restaurar la compra: $error'),
+        ));
+      }
+    } finally {
+      if (mounted) setState(() => _restoringPurchase = false);
+    }
+  }
+
+  Future<void> _showPlanDetails(dynamic plan, bool active) async {
+    final paymentProvider = (plan['provider'] ?? '').toString();
+    final store = paymentProvider == 'google_play' || paymentProvider == 'apple';
+    final admin = paymentProvider == 'admin';
+    final providerName = paymentProvider == 'google_play' ? 'Google Play' :
+        paymentProvider == 'apple' ? 'App Store' :
+        paymentProvider == 'paypal' ? 'PayPal' :
+        admin ? 'Administración' : 'Sin proveedor';
+    final expiration = plan['expires_at'];
+    await showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        title: Row(children: const [
+          Icon(Icons.workspace_premium, color: CustomColors.primary),
+          SizedBox(width: 10),
+          Expanded(child: Text('Mi plan', style: TextStyle(
+            color: CustomColors.secondary, fontWeight: FontWeight.bold))),
+        ]),
+        content: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 440),
+          child: SingleChildScrollView(child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(active ? 'Premium activo' : 'Sin suscripción Premium activa',
+                style: const TextStyle(fontWeight: FontWeight.w700,
+                  color: CustomColors.primary, fontSize: 16)),
+              const SizedBox(height: 8),
+              if (active) Text('Proveedor: $providerName'),
+              if (active && expiration != null) Text('Vigente hasta: $expiration'),
+              if (store) const Padding(
+                padding: EdgeInsets.only(top: 8),
+                child: Text('La renovación se administra desde tu tienda de aplicaciones.'),
+              ),
+              if (admin) const Padding(
+                padding: EdgeInsets.only(top: 8),
+                child: Text('Premium otorgado por el administrador.'),
+              ),
+              const SizedBox(height: 16),
+              const Text('¿Cómo funciona Restaurar compras?',
+                style: TextStyle(fontWeight: FontWeight.bold,
+                  color: CustomColors.secondary)),
+              const SizedBox(height: 8),
+              const Text('• Compra activa o prueba gratuita vigente: recupera Premium.\n'
+                '• Cancelada, pero aún vigente: mantiene Premium hasta vencer.\n'
+                '• Vencida o sin compras: no se activa Premium.\n'
+                '• Otra cuenta de Google o Apple: la tienda no encontrará esa compra.\n'
+                '• Premium de administrador: no necesita restauración.\n'
+                '• PayPal: se recupera desde tu cuenta Salumed, no desde la tienda.',
+                style: TextStyle(height: 1.5)),
+              const SizedBox(height: 8),
+              const Text('La restauración requiere iniciar sesión con la cuenta de la tienda que realizó la compra.',
+                style: TextStyle(fontSize: 12)),
+            ],
+          )),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Cerrar')),
+          if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
+            TextButton.icon(
+              onPressed: () {
+                Navigator.pop(dialogContext);
+                _restoreFromPlan();
+              },
+              icon: const Icon(Icons.restore),
+              label: const Text('Restaurar compras'),
+            ),
+          if (!active)
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: CustomColors.primary),
+              onPressed: () {
+                Navigator.pop(dialogContext);
+                SubscriptionHelper(context).checkSubscription(
+                  callback: () async { await subscriptionStatus(); });
+              },
+              child: const Text('Suscribirme', style: TextStyle(color: Colors.white)),
+            ),
+          if (active && !store && !admin)
+            TextButton(onPressed: () {
+              Navigator.pop(dialogContext);
+              confirmCancel();
+            }, child: const Text('Cancelar suscripción')),
+        ],
+      ),
+    );
+  }
+
   Widget _buildDashboard() {
     return Center(
       child: Wrap(
@@ -952,105 +1104,21 @@ checkSubscriptionAndRedirect(Function callback) async {
         runSpacing: 12,
         children: [
           InkWell(
-            onTap: () async {
-              await subscriptionStatus();
-              final provider = Provider.of<AppProvider>(context, listen: false);
-
-              if (provider.user.id == null) {
-                SubscriptionHelper(context).checkSubscription(callback: () {});
-                return;
-              }
-
-              if (isActivePlan == "Activa") {
-                try {
-                  final plan = await WebService(context).getUserSubscription(
-                    provider.user.id!, provider.user.token!);
-                  if (!mounted) return;
-                  final paymentProvider = (plan['provider'] ?? 'desconocido').toString();
-                  final store = paymentProvider == 'google_play' || paymentProvider == 'apple';
-                  final free = paymentProvider == 'admin';
-                  final providerName = paymentProvider == 'google_play' ? 'Google Play' :
-                    paymentProvider == 'apple' ? 'App Store' :
-                    paymentProvider == 'paypal' ? 'PayPal' :
-                    'Administración';
-                  final expiration = plan['expires_at'];
-                  showDialog(context: context, builder: (dialogContext) => AlertDialog(
-                    title: const Text('Mi plan'),
-                    content: Text('Estado: Activa\nProveedor: $providerName'
-                      '${expiration == null ? '' : '\nVigente hasta: $expiration'}'
-                      '${store ? '\nPara cancelar la renovación, abre las suscripciones de $providerName.' : ''}'
-                      '${free ? '\nPremium otorgado por el administrador.' : ''}'),
-                    actions: [
-                      if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(dialogContext);
-                            StorePurchaseHelper(context).restorePurchases(
-                              onPremiumActivated: () async {
-                                await subscriptionStatus();
-                                if (mounted) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Suscripción restaurada y verificada')),
-                                  );
-                                }
-                              },
-                            ).catchError((error) {
-                              if (mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('No se pudo restaurar: $error')),
-                                );
-                              }
-                            });
-                          },
-                          child: const Text('Restaurar compras'),
-                        ),
-                      TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cerrar')),
-                      if (!store && !free) TextButton(onPressed: () {
-                        Navigator.pop(dialogContext);
-                        confirmCancel();
-                      }, child: const Text('Cancelar suscripción')),
-                    ],
-                  ));
-                } catch (e) { if (mounted) showErrorsDialog(context, e); }
-              } else {
-                if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
-                  showDialog(context: context, builder: (dialogContext) => AlertDialog(
-                    title: const Text('Mi plan'),
-                    content: const Text('No hay una suscripción Premium activa. Puedes suscribirte o restaurar una compra anterior.'),
-                    actions: [
-                      TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cerrar')),
-                      TextButton(onPressed: () {
-                        Navigator.pop(dialogContext);
-                        StorePurchaseHelper(context).restorePurchases(
-                          onPremiumActivated: () async {
-                            await subscriptionStatus();
-                            if (mounted) ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Suscripción restaurada y verificada')));
-                          },
-                        ).catchError((error) {
-                          if (mounted) ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('No se pudo restaurar: $error')));
-                        });
-                      }, child: const Text('Restaurar compras')),
-                      TextButton(onPressed: () {
-                        Navigator.pop(dialogContext);
-                        SubscriptionHelper(context).checkSubscription(
-                          callback: () async { await subscriptionStatus(); },
-                        );
-                      }, child: const Text('Suscribirme')),
-                    ],
-                  ));
-                } else {
-                  SubscriptionHelper(context).checkSubscription(
-                    callback: () async { await subscriptionStatus(); },
-                  );
-                }
-              }
-            },
-            child: _DashboardCard(
-              icon: Icons.self_improvement,
-              title: 'Mi plan',
-              value: isActivePlan,
+            onTap: _openingPlan ? null : _openPlanDialog,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                _DashboardCard(
+                  icon: Icons.self_improvement,
+                  title: 'Mi plan',
+                  value: _openingPlan ? 'Cargando...' : isActivePlan,
+                ),
+                if (_openingPlan) const Positioned(
+                  right: 12, top: 12,
+                  child: SizedBox(width: 18, height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2)),
+                ),
+              ],
             ),
           ),
           _DashboardCard(
