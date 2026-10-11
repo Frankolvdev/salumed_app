@@ -44,7 +44,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:app/compat/flutter_page_transition.dart';
 
 //import 'package:flutter_stripe/flutter_stripe.dart';
@@ -651,9 +650,6 @@ logout(BuildContext context, {bool direct = false, String messageAfter = ""}) {
         } catch (e) {}
         try {
           // await _googleSignIn.signOut();
-        } catch (e) {}
-        try {
-          await FacebookLogin().logOut();
         } catch (e) {}
 
         UserModel userTmp = UserModel(roles: []);

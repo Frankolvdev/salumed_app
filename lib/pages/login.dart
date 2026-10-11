@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 //import 'package:flutter_facebook_login_web/flutter_facebook_login_web.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:app/compat/flutter_page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
@@ -654,114 +653,6 @@ class _LoginState extends State<Login> {
         gmailPress = false;
       });
     }*/
-  }
-
-  Future<void> _handleSignInFacebook() async {
-    //for web
-    /* simpleLoading(context, (BuildContext loadingContext) async {
-      try {
-        final facebookSignIn = FacebookLoginWeb();
-        //await facebookSignIn.logOut();
-        final FacebookLoginResult result =
-            await facebookSignIn.logIn(['email', 'public_profile']);
-
-        switch (result.status) {
-          case FacebookLoginStatus.loggedIn:
-            final FacebookAccessToken? accessToken = result.accessToken;
-
-            var res = facebookSignIn.testApi().then((value) {
-              Navigator.pop(loadingContext);
-              debugPrint("finish inter");
-              debugPrint("nombre" + value.toString());
-              debugPrint("token" + accessToken!.token);
-              processSignInAuth(
-                  accessToken.userId, value.toString(), "", "FACEBOOK",
-                  picture: "");
-            }).catchError((e) {
-              Navigator.pop(loadingContext);
-              showErrorsDialog(
-                  context, ["Ocurrió un error desconocido, intente de nuevo."]);
-            });
-
-            debugPrint("finish1");
-            break;
-          case FacebookLoginStatus.cancelledByUser:
-            debugPrint("user cancelled login facebook");
-            Navigator.pop(loadingContext);
-            break;
-          case FacebookLoginStatus.error:
-            Navigator.pop(loadingContext);
-            showErrorsDialog(
-                context, ["Ocurrió un error desconocido, intente de nuevo."]);
-            debugPrint(result.errorMessage);
-
-            break;
-          default:
-            Navigator.pop(loadingContext);
-            break;
-        }
-      } catch (error) {
-        showErrorsDialog(context, [error.toString()]);
-        Navigator.pop(loadingContext);
-        debugPrint(error.toString());
-      }
-    });*/
-
-    //for app
-
-    simpleLoading(context, (BuildContext loadingContext) async {
-      try {
-        await FacebookLogin().logOut();
-
-        final facebookLogin = FacebookLogin();
-
-        //facebookLogin.loginBehavior = FacebookLoginBehavior.webViewOnly;
-        final result = await facebookLogin.logIn(permissions: [
-          FacebookPermission.publicProfile,
-          FacebookPermission.email
-        ]);
-
-        switch (result.status) {
-          case FacebookLoginStatus.success:
-            final token = result.accessToken!.token;
-            // Get profile data
-            final profile = await facebookLogin.getUserProfile();
-            print('Hello, ${profile!.name}! You ID: ${profile.userId}');
-
-            // Get user profile image url
-            final imageUrl = await facebookLogin.getProfileImageUrl(width: 100);
-            print('Your profile image: $imageUrl');
-
-            // Get email (since we request email permission)
-            final email = await facebookLogin.getUserEmail();
-            // But user can decline permission
-            if (email != null) print('And your email is $email');
-            Navigator.pop(loadingContext);
-            processSignInAuth(
-                result.accessToken!.userId,
-                "${profile.name ?? ''} ${profile.lastName ?? ''}",
-                email ?? "",
-                "FACEBOOK",
-                picture: imageUrl ?? "");
-
-            break;
-          case FacebookLoginStatus.cancel:
-            print("user cancelled login facebook");
-            Navigator.pop(loadingContext);
-            break;
-          case FacebookLoginStatus.error:
-            Navigator.pop(loadingContext);
-            showErrorsDialog(
-                context, ["Ocurrió un error desconocido, intente de nuevo."]);
-            print(result.error);
-
-            break;
-        }
-      } catch (error) {
-        Navigator.pop(loadingContext);
-        print(error);
-      }
-    });
   }
 
   processSignInEmailPassword() async {

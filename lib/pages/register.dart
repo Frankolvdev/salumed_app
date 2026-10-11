@@ -11,7 +11,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 //import 'package:flutter_facebook_login_web/flutter_facebook_login_web.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
@@ -469,27 +468,7 @@ class _RegisterState extends State<Register> {
     }*/
   }
 
-  Future<void> _handleSignInFacebook() async {
-    //for web
-    /*   simpleLoading(context, (BuildContext loadingContext) async {
-      try {
-      
-        final facebookSignIn = FacebookLoginWeb();
-         //await facebookSignIn.logOut();
-        final FacebookLoginResult result = await facebookSignIn.logIn(['email','public_profile']);
-
-        switch (result.status) {
-          case FacebookLoginStatus.loggedIn:
-            final FacebookAccessToken? accessToken = result.accessToken;
-             
-             
-              
-           var res= facebookSignIn.testApi().then((value){
-              Navigator.pop(loadingContext);
-    debugPrint("finish inter");
- debugPrint("nombre"+value.toString());
- debugPrint("token"+accessToken!.token);
-                   processSignInAuth(
+  processSignInAuth(
                 accessToken.userId,
                 value.toString(),
                  "",
