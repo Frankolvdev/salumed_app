@@ -59,7 +59,6 @@ dependencies:
   video_player: any
   showcaseview: any
   just_audio: any
-  audio_service: any
   hive: any
   hive_flutter: any
   path_provider: any

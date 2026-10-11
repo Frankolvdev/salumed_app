@@ -3,7 +3,6 @@ import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
-import '../services/audio_handler.dart';
 
 class RelaxAudioView extends StatefulWidget {
   const RelaxAudioView({Key? key}) : super(key: key);
@@ -64,11 +63,9 @@ class _RelaxAudioViewState extends State<RelaxAudioView> {
 
 
 
-late RelaxAudioHandler _audioHandler;
 @override
 void initState() {
   super.initState();
-  _audioHandler = RelaxAudioHandler();
 }
   @override
   void dispose() {
