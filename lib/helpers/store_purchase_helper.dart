@@ -39,12 +39,19 @@ class StorePurchaseHelper {
             );
             if (verified['active'] == true) {
               onPremiumActivated();
-              if (purchase.pendingCompletePurchase) await store.completePurchase(purchase);
             } else {
               _showError('La tienda todavía no confirmó una suscripción activa.');
             }
           } catch (error) { _showError('No se pudo verificar la compra: $error'); }
-          finally { _processing = false; }
+          finally {
+            // StoreKit/Play require transaction acknowledgement even when server
+            // verification is temporarily unavailable. This does NOT grant Premium.
+            if (purchase.pendingCompletePurchase) {
+              try { await store.completePurchase(purchase); }
+              catch (error) { _showError('No se pudo finalizar la transacción: $error'); }
+            }
+            _processing = false;
+          }
         } else if (purchase.status == PurchaseStatus.error) {
           _showError(purchase.error?.message ?? 'Error de compra');
         }
@@ -52,6 +59,13 @@ class StorePurchaseHelper {
     });
     final param = PurchaseParam(productDetails: response.productDetails.first);
     await store.buyNonConsumable(purchaseParam: param);
+  }
+
+  /// Restores eligible purchases. The same server-side verification is used.
+  /// Call purchase() to establish the listener before invoking this method.
+  Future<void> restorePurchases() async {
+    if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) return;
+    await InAppPurchase.instance.restorePurchases();
   }
 
   void _showError(String message) {
