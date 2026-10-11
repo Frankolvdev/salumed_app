@@ -1065,12 +1065,12 @@ checkSubscriptionAndRedirect(Function callback) async {
             const SizedBox(height: 8),
             const Flexible(child: SingleChildScrollView(
               child: Text(
-                '• Compra activa o prueba gratuita vigente: recupera Premium.\\n'
-                '• Cancelada, pero aún vigente: mantiene Premium hasta vencer.\\n'
-                '• Vencida o sin compras: no activa Premium.\\n'
-                '• Otra cuenta de Google o Apple: la tienda no encontrará la compra.\\n'
-                '• Premium de administrador: no necesita restauración.\\n'
-                '• PayPal: se recupera desde tu cuenta Salumed, no desde la tienda.\\n\\n'
+                '• Compra activa o prueba gratuita vigente: recupera Premium.\n'
+                '• Cancelada, pero aún vigente: mantiene Premium hasta vencer.\n'
+                '• Vencida o sin compras: no activa Premium.\n'
+                '• Otra cuenta de Google o Apple: la tienda no encontrará la compra.\n'
+                '• Premium de administrador: no necesita restauración.\n'
+                '• PayPal: se recupera desde tu cuenta Salumed, no desde la tienda.\n\n'
                 'Debes utilizar la misma cuenta de la tienda con la que compraste.',
                 style: TextStyle(height: 1.5, fontSize: 14),
               ),
