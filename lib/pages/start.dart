@@ -101,6 +101,9 @@ class _StartPageState extends State<StartPage>
   var timerPushService = null;
   bool _welcomePromptShown = false;
   bool _openingPlan = false;
+  bool _premiumWelcomeChecking = false;
+  bool _premiumWelcomeVisible = false;
+  bool _premiumWelcomeDeferred = false;
   bool _restoringPurchase = false;
 
   Future<void> _showWelcomeRegistrationIfNeeded() async {
@@ -954,35 +957,48 @@ checkSubscriptionAndRedirect(Function callback) async {
 }
 
   Future<void> _openPlanDialog() async {
-    if (_openingPlan) return;
+    if (_openingPlan || _premiumWelcomeVisible) return;
+    if (!mounted) return;
     setState(() => _openingPlan = true);
-    // Reuse the application's existing modal loading layer and its callback.
-    simpleLoading(context, (BuildContext loadingContext) async {
-      dynamic plan;
-      Object? error;
-      try {
-        final provider = Provider.of<AppProvider>(context, listen: false);
-        if (provider.user.id == null || provider.user.token == null) {
-          throw StateError('Inicia sesión para consultar tu plan.');
+    try {
+      // Keep the busy flag until BOTH the network request and plan dialog close.
+      // This prevents the automatic Premium welcome from stacking on the loader.
+      await _fetchAndShowPlan();
+    } finally {
+      if (mounted) {
+        setState(() => _openingPlan = false);
+        if (_premiumWelcomeDeferred) {
+          _premiumWelcomeDeferred = false;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) _showPremiumWelcomeIfQueued();
+          });
         }
-        plan = await WebService(context).getUserSubscription(
-            provider.user.id!, provider.user.token!);
-      } catch (e) {
-        error = e;
-      } finally {
-        if (loadingContext.mounted) Navigator.of(loadingContext).pop();
-        if (mounted) setState(() => _openingPlan = false);
       }
-      if (!mounted) return;
-      if (error != null) {
+    }
+  }
+
+  Future<void> _fetchAndShowPlan() async {
+    // A modal is managed in a single flow; do not start the welcome
+    // invitation while the subscription request is still in flight.
+    dynamic plan;
+    try {
+      final provider = Provider.of<AppProvider>(context, listen: false);
+      if (provider.user.id == null || provider.user.token == null) {
+        throw StateError('Inicia sesión para consultar tu plan.');
+      }
+      plan = await WebService(context).getUserSubscription(
+          provider.user.id!, provider.user.token!);
+    } catch (error) {
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('No se pudo consultar Mi plan: $error')));
-        return;
+          SnackBar(content: Text('No se pudo consultar Mi plan: $error')));
       }
-      final active = plan['active'] == true;
-      setState(() => isActivePlan = active ? 'Activa' : 'Inactiva');
-      await _showPlanDetails(plan, active);
-    }, text: 'Consultando tu plan...');
+      return;
+    }
+    if (!mounted) return;
+    final active = plan['active'] == true;
+    setState(() => isActivePlan = active ? 'Activa' : 'Inactiva');
+    await _showPlanDetails(plan, active);
   }
 
   Future<void> _restoreFromPlan() async {
@@ -1208,6 +1224,13 @@ checkSubscriptionAndRedirect(Function callback) async {
   }
 
   Future<void> _showPremiumWelcomeIfQueued() async {
+    if (!mounted || _premiumWelcomeChecking || _premiumWelcomeVisible) return;
+    if (_openingPlan) {
+      _premiumWelcomeDeferred = true;
+      return;
+    }
+    _premiumWelcomeChecking = true;
+    try {
     final pending = await consumePremiumWelcome();
     if (!pending || !mounted) return;
     final provider = Provider.of<AppProvider>(context, listen: false);
@@ -1220,6 +1243,12 @@ checkSubscriptionAndRedirect(Function callback) async {
       return;
     }
     if (!mounted || premiumActive) return;
+    if (_openingPlan) {
+      // The user opened Mi plan while the subscription check was pending.
+      // Never place two dialogs on top of one another.
+      return;
+    }
+    _premiumWelcomeVisible = true;
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -1285,6 +1314,10 @@ checkSubscriptionAndRedirect(Function callback) async {
         ]),
       ),
     );
+    } finally {
+      _premiumWelcomeChecking = false;
+      _premiumWelcomeVisible = false;
+    }
   }
 
   Widget _premiumBenefit(IconData icon, String description) {
