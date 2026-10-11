@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:app/components/fade_animation.dart';
 import 'package:app/constants/colors.dart';
-import 'package:app/helpers/helpers.dart' hide showErrorsDialog, simpleLoading;
-import 'package:app/helpers/helpers.dart' as salumedHelpers show showErrorsDialog, simpleLoading;
+import 'package:app/helpers/helpers.dart';
 import 'package:app/providers/app.dart';
 import 'package:app/services/web_service.dart';
 import 'package:flutter/foundation.dart';
@@ -452,142 +451,6 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Future<void> _handleSignInGoogle() async {
-    /* bool signin = await _googleSignIn.isSignedIn();
-
-    try {
-      if (signin) {
-        await _googleSignIn.disconnect();
-      }
-      await _googleSignIn.signOut();
-      await _googleSignIn.signIn();
-    } catch (error) {
-        setState(() {
-        gmailPress = false;
-      });
-      print(error);
-    }*/
-  }
-
-  processSignInAuth(
-                accessToken.userId,
-                value.toString(),
-                 "",
-                "FACEBOOK",
-                picture:  "");
-
-           
-           }).catchError((e){
-               Navigator.pop(loadingContext);
-            salumedHelpers.showErrorsDialog(
-                context, ["Ocurrió un error desconocido, intente de nuevo."]);
-           });
-          
-           debugPrint("finish1");
-            break;
-          case FacebookLoginStatus.cancelledByUser:
-            debugPrint("user cancelled login facebook");
-            Navigator.pop(loadingContext);
-            break;
-          case FacebookLoginStatus.error:
-            Navigator.pop(loadingContext);
-            salumedHelpers.showErrorsDialog(
-                context, ["Ocurrió un error desconocido, intente de nuevo."]);
-            debugPrint(result.errorMessage);
-
-            break;
-          default:
-             
-          Navigator.pop(loadingContext);
-          break;
-        }
-      } catch (error) {
-        salumedHelpers.showErrorsDialog(context, [error.toString()]);
-        Navigator.pop(loadingContext);
-        debugPrint(error.toString());
-      }
-    });
-*/
-
-    //for app
-
-    salumedHelpers.simpleLoading(context, (BuildContext loadingContext) async {
-      try {
-        await FacebookLogin().logOut();
-
-        final facebookLogin = FacebookLogin();
-
-        //facebookLogin.loginBehavior = FacebookLoginBehavior.webViewOnly;
-        final result = await facebookLogin.logIn(permissions: [
-          FacebookPermission.publicProfile,
-          FacebookPermission.email
-        ]);
-
-        switch (result.status) {
-          case FacebookLoginStatus.success:
-            final token = result.accessToken!.token;
-            // Get profile data
-            final profile = await facebookLogin.getUserProfile();
-            print('Hello, ${profile!.name}! You ID: ${profile.userId}');
-
-            // Get user profile image url
-            final imageUrl = await facebookLogin.getProfileImageUrl(width: 100);
-            print('Your profile image: $imageUrl');
-
-            // Get email (since we request email permission)
-            final email = await facebookLogin.getUserEmail();
-            // But user can decline permission
-            if (email != null) print('And your email is $email');
-            Navigator.pop(loadingContext);
-            processSignInAuth(
-                result.accessToken!.userId,
-                "${profile.name ?? ''} ${profile.lastName ?? ''}",
-                email ?? "",
-                "FACEBOOK",
-                picture: imageUrl ?? "");
-
-            break;
-          case FacebookLoginStatus.cancel:
-            print("user cancelled login facebook");
-            Navigator.pop(loadingContext);
-            break;
-          case FacebookLoginStatus.error:
-            Navigator.pop(loadingContext);
-            salumedHelpers.showErrorsDialog(
-                context, ["Ocurrió un error desconocido, intente de nuevo."]);
-            print(result.error);
-
-            break;
-        }
-      } catch (error) {
-        Navigator.pop(loadingContext);
-        print(error);
-      }
-    });
-  }
-
-  processSignInAuth(
-      String token, String name, String email, String providerAuth,
-      {String phone = "", String picture = ""}) {
-    salumedHelpers.simpleLoading(context, (BuildContext loadingContext) {
-      final provider = Provider.of<AppProvider>(context, listen: false);
-      WebService(context)
-          .signInAuth(token, formatFirstUpper(name), email, providerAuth, phone,
-              picture)
-          .then((user) async {
-        await provider.setUser(user);
-        initProcess(context, user.token ?? "", () {
-          Navigator.pop(loadingContext);
-          goHome(context, provider.user.roles);
-        });
-      }).catchError((e) {
-        print(e);
-        Navigator.pop(loadingContext);
-        salumedHelpers.showErrorsDialog(context, e);
-      });
-    });
-  }
-
   getTypeUser() {}
 
   processRegisterProfessional() async {
@@ -596,7 +459,7 @@ class _RegisterState extends State<Register> {
 
     if (widget.type == "pharmacy_admin") {
       if (pharmacyOrLaboratory == "") {
-        salumedHelpers.showErrorsDialog(
+        showErrorsDialog(
             context, ["Debe seleccionar si es laboratorio o farmacia"]);
         return;
       }
@@ -611,7 +474,7 @@ class _RegisterState extends State<Register> {
 
     if (form!.validate()) {
       form.save();
-      salumedHelpers.simpleLoading(context, (BuildContext loadingContext) {
+      simpleLoading(context, (BuildContext loadingContext) {
         final provider = Provider.of<AppProvider>(context, listen: false);
         WebService(context)
             .signUp(cEmail.text, formatFirstUpper(cName.text), cPass.text, rol,
@@ -625,7 +488,7 @@ class _RegisterState extends State<Register> {
           });
         }).catchError((e) {
           Navigator.pop(loadingContext);
-          salumedHelpers.showErrorsDialog(context, e);
+          showErrorsDialog(context, e);
         });
       });
     }
