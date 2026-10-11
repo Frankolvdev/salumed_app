@@ -16,14 +16,11 @@ class StorePurchaseHelper {
   StreamSubscription<List<PurchaseDetails>>? _subscription;
   bool _processing = false;
 
-  Future<void> purchase({required VoidCallback onPremiumActivated}) async {
-    if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) throw StateError('Las compras de tienda solo están disponibles en Android o iOS');
-    final productId = Platform.isAndroid ? googleProductId : appleProductId;
-    if (productId.isEmpty) throw StateError('Configura el identificador de suscripción de la tienda');
+  // Keep one listener alive while the purchase/restore flow is running.
+  // Both operations use the same server-side verification and never grant
+  // Premium merely because the store reports a successful transaction.
+  Future<void> _listenForPurchases(String productId, VoidCallback onPremiumActivated) async {
     final store = InAppPurchase.instance;
-    if (!await store.isAvailable()) throw StateError('La tienda no está disponible');
-    final response = await store.queryProductDetails({productId});
-    if (response.error != null || response.productDetails.isEmpty) throw StateError('No se encontró la suscripción en la tienda');
     await _subscription?.cancel();
     _subscription = store.purchaseStream.listen((purchases) async {
       for (final purchase in purchases) {
@@ -42,10 +39,9 @@ class StorePurchaseHelper {
             } else {
               _showError('La tienda todavía no confirmó una suscripción activa.');
             }
-          } catch (error) { _showError('No se pudo verificar la compra: $error'); }
-          finally {
-            // StoreKit/Play require transaction acknowledgement even when server
-            // verification is temporarily unavailable. This does NOT grant Premium.
+          } catch (error) {
+            _showError('No se pudo verificar la compra: $error');
+          } finally {
             if (purchase.pendingCompletePurchase) {
               try { await store.completePurchase(purchase); }
               catch (error) { _showError('No se pudo finalizar la transacción: $error'); }
@@ -57,15 +53,37 @@ class StorePurchaseHelper {
         }
       }
     });
-    final param = PurchaseParam(productDetails: response.productDetails.first);
-    await store.buyNonConsumable(purchaseParam: param);
   }
 
-  /// Restores eligible purchases. The same server-side verification is used.
-  /// Call purchase() to establish the listener before invoking this method.
-  Future<void> restorePurchases() async {
-    if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) return;
-    await InAppPurchase.instance.restorePurchases();
+  String _productId() {
+    if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
+      throw StateError('Las compras de tienda solo están disponibles en Android o iOS');
+    }
+    final productId = Platform.isAndroid ? googleProductId : appleProductId;
+    if (productId.isEmpty) throw StateError('Configura el identificador de suscripción de la tienda');
+    return productId;
+  }
+
+  Future<void> purchase({required VoidCallback onPremiumActivated}) async {
+    final productId = _productId();
+    final store = InAppPurchase.instance;
+    if (!await store.isAvailable()) throw StateError('La tienda no está disponible');
+    final response = await store.queryProductDetails({productId});
+    if (response.error != null || response.productDetails.isEmpty) {
+      throw StateError('No se encontró la suscripción en la tienda');
+    }
+    await _listenForPurchases(productId, onPremiumActivated);
+    await store.buyNonConsumable(purchaseParam: PurchaseParam(productDetails: response.productDetails.first));
+  }
+
+  /// Restores eligible purchases without opening a new checkout.
+  /// Restoration always verifies ownership and status on the backend.
+  Future<void> restorePurchases({required VoidCallback onPremiumActivated}) async {
+    final productId = _productId();
+    final store = InAppPurchase.instance;
+    if (!await store.isAvailable()) throw StateError('La tienda no está disponible');
+    await _listenForPurchases(productId, onPremiumActivated);
+    await store.restorePurchases();
   }
 
   void _showError(String message) {

@@ -41,6 +41,8 @@ import '../components/answer_question_dialog.dart';
 import '../components/custom_dialog.dart';
 import '../constants/colors.dart';
 import '../helpers/mercadopago_helper.dart';
+import '../helpers/store_purchase_helper.dart';
+import 'package:universal_io/io.dart' show Platform;
 import '../main.dart';
 import '../models/question.dart';
 
@@ -979,6 +981,29 @@ checkSubscriptionAndRedirect(Function callback) async {
                       '${store ? '\nPara cancelar la renovación, abre las suscripciones de $providerName.' : ''}'
                       '${free ? '\nPremium otorgado por el administrador.' : ''}'),
                     actions: [
+                      if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(dialogContext);
+                            StorePurchaseHelper(context).restorePurchases(
+                              onPremiumActivated: () async {
+                                await subscriptionStatus();
+                                if (mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(content: Text('Suscripción restaurada y verificada')),
+                                  );
+                                }
+                              },
+                            ).catchError((error) {
+                              if (mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('No se pudo restaurar: $error')),
+                                );
+                              }
+                            });
+                          },
+                          child: const Text('Restaurar compras'),
+                        ),
                       TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cerrar')),
                       if (!store && !free) TextButton(onPressed: () {
                         Navigator.pop(dialogContext);
@@ -988,11 +1013,38 @@ checkSubscriptionAndRedirect(Function callback) async {
                   ));
                 } catch (e) { if (mounted) showErrorsDialog(context, e); }
               } else {
-                MercadoPagoHelper(context).checkSubscription(
-                  callback: () async {
-                    await subscriptionStatus();
-                  },
-                );
+                if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+                  showDialog(context: context, builder: (dialogContext) => AlertDialog(
+                    title: const Text('Mi plan'),
+                    content: const Text('No hay una suscripción Premium activa. Puedes suscribirte o restaurar una compra anterior.'),
+                    actions: [
+                      TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cerrar')),
+                      TextButton(onPressed: () {
+                        Navigator.pop(dialogContext);
+                        StorePurchaseHelper(context).restorePurchases(
+                          onPremiumActivated: () async {
+                            await subscriptionStatus();
+                            if (mounted) ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Suscripción restaurada y verificada')));
+                          },
+                        ).catchError((error) {
+                          if (mounted) ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('No se pudo restaurar: $error')));
+                        });
+                      }, child: const Text('Restaurar compras')),
+                      TextButton(onPressed: () {
+                        Navigator.pop(dialogContext);
+                        MercadoPagoHelper(context).checkSubscription(
+                          callback: () async { await subscriptionStatus(); },
+                        );
+                      }, child: const Text('Suscribirme')),
+                    ],
+                  ));
+                } else {
+                  MercadoPagoHelper(context).checkSubscription(
+                    callback: () async { await subscriptionStatus(); },
+                  );
+                }
               }
             },
             child: _DashboardCard(
