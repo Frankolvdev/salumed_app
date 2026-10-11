@@ -950,31 +950,33 @@ checkSubscriptionAndRedirect(Function callback) async {
   Future<void> _openPlanDialog() async {
     if (_openingPlan) return;
     setState(() => _openingPlan = true);
-    try {
-      final provider = Provider.of<AppProvider>(context, listen: false);
-      if (provider.user.id == null || provider.user.token == null) {
-        if (mounted) {
-          await SubscriptionHelper(context).checkSubscription(callback: () {});
+    // Reuse the application's existing modal loading layer and its callback.
+    simpleLoading(context, (BuildContext loadingContext) async {
+      dynamic plan;
+      Object? error;
+      try {
+        final provider = Provider.of<AppProvider>(context, listen: false);
+        if (provider.user.id == null || provider.user.token == null) {
+          throw StateError('Inicia sesión para consultar tu plan.');
         }
+        plan = await WebService(context).getUserSubscription(
+            provider.user.id!, provider.user.token!);
+      } catch (e) {
+        error = e;
+      } finally {
+        if (loadingContext.mounted) Navigator.of(loadingContext).pop();
+        if (mounted) setState(() => _openingPlan = false);
+      }
+      if (!mounted) return;
+      if (error != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('No se pudo consultar Mi plan: $error')));
         return;
       }
-      // A single authenticated request supplies the plan state; avoid a second
-      // subscriptionStatus() request before showing the dialog.
-      final plan = await WebService(context).getUserSubscription(
-          provider.user.id!, provider.user.token!);
-      if (!mounted) return;
       final active = plan['active'] == true;
       setState(() => isActivePlan = active ? 'Activa' : 'Inactiva');
       await _showPlanDetails(plan, active);
-    } catch (error) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('No se pudo consultar Mi plan: $error'),
-        ));
-      }
-    } finally {
-      if (mounted) setState(() => _openingPlan = false);
-    }
+    }, text: 'Consultando tu plan...');
   }
 
   Future<void> _restoreFromPlan() async {
@@ -1008,6 +1010,61 @@ checkSubscriptionAndRedirect(Function callback) async {
     }
   }
 
+  Future<void> _showRestoreInformation() async {
+    await showDialog<void>(
+      context: context,
+      builder: (dialogContext) => Dialog(
+        insetPadding: getDialogInsetPaddin(dialogContext),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Row(children: [
+              const Expanded(child: Text('Restaurar compras',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,
+                      color: CustomColors.secondary))),
+              IconButton(
+                onPressed: () => Navigator.pop(dialogContext),
+                icon: const Icon(Icons.close, color: CustomColors.secondary),
+                style: IconButton.styleFrom(
+                  backgroundColor: const Color(0xFFF0F3F8),
+                  shape: const CircleBorder()),
+              ),
+            ]),
+            const SizedBox(height: 8),
+            const Flexible(child: SingleChildScrollView(
+              child: Text(
+                '• Compra activa o prueba gratuita vigente: recupera Premium.\\n'
+                '• Cancelada, pero aún vigente: mantiene Premium hasta vencer.\\n'
+                '• Vencida o sin compras: no activa Premium.\\n'
+                '• Otra cuenta de Google o Apple: la tienda no encontrará la compra.\\n'
+                '• Premium de administrador: no necesita restauración.\\n'
+                '• PayPal: se recupera desde tu cuenta Salumed, no desde la tienda.\\n\\n'
+                'Debes utilizar la misma cuenta de la tienda con la que compraste.',
+                style: TextStyle(height: 1.5, fontSize: 14),
+              ),
+            )),
+            const SizedBox(height: 16),
+            SizedBox(width: double.infinity, height: 46,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: CustomColors.primary,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+                onPressed: () {
+                  Navigator.pop(dialogContext);
+                  _restoreFromPlan();
+                },
+                icon: const Icon(Icons.restore),
+                label: const Text('Continuar con restauración'),
+              )),
+          ]),
+        ),
+      ),
+    );
+  }
+
   Future<void> _showPlanDetails(dynamic plan, bool active) async {
     final paymentProvider = (plan['provider'] ?? '').toString();
     final store = paymentProvider == 'google_play' || paymentProvider == 'apple';
@@ -1019,81 +1076,86 @@ checkSubscriptionAndRedirect(Function callback) async {
     final expiration = plan['expires_at'];
     await showDialog<void>(
       context: context,
-      builder: (dialogContext) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        title: Row(children: const [
-          Icon(Icons.workspace_premium, color: CustomColors.primary),
-          SizedBox(width: 10),
-          Expanded(child: Text('Mi plan', style: TextStyle(
-            color: CustomColors.secondary, fontWeight: FontWeight.bold))),
-        ]),
-        content: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 440),
-          child: SingleChildScrollView(child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(active ? 'Premium activo' : 'Sin suscripción Premium activa',
-                style: const TextStyle(fontWeight: FontWeight.w700,
-                  color: CustomColors.primary, fontSize: 16)),
-              const SizedBox(height: 8),
-              if (active) Text('Proveedor: $providerName'),
-              if (active && expiration != null) Text('Vigente hasta: $expiration'),
-              if (store) const Padding(
-                padding: EdgeInsets.only(top: 8),
-                child: Text('La renovación se administra desde tu tienda de aplicaciones.'),
+      builder: (dialogContext) => Dialog(
+        insetPadding: getDialogInsetPaddin(dialogContext),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Column(mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(children: [
+              const Icon(Icons.workspace_premium, color: CustomColors.primary),
+              const SizedBox(width: 10),
+              const Expanded(child: Text('Mi plan',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,
+                  color: CustomColors.secondary))),
+              IconButton(
+                onPressed: () => Navigator.pop(dialogContext),
+                icon: const Icon(Icons.close, color: CustomColors.secondary),
+                style: IconButton.styleFrom(
+                  backgroundColor: const Color(0xFFF0F3F8),
+                  shape: const CircleBorder()),
               ),
-              if (admin) const Padding(
-                padding: EdgeInsets.only(top: 8),
-                child: Text('Premium otorgado por el administrador.'),
-              ),
-              const SizedBox(height: 16),
-              const Text('¿Cómo funciona Restaurar compras?',
-                style: TextStyle(fontWeight: FontWeight.bold,
-                  color: CustomColors.secondary)),
-              const SizedBox(height: 8),
-              const Text('• Compra activa o prueba gratuita vigente: recupera Premium.\n'
-                '• Cancelada, pero aún vigente: mantiene Premium hasta vencer.\n'
-                '• Vencida o sin compras: no se activa Premium.\n'
-                '• Otra cuenta de Google o Apple: la tienda no encontrará esa compra.\n'
-                '• Premium de administrador: no necesita restauración.\n'
-                '• PayPal: se recupera desde tu cuenta Salumed, no desde la tienda.',
-                style: TextStyle(height: 1.5)),
-              const SizedBox(height: 8),
-              const Text('La restauración requiere iniciar sesión con la cuenta de la tienda que realizó la compra.',
-                style: TextStyle(fontSize: 12)),
-            ],
-          )),
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Cerrar')),
-          if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
-            TextButton.icon(
-              onPressed: () {
-                Navigator.pop(dialogContext);
-                _restoreFromPlan();
-              },
-              icon: const Icon(Icons.restore),
-              label: const Text('Restaurar compras'),
-            ),
-          if (!active)
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: CustomColors.primary),
-              onPressed: () {
+            ]),
+            const SizedBox(height: 12),
+            Text(active ? 'Premium activo' : 'Sin suscripción Premium activa',
+              style: const TextStyle(fontWeight: FontWeight.w700,
+                color: CustomColors.primary, fontSize: 16)),
+            if (active) Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text('Proveedor: $providerName')),
+            if (active && expiration != null) Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Text('Vigente hasta: $expiration')),
+            if (store) const Padding(
+              padding: EdgeInsets.only(top: 8),
+              child: Text('La renovación se administra desde tu tienda de aplicaciones.')),
+            if (admin) const Padding(
+              padding: EdgeInsets.only(top: 8),
+              child: Text('Premium otorgado por el administrador.')),
+            const SizedBox(height: 20),
+            if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
+              _planActionButton('Restaurar compras', Icons.restore,
+                _showRestoreInformation, outlined: true),
+            if (!active) ...[
+              const SizedBox(height: 10),
+              _planActionButton('Suscribirme', Icons.workspace_premium, () {
                 Navigator.pop(dialogContext);
                 SubscriptionHelper(context).checkSubscription(
                   callback: () async { await subscriptionStatus(); });
-              },
-              child: const Text('Suscribirme', style: TextStyle(color: Colors.white)),
-            ),
-          if (active && !store && !admin)
-            TextButton(onPressed: () {
-              Navigator.pop(dialogContext);
-              confirmCancel();
-            }, child: const Text('Cancelar suscripción')),
-        ],
+              }),
+            ],
+            if (active && !store && !admin) ...[
+              const SizedBox(height: 10),
+              _planActionButton('Cancelar suscripción', Icons.cancel_outlined, () {
+                Navigator.pop(dialogContext);
+                confirmCancel();
+              }, outlined: true),
+            ],
+          ]),
+        ),
       ),
+    );
+  }
+
+  Widget _planActionButton(String label, IconData icon,
+      VoidCallback onPressed, {bool outlined = false}) {
+    return SizedBox(
+      width: double.infinity,
+      height: 46,
+      child: outlined
+        ? OutlinedButton.icon(
+            style: OutlinedButton.styleFrom(
+              foregroundColor: CustomColors.primary,
+              side: const BorderSide(color: CustomColors.primary),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+            onPressed: onPressed, icon: Icon(icon), label: Text(label))
+        : ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: CustomColors.primary,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+            onPressed: onPressed, icon: Icon(icon), label: Text(label)),
     );
   }
 
@@ -1111,13 +1173,9 @@ checkSubscriptionAndRedirect(Function callback) async {
                 _DashboardCard(
                   icon: Icons.self_improvement,
                   title: 'Mi plan',
-                  value: _openingPlan ? 'Cargando...' : isActivePlan,
+                  value: isActivePlan,
                 ),
-                if (_openingPlan) const Positioned(
-                  right: 12, top: 12,
-                  child: SizedBox(width: 18, height: 18,
-                    child: CircularProgressIndicator(strokeWidth: 2)),
-                ),
+
               ],
             ),
           ),
