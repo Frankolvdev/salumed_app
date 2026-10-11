@@ -187,6 +187,7 @@ class _StartPageState extends State<StartPage>
       Future.delayed(const Duration(milliseconds: 1000), () async {
         final prefs = await SharedPreferences.getInstance();
         final show_case = prefs.getBool('show_case') ?? false;
+        if (!mounted) return;
         if (show_case) {
           await _showWelcomeRegistrationIfNeeded();
         }
@@ -201,6 +202,7 @@ class _StartPageState extends State<StartPage>
             _resumen,
           ]);
         }
+        if (!mounted) return;
         _loadDashboardData(); // Cargar datos del dashboard
         if (widget.isLogged) _showPremiumWelcomeIfQueued();
       });
@@ -498,6 +500,7 @@ class _StartPageState extends State<StartPage>
     progresoGym = progresoGymValue;
 
     print('DEPURACIÓN: calmaInterior establecido a: $calmaInterior');
+    if (!mounted) return;
     setState(() {
       print('DEPURACIÓN: setState ejecutado');
     }); // Actualizar UI
@@ -885,7 +888,7 @@ class _StartPageState extends State<StartPage>
   String isActivePlan = '...';
   subscriptionStatus() async {
     bool isActive = await SubscriptionHelper(context).isSubscriptionActive();
-
+    if (!mounted) return;
     setState(() {
       isActivePlan = isActive ? "Activa" : "Inactiva";
     });
@@ -1103,14 +1106,10 @@ checkSubscriptionAndRedirect(Function callback) async {
                 offset: Offset(0, 10)),
             ],
           ),
-          child: Column(mainAxisSize: MainAxisSize.min,
+          child: SingleChildScrollView(child: Column(mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
-              const Icon(Icons.workspace_premium, color: CustomColors.primary),
-              const SizedBox(width: 10),
-              const Expanded(child: Text('Mi plan',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,
-                  color: CustomColors.secondary))),
+              const Expanded(child: SizedBox.shrink()),
               IconButton(
                 onPressed: () => Navigator.pop(dialogContext),
                 icon: const Icon(Icons.close, color: CustomColors.secondary),
@@ -1119,8 +1118,32 @@ checkSubscriptionAndRedirect(Function callback) async {
                   shape: const CircleBorder()),
               ),
             ]),
+            Center(child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: const BoxDecoration(
+                color: Color(0xFFE3F2FD), shape: BoxShape.circle),
+              child: const Icon(Icons.workspace_premium,
+                color: CustomColors.primary, size: 42))),
+            const SizedBox(height: 14),
+            const Center(child: Text('Mi plan',
+              style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold,
+                color: CustomColors.secondary))),
+            const SizedBox(height: 10),
+            Center(child: Text(active ? 'Premium activo' : 'Sin suscripción Premium activa',
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontWeight: FontWeight.w700,
+                color: CustomColors.primary, fontSize: 16))),
             const SizedBox(height: 12),
-            Text(active ? 'Premium activo' : 'Sin suscripción Premium activa',
+            if (!active) const Center(child: Text(
+              'Descubre todos los beneficios de SaluMeD Premium.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 14, height: 1.4))),
+            if (!active) const SizedBox(height: 14),
+            if (!active) _premiumBenefit(Icons.auto_awesome, 'Accede a contenido Premium'),
+            if (!active) _premiumBenefit(Icons.self_improvement, 'Disfruta de experiencias de bienestar'),
+            if (!active) _premiumBenefit(Icons.favorite_outline, 'Aprovecha los beneficios de tu plan'),
+            const SizedBox(height: 10),
+            /* status */ Text(active ? 'Estado: Activa' : 'Estado: Inactiva',
               style: const TextStyle(fontWeight: FontWeight.w700,
                 color: CustomColors.primary, fontSize: 16)),
             if (active) Padding(
@@ -1154,7 +1177,7 @@ checkSubscriptionAndRedirect(Function callback) async {
                 confirmCancel();
               }, outlined: true),
             ],
-          ]),
+          ])),
         ),
       ),
     );

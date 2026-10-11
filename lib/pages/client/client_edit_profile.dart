@@ -188,7 +188,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
   Widget build(BuildContext context) {
     final provider = Provider.of<AppProvider>(context, listen: true);
     dynamic addresForDelivery = null;
-    provider.user.addresses!.forEach((element) {
+    (provider.user.addresses ?? []).forEach((element) {
       if (element.is_delivery == "true") {
         addresForDelivery = element;
       }
@@ -1291,7 +1291,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
     final form = formKey.currentState;
     bool exist = false;
     final provider = Provider.of<AppProvider>(context, listen: false);
-    provider.user.addresses!.forEach((element) {
+    (provider.user.addresses ?? []).forEach((element) {
       if (element.is_delivery == "true") exist = true;
     });
 
