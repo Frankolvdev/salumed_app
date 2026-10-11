@@ -1,0 +1,8 @@
+CORRECCION FLUTTER - Salumed
+
+1. Elimina del proyecto local: lib/helpers/mercadopago_helper.dart
+2. Conserva lib/helpers/subscription_helper.dart.
+3. Ejecuta flutter pub get y flutter analyze.
+4. No cambies otros archivos por este parche.
+
+Este ZIP solo contiene instrucciones porque ZIP no aplica eliminaciones de archivos automaticamente.
