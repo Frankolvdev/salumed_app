@@ -103,13 +103,6 @@ class _CustomDialogPaymentState extends State<CustomDialogPayment> {
  ),
  SizedBox(height: 15,),
 
-//  InkWell(
-//   onTap: (){
-//     widget.callBackBtn("mercadopago");
-//   },
-//    child: Image.asset("assets/images/mercadopago.webp",
-//                           fit: BoxFit.contain),
-//  ),
          Align(
                       alignment: Alignment.center,
                       child: MaterialButton(

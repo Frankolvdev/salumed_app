@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:app/helpers/helpers.dart';
-import 'package:app/helpers/mercadopago_helper.dart';
+import 'package:app/helpers/subscription_helper.dart';
 import 'package:app/models/user.dart';
 import 'package:app/pages/start.dart';
 import 'package:app/providers/app.dart';
@@ -240,7 +240,7 @@ class _FeaturedPageState extends State<FeaturedPage> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        MercadoPagoHelper(context).checkSubscription(
+                        SubscriptionHelper(context).checkSubscription(
                             callback: () {
                           Navigator.push(
                             context,

@@ -3418,43 +3418,6 @@ class WebService {
   }
 
 
-  //mercado pago
-
- 
- //mercado pago
-
-// Crear suscripción (nuevo: sin cardToken, devuelve init_point para redirigir)
-Future<Map<String, dynamic>> createSubscription(
-    String userId, String email, String token) async {
-  dio.options.headers["x-access-token"] = token;
- try {
-  final response = await dio.post(
-   apiUrl+ "payment/subscription/create",
-    data: jsonEncode({
-      "user": {"_id": userId, "email": email},
-    }),
-  );
-
-  if (response.statusCode == 200) {
-    return {
-      "success": true,
-      "init_point": response.data["init_point"],
-      "subscriptionId": response.data["subscriptionId"]
-    };
-  } else {
-    return Future.error("Error del servidor");
-  }
-
-  }catch (e) {
-    print("error createSubscription");
-    print(e);
-    if (e is DioError) {
-      return Future.error(checkErrors((e as DioError).response));
-    }
-    return Future.error(["Ocurrió un error desconocido, intenté de nuevo."]);
-  }
-}
-
 Future<Map<String, dynamic>> createPaypalSubscription(
   String userId,
   String email,

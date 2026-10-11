@@ -1,0 +1,4 @@
+Copiar los archivos de este ZIP a la RAIZ del proyecto, preservando las rutas.
+Eliminar manualmente estos archivos obsoletos DESPUES de copiar:
+lib/helpers/mercadopago_helper.dart
+No reemplazar src/config.js ni credenciales. No borrar registros MongoDB.

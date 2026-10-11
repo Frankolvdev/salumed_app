@@ -40,7 +40,7 @@ import 'package:snack/snack.dart';
 import '../components/answer_question_dialog.dart';
 import '../components/custom_dialog.dart';
 import '../constants/colors.dart';
-import '../helpers/mercadopago_helper.dart';
+import '../helpers/subscription_helper.dart';
 import '../helpers/store_purchase_helper.dart';
 import 'package:universal_io/io.dart' show Platform;
 import '../main.dart';
@@ -879,7 +879,7 @@ class _StartPageState extends State<StartPage>
 
   String isActivePlan = '...';
   subscriptionStatus() async {
-    bool isActive = await MercadoPagoHelper(context).isSubscriptionActive();
+    bool isActive = await SubscriptionHelper(context).isSubscriptionActive();
 
     setState(() {
       isActivePlan = isActive ? "Activa" : "Inactiva";
@@ -935,7 +935,7 @@ class _StartPageState extends State<StartPage>
   }
 
 checkSubscriptionAndRedirect(Function callback) async {
-  MercadoPagoHelper(context).checkSubscription(
+  SubscriptionHelper(context).checkSubscription(
     callback: () {
       callback();
     },
@@ -957,7 +957,7 @@ checkSubscriptionAndRedirect(Function callback) async {
               final provider = Provider.of<AppProvider>(context, listen: false);
 
               if (provider.user.id == null) {
-                MercadoPagoHelper(context).checkSubscription(callback: () {});
+                SubscriptionHelper(context).checkSubscription(callback: () {});
                 return;
               }
 
@@ -972,7 +972,7 @@ checkSubscriptionAndRedirect(Function callback) async {
                   final providerName = paymentProvider == 'google_play' ? 'Google Play' :
                     paymentProvider == 'apple' ? 'App Store' :
                     paymentProvider == 'paypal' ? 'PayPal' :
-                    paymentProvider == 'mercadopago' ? 'Mercado Pago' : 'Administración';
+                    'Administración';
                   final expiration = plan['expires_at'];
                   showDialog(context: context, builder: (dialogContext) => AlertDialog(
                     title: const Text('Mi plan'),
@@ -1034,14 +1034,14 @@ checkSubscriptionAndRedirect(Function callback) async {
                       }, child: const Text('Restaurar compras')),
                       TextButton(onPressed: () {
                         Navigator.pop(dialogContext);
-                        MercadoPagoHelper(context).checkSubscription(
+                        SubscriptionHelper(context).checkSubscription(
                           callback: () async { await subscriptionStatus(); },
                         );
                       }, child: const Text('Suscribirme')),
                     ],
                   ));
                 } else {
-                  MercadoPagoHelper(context).checkSubscription(
+                  SubscriptionHelper(context).checkSubscription(
                     callback: () async { await subscriptionStatus(); },
                   );
                 }

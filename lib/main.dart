@@ -1,6 +1,6 @@
 import 'package:app/constants/colors.dart';
 import 'package:app/constants/globals.dart';
-import 'package:app/helpers/mercadopago_helper.dart';
+import 'package:app/helpers/subscription_helper.dart';
 import 'package:app/pages/hero.dart';
 import 'package:app/pages/open.dart';
 import 'package:app/pages/splash.dart';
