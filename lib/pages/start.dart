@@ -1020,7 +1020,7 @@ checkSubscriptionAndRedirect(Function callback) async {
           padding: const EdgeInsets.all(18),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             Row(children: [
-              const Expanded(child: Text('Restaurar compras',
+              const Expanded(child: Text('Recuperar mi compra',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,
                       color: CustomColors.secondary))),
               IconButton(
@@ -1050,14 +1050,14 @@ checkSubscriptionAndRedirect(Function callback) async {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: CustomColors.primary,
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10))),
+                  shape: const StadiumBorder(),
+                  elevation: 2),
                 onPressed: () {
                   Navigator.pop(dialogContext);
                   _restoreFromPlan();
                 },
                 icon: const Icon(Icons.restore),
-                label: const Text('Continuar con restauración'),
+                label: const Text('Recuperar mi compra'),
               )),
           ]),
         ),
@@ -1115,7 +1115,7 @@ checkSubscriptionAndRedirect(Function callback) async {
               child: Text('Premium otorgado por el administrador.')),
             const SizedBox(height: 20),
             if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
-              _planActionButton('Restaurar compras', Icons.restore,
+              _planActionButton('Recuperar mi compra', Icons.restore,
                 _showRestoreInformation, outlined: true),
             if (!active) ...[
               const SizedBox(height: 10),
@@ -1148,13 +1148,15 @@ checkSubscriptionAndRedirect(Function callback) async {
             style: OutlinedButton.styleFrom(
               foregroundColor: CustomColors.primary,
               side: const BorderSide(color: CustomColors.primary),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              shape: const StadiumBorder(),
+              elevation: 2),
             onPressed: onPressed, icon: Icon(icon), label: Text(label))
         : ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: CustomColors.primary,
               foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              shape: const StadiumBorder(),
+              elevation: 2),
             onPressed: onPressed, icon: Icon(icon), label: Text(label)),
     );
   }

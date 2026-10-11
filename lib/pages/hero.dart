@@ -282,27 +282,27 @@ if (!permission) {
                         ),
                       ),
                     ),
-                    // Frase dinámica
-                    loadingQuote
-                        ? CircularProgressIndicator(color: Colors.white)
-                        : Text(
-                            dailyQuote,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                    // Inicio rapido omite completamente la frase y su spinner.
+                    // El indicador de puntos permanece visible mientras carga.
+                    if (!inicioRapido) ...[
+                      loadingQuote
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : Text(
+                              dailyQuote,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                    const SizedBox(height: 20),
-                    Text(
-                      "Frase del día",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white70,
+                      const SizedBox(height: 20),
+                      const Text(
+                        "Frase del día",
+                        style: TextStyle(fontSize: 15, color: Colors.white70),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
+                    ],
                     (!endLoading)
                         ? JumpingDotsProgressIndicator(
                             fontSize: 50.0,
@@ -339,7 +339,7 @@ if (!permission) {
   }
 
   navigateToNext() {
-    if (!endLoading || loadingQuote) {
+    if (!endLoading || (!inicioRapido && loadingQuote)) {
       return;
     }
     Navigator.push(
