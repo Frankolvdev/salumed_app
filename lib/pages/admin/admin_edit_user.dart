@@ -1007,12 +1007,46 @@ class _AdminEditUserState extends State<AdminEditUser> {
                               onChanged: premiumLoaded ? (value) => setState(() => premiumGranted = value == true) : null,
                             ),
                             if (!premiumLoaded) Text('No se pudo consultar el permiso. No se modificara.'),
-                            Text('Suscripciones registradas: ${premiumSubscriptions.length}'),
-                            ...premiumSubscriptions.map((entry) => ListTile(
-                              dense: true,
-                              title: Text('${entry['provider'] ?? 'Proveedor desconocido'} - ${entry['status'] ?? 'Sin estado'}'),
-                              subtitle: Text('Entorno: ${entry['environment'] ?? 'sin identificar'} · Proximo cobro: ${entry['next_payment_date'] ?? 'sin datos'}'),
-                            )),
+                            const SizedBox(height: 10),
+                            Text('Historial de suscripciones (${premiumSubscriptions.length})',
+                                style: const TextStyle(fontWeight: FontWeight.w600)),
+                            const Text('Los registros indican el estado del plan; no son comprobantes de cobros.',
+                                style: TextStyle(fontSize: 12, color: Colors.black54)),
+                            if (premiumLoaded && premiumSubscriptions.isEmpty)
+                              const Padding(padding: EdgeInsets.symmetric(vertical: 12),
+                                  child: Text('Este cliente no tiene suscripciones registradas.')),
+                            ...premiumSubscriptions.map((entry) {
+                              final record = entry is Map ? entry : <String, dynamic>{};
+                              final provider = record['provider']?.toString() ?? 'legacy_unknown';
+                              final providerName = provider == 'google_play' ? 'Google Play (Android)'
+                                  : provider == 'apple' ? 'App Store (iOS)'
+                                  : provider == 'paypal' ? 'PayPal' : 'Proveedor sin identificar';
+                              String value(String key) => record[key]?.toString() ?? 'Sin datos';
+                              return Card(
+                                margin: const EdgeInsets.symmetric(vertical: 5),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                    Text(providerName, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                    Text('Estado: ${value('status')} · Entorno: ${value('environment')}'),
+                                    Text('Plan: ${record['store_product_id'] ?? record['plan_id'] ?? 'Sin datos'}'),
+                                    Text('Registrado: ${value('createdAt')}'),
+                                    Text('Última actualización: ${value('updatedAt')}'),
+                                    Text('Verificado: ${value('verified_at')}'),
+                                    Text('Vencimiento: ${value('expires_at')}'),
+                                    Text('Próximo cobro: ${value('next_payment_date')}'),
+                                    Text('Renovación automática: ${record['auto_renew'] == true ? 'Sí' : record['auto_renew'] == false ? 'No' : 'Sin datos'}'),
+                                    if (record['cancelled_at'] != null)
+                                      Text('Cancelación registrada: ${value('cancelled_at')}'),
+                                    const SizedBox(height: 4),
+                                    const Text('Para cancelar cobros, utiliza el proveedor correspondiente.
+'
+                                        'El Premium gratuito se gestiona con la casilla superior.',
+                                        style: TextStyle(fontSize: 12, color: Colors.black54)),
+                                  ]),
+                                ),
+                              );
+                            }),
                           ]),
                         ),
                       ),
