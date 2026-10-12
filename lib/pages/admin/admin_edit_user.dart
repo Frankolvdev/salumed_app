@@ -92,6 +92,9 @@ class _AdminEditUserState extends State<AdminEditUser> {
   List<dynamic> premiumPayments = [];
   String? premiumPaymentsError;
   bool premiumCancelling = false;
+  String appleScenario = 'trial';
+  Map<String, dynamic>? appleSimulation;
+  bool appleSimulationLoading = false;
 
   @override
   void initState() {
@@ -156,6 +159,21 @@ class _AdminEditUserState extends State<AdminEditUser> {
       });
     } catch (_) {
       if (mounted) setState(() => premiumPaymentsError = 'No se pudo consultar el historial de cobros.');
+    }
+  }
+
+  Future<void> _loadAppleSimulation(String scenario) async {
+    if (appleSimulationLoading) return;
+    setState(() { appleSimulationLoading = true; appleScenario = scenario; appleSimulation = null; });
+    try {
+      final token = Provider.of<AppProvider>(context, listen: false).user.token ?? '';
+      final result = await WebService(context).getAppleAdminSimulator(widget.user.id ?? '', token, scenario);
+      if (!mounted) return;
+      setState(() => appleSimulation = Map<String, dynamic>.from(result));
+    } catch (_) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Simulador Apple no disponible. Requiere entorno de desarrollo y APPLE_IAP_MODE=mock.')));
+    } finally {
+      if (mounted) setState(() => appleSimulationLoading = false);
     }
   }
 
@@ -1066,17 +1084,33 @@ class _AdminEditUserState extends State<AdminEditUser> {
                               );
                             }),
                             const SizedBox(height: 12),
-                            Text('Cobros verificados de PayPal (${premiumPayments.length})',
+                            Text('Cobros consultados a proveedores (${premiumPayments.length})',
                                 style: const TextStyle(fontWeight: FontWeight.w600)),
-                            const Text('Google Play y Apple aún no tienen historial financiero completo en esta sección.',
+                            const Text('PayPal y Google Play: movimientos verificados disponibles. El histórico de Google Play puede ser parcial. Apple se prueba por separado.',
                                 style: TextStyle(fontSize: 12, color: Colors.black54)),
                             if (premiumPaymentsError != null) Text(premiumPaymentsError!, style: const TextStyle(color: Colors.red)),
                             ...premiumPayments.map((entry) {
                               final item = entry is Map ? entry : <String, dynamic>{};
                               return ListTile(dense: true,
-                                title: Text('${item['amount'] ?? '—'} ${item['currency'] ?? ''} · ${item['status'] ?? ''}'),
+                                title: Text('${item['provider'] ?? ''} · ${item['amount'] ?? '—'} ${item['currency'] ?? ''} · ${item['status'] ?? ''}'),
                                 subtitle: Text('${item['date'] ?? ''} · ${item['transaction_id'] ?? ''}'));
                             }),
+                            const SizedBox(height: 12),
+                            const Text('App Store · simulador de desarrollo', style: TextStyle(fontWeight: FontWeight.w600)),
+                            const Text('Solo escenarios ficticios. No son compras, reembolsos ni acceso Premium real.', style: TextStyle(fontSize: 12, color: Colors.black54)),
+                            Wrap(spacing: 6, children: [
+                              for (final scenario in ['trial', 'active', 'expired', 'cancelled', 'refunded'])
+                                ChoiceChip(label: Text(scenario), selected: appleScenario == scenario,
+                                  onSelected: appleSimulationLoading ? null : (_) => _loadAppleSimulation(scenario)),
+                            ]),
+                            if (appleSimulationLoading) const LinearProgressIndicator(),
+                            if (appleSimulation != null) ...[
+                              Text('SIMULADO · ${appleSimulation!['status']} · Renovación: ${appleSimulation!['auto_renew'] == true ? 'Sí' : 'No'}'),
+                              Text('Vencimiento ficticio: ${appleSimulation!['expires_at'] ?? '—'}'),
+                              for (final transaction in (appleSimulation!['transactions'] is List ? appleSimulation!['transactions'] as List : []))
+                                ListTile(dense: true, title: Text('SIMULADO · ${transaction['amount']} ${transaction['currency']} · ${transaction['status']}'),
+                                  subtitle: Text('${transaction['transaction_id']} · ${transaction['date']}')),
+                            ],
                             const SizedBox(height: 12),
                             Text('Historial de suscripciones (${premiumSubscriptions.length})',
                                 style: const TextStyle(fontWeight: FontWeight.w600)),

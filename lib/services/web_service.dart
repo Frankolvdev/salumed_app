@@ -1960,6 +1960,12 @@ class WebService {
     return Map<String, dynamic>.from(response.data);
   }
 
+  Future<dynamic> getAppleAdminSimulator(String userId, String token, String scenario) async {
+    final response = await dio.get(apiUrl + 'user/premium/admin/' + userId + '/apple-simulator',
+      queryParameters: {'scenario': scenario}, options: Options(headers: {'x-access-token': token}));
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> getPremiumAdminPayments(String userId, String token) async {
     final response = await dio.get(apiUrl + 'user/premium/admin/' + userId + '/payments',
         options: Options(headers: {'x-access-token': token}));
