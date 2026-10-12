@@ -101,6 +101,7 @@ class _StartPageState extends State<StartPage>
   var timerPushService = null;
   bool _welcomePromptShown = false;
   bool _openingPlan = false;
+  bool _loadingPlan = false;
   bool _premiumWelcomeChecking = false;
   bool _premiumWelcomeVisible = false;
   bool _premiumWelcomeDeferred = false;
@@ -957,48 +958,43 @@ checkSubscriptionAndRedirect(Function callback) async {
 }
 
   Future<void> _openPlanDialog() async {
-    if (_openingPlan || _premiumWelcomeVisible) return;
-    if (!mounted) return;
+    if (_openingPlan || _premiumWelcomeVisible || !mounted) return;
     setState(() => _openingPlan = true);
-    try {
-      // Keep the busy flag until BOTH the network request and plan dialog close.
-      // This prevents the automatic Premium welcome from stacking on the loader.
-      await _fetchAndShowPlan();
-    } finally {
-      if (mounted) {
-        setState(() => _openingPlan = false);
-        if (_premiumWelcomeDeferred) {
-          _premiumWelcomeDeferred = false;
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (mounted) _showPremiumWelcomeIfQueued();
-          });
+    // Reuse the same blocking loading dialog used throughout Salumed.
+    simpleLoading(context, (BuildContext loadingContext) async {
+      bool loaderOpen = true;
+      try {
+        final provider = Provider.of<AppProvider>(context, listen: false);
+        if (provider.user.id == null || provider.user.token == null) {
+          throw StateError('Inicia sesión para consultar tu plan.');
+        }
+        final plan = await WebService(context).getUserSubscription(
+            provider.user.id!, provider.user.token!);
+        if (!mounted) return;
+        // Dismiss the loader before opening the plan details dialog.
+        Navigator.of(loadingContext).pop();
+        loaderOpen = false;
+        final active = plan['active'] == true;
+        setState(() => isActivePlan = active ? 'Activa' : 'Inactiva');
+        await _showPlanDetails(plan, active);
+      } catch (error) {
+        if (mounted) {
+          if (loaderOpen) Navigator.of(loadingContext).pop();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('No se pudo consultar Mi plan: $error')));
+        }
+      } finally {
+        if (mounted) {
+          setState(() => _openingPlan = false);
+          if (_premiumWelcomeDeferred) {
+            _premiumWelcomeDeferred = false;
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (mounted) _showPremiumWelcomeIfQueued();
+            });
+          }
         }
       }
-    }
-  }
-
-  Future<void> _fetchAndShowPlan() async {
-    // A modal is managed in a single flow; do not start the welcome
-    // invitation while the subscription request is still in flight.
-    dynamic plan;
-    try {
-      final provider = Provider.of<AppProvider>(context, listen: false);
-      if (provider.user.id == null || provider.user.token == null) {
-        throw StateError('Inicia sesión para consultar tu plan.');
-      }
-      plan = await WebService(context).getUserSubscription(
-          provider.user.id!, provider.user.token!);
-    } catch (error) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('No se pudo consultar Mi plan: $error')));
-      }
-      return;
-    }
-    if (!mounted) return;
-    final active = plan['active'] == true;
-    setState(() => isActivePlan = active ? 'Activa' : 'Inactiva');
-    await _showPlanDetails(plan, active);
+    });
   }
 
   Future<void> _restoreFromPlan() async {
@@ -1340,16 +1336,10 @@ checkSubscriptionAndRedirect(Function callback) async {
         children: [
           InkWell(
             onTap: _openingPlan ? null : _openPlanDialog,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                _DashboardCard(
-                  icon: Icons.self_improvement,
-                  title: 'Mi plan',
-                  value: isActivePlan,
-                ),
-
-              ],
+            child: _DashboardCard(
+              icon: Icons.self_improvement,
+              title: 'Mi plan',
+              value: isActivePlan,
             ),
           ),
           _DashboardCard(
