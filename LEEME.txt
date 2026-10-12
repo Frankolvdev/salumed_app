@@ -1,1 +1,1 @@
-Salumed v39. Aplicar solo sobre salumed_app-main (37).zip. Cambia exclusivamente la condición que muestra Recuperar mi compra en Mi plan: se oculta si Premium está activo. Sin cambios al loading, cancelación, backend ni administrador.
+MegaZIP v40. Aplicar sobre salumed_app-main (38). Solo reemplaza lib/pages/start.dart. Muestra renovacion cancelada cuando Google Play confirma cancelacion vigente; oculta el boton cancelar para ese estado. No modifica simpleLoading ni la verificacion de compras. No cambia backend.

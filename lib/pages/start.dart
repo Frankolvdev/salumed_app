@@ -1138,6 +1138,9 @@ checkSubscriptionAndRedirect(Function callback) async {
         paymentProvider == 'paypal' ? 'PayPal' :
         admin ? 'Administración' : 'Sin proveedor';
     final expiration = plan['expires_at'];
+    final status = (plan['status'] ?? '').toString().toUpperCase();
+    final renewalCanceled = active && paymentProvider == 'google_play' &&
+        (status == 'SUBSCRIPTION_STATE_CANCELED' || plan['auto_renew'] == false);
     await showDialog<void>(
       context: context,
       builder: (dialogContext) => Dialog(
@@ -1200,6 +1203,16 @@ checkSubscriptionAndRedirect(Function callback) async {
             if (active && expiration != null) Padding(
               padding: const EdgeInsets.only(top: 5),
               child: Text('Vigente hasta: $expiration')),
+            if (renewalCanceled) Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                expiration == null
+                    ? 'Renovación cancelada. Puedes seguir usando Premium hasta que termine el periodo vigente.'
+                    : 'Renovación cancelada. Puedes seguir usando Premium hasta: $expiration',
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.w600, color: CustomColors.secondary),
+              ),
+            ),
             if (store) const Padding(
               padding: EdgeInsets.only(top: 8),
               child: Text('La renovación se administra desde tu tienda de aplicaciones.')),
@@ -1218,7 +1231,7 @@ checkSubscriptionAndRedirect(Function callback) async {
                   callback: () async { await subscriptionStatus(); });
               }),
             ],
-            if (active && !admin && (store || paymentProvider == 'paypal')) ...[
+            if (active && !admin && !renewalCanceled && (store || paymentProvider == 'paypal')) ...[
               const SizedBox(height: 10),
               _planActionButton('Cancelar suscripción', Icons.cancel_outlined, () {
                 Navigator.pop(dialogContext);
