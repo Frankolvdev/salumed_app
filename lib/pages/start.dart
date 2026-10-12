@@ -1207,7 +1207,7 @@ checkSubscriptionAndRedirect(Function callback) async {
               padding: EdgeInsets.only(top: 8),
               child: Text('Premium otorgado por el administrador.')),
             const SizedBox(height: 20),
-            if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
+            if (!active && !kIsWeb && (Platform.isAndroid || Platform.isIOS))
               _planActionButton('Recuperar mi compra', Icons.restore,
                 _showRestoreInformation, outlined: true),
             if (!active) ...[
