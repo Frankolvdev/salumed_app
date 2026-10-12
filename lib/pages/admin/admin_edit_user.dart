@@ -1150,8 +1150,7 @@ class _AdminEditUserState extends State<AdminEditUser> {
                                         label: const Text('Cancelar renovación en proveedor'),
                                       )),
                                     const SizedBox(height: 4),
-                                    const Text('Para cancelar cobros, utiliza el proveedor correspondiente.
-'
+                                    const Text('Para cancelar cobros, utiliza el proveedor correspondiente.'
                                         'El Premium gratuito se gestiona con la casilla superior.',
                                         style: TextStyle(fontSize: 12, color: Colors.black54)),
                                   ]),
