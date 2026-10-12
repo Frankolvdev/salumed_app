@@ -1129,7 +1129,6 @@ class _AdminEditUserState extends State<AdminEditUser> {
                               const Text('No hay renovaciones habilitadas para cancelación.', style: TextStyle(fontSize: 12)),
                             const SizedBox(height: 10),
                             ExpansionTile(
-                              key: const PageStorageKey('premiumHistory'),
                               initiallyExpanded: false,
                               title: const Text('Ver u ocultar historial de pagos y suscripciones'),
                               subtitle: Text('${premiumEvents.length} eventos · ${premiumPayments.length} cobros · ${premiumSubscriptions.length} suscripciones'),
