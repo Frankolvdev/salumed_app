@@ -89,6 +89,9 @@ class _AdminEditUserState extends State<AdminEditUser> {
   bool premiumLoaded = false;
   List<dynamic> premiumSubscriptions = [];
   List<dynamic> premiumEvents = [];
+  List<dynamic> premiumPayments = [];
+  String? premiumPaymentsError;
+  bool premiumCancelling = false;
 
   @override
   void initState() {
@@ -122,6 +125,7 @@ class _AdminEditUserState extends State<AdminEditUser> {
     requestInvoice = user.request_invoice == "yes" ? true : false;
     BackButtonInterceptor.add(myInterceptor);
     _loadPremiumAdmin();
+    _loadPremiumPayments();
   }
 
   Future<void> _loadPremiumAdmin() async {
@@ -137,6 +141,45 @@ class _AdminEditUserState extends State<AdminEditUser> {
       });
     } catch (error) {
       if (mounted) setState(() => premiumLoaded = false);
+    }
+  }
+
+  Future<void> _loadPremiumPayments() async {
+    try {
+      final token = Provider.of<AppProvider>(context, listen: false).user.token ?? '';
+      final result = await WebService(context).getPremiumAdminPayments(widget.user.id ?? '', token);
+      if (!mounted) return;
+      setState(() {
+        premiumPayments = result['payments'] is List ? result['payments'] : [];
+        premiumPaymentsError = (result['errors'] is List && (result['errors'] as List).isNotEmpty)
+            ? 'Algunos cobros no pudieron consultarse en el proveedor.' : null;
+      });
+    } catch (_) {
+      if (mounted) setState(() => premiumPaymentsError = 'No se pudo consultar el historial de cobros.');
+    }
+  }
+
+  Future<void> _cancelPremiumSubscription(String subscriptionId, String provider) async {
+    final confirmed = await showDialog<bool>(context: context, builder: (dialogContext) => AlertDialog(
+      title: const Text('Cancelar renovación'),
+      content: Text('¿Confirmas cancelar la renovación de esta suscripción en $provider? Esta acción afecta los cobros futuros.'),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(dialogContext, false), child: const Text('Volver')),
+        TextButton(onPressed: () => Navigator.pop(dialogContext, true), child: const Text('Confirmar cancelación')),
+      ],
+    ));
+    if (confirmed != true || !mounted || premiumCancelling) return;
+    setState(() => premiumCancelling = true);
+    try {
+      final token = Provider.of<AppProvider>(context, listen: false).user.token ?? '';
+      await WebService(context).cancelPremiumAdminSubscription(widget.user.id ?? '', subscriptionId, token);
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Cancelación confirmada por el proveedor.')));
+      await _loadPremiumAdmin();
+    } catch (_) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No se confirmó la cancelación. Consulta el proveedor antes de reintentar.')));
+    } finally {
+      if (mounted) setState(() => premiumCancelling = false);
     }
   }
 
@@ -1023,6 +1066,18 @@ class _AdminEditUserState extends State<AdminEditUser> {
                               );
                             }),
                             const SizedBox(height: 12),
+                            Text('Cobros verificados de PayPal (${premiumPayments.length})',
+                                style: const TextStyle(fontWeight: FontWeight.w600)),
+                            const Text('Google Play y Apple aún no tienen historial financiero completo en esta sección.',
+                                style: TextStyle(fontSize: 12, color: Colors.black54)),
+                            if (premiumPaymentsError != null) Text(premiumPaymentsError!, style: const TextStyle(color: Colors.red)),
+                            ...premiumPayments.map((entry) {
+                              final item = entry is Map ? entry : <String, dynamic>{};
+                              return ListTile(dense: true,
+                                title: Text('${item['amount'] ?? '—'} ${item['currency'] ?? ''} · ${item['status'] ?? ''}'),
+                                subtitle: Text('${item['date'] ?? ''} · ${item['transaction_id'] ?? ''}'));
+                            }),
+                            const SizedBox(height: 12),
                             Text('Historial de suscripciones (${premiumSubscriptions.length})',
                                 style: const TextStyle(fontWeight: FontWeight.w600)),
                             const Text('Los registros indican el estado del plan; no son comprobantes de cobros.',
@@ -1053,6 +1108,13 @@ class _AdminEditUserState extends State<AdminEditUser> {
                                     Text('Renovación automática: ${record['auto_renew'] == true ? 'Sí' : record['auto_renew'] == false ? 'No' : 'Sin datos'}'),
                                     if (record['cancelled_at'] != null)
                                       Text('Cancelación registrada: ${value('cancelled_at')}'),
+                                    if (record['cancellation_supported'] == true && record['subscription_id'] != null)
+                                      Padding(padding: const EdgeInsets.only(top: 8), child: OutlinedButton.icon(
+                                        onPressed: premiumCancelling ? null : () => _cancelPremiumSubscription(
+                                          record['subscription_id'].toString(), providerName),
+                                        icon: const Icon(Icons.cancel_outlined),
+                                        label: const Text('Cancelar renovación en proveedor'),
+                                      )),
                                     const SizedBox(height: 4),
                                     const Text('Para cancelar cobros, utiliza el proveedor correspondiente.
 '

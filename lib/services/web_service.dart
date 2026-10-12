@@ -1960,6 +1960,17 @@ class WebService {
     return Map<String, dynamic>.from(response.data);
   }
 
+  Future<Map<String, dynamic>> getPremiumAdminPayments(String userId, String token) async {
+    final response = await dio.get(apiUrl + 'user/premium/admin/' + userId + '/payments',
+        options: Options(headers: {'x-access-token': token}));
+    return Map<String, dynamic>.from(response.data);
+  }
+
+  Future<void> cancelPremiumAdminSubscription(String userId, String subscriptionId, String token) async {
+    await dio.post(apiUrl + 'user/premium/admin/' + userId + '/subscriptions/' + subscriptionId + '/cancel',
+        data: {'confirm': true}, options: Options(headers: {'x-access-token': token}));
+  }
+
   Future<void> setPremiumAdmin(String userId, String token, bool enabled) async {
     await dio.patch(apiUrl + 'user/premium/admin/' + userId,
         data: {'premium_granted_by_admin': enabled},
