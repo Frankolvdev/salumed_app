@@ -92,6 +92,10 @@ class _AdminEditUserState extends State<AdminEditUser> {
   List<dynamic> premiumPayments = [];
   String? premiumPaymentsError;
   bool premiumCancelling = false;
+  bool premiumHistoryExpanded = false;
+  DateTime? premiumHistoryFrom;
+  DateTime? premiumHistoryTo;
+  final premiumHistorySearch = TextEditingController();
   String appleScenario = 'trial';
   Map<String, dynamic>? appleSimulation;
   bool appleSimulationLoading = false;
@@ -201,9 +205,41 @@ class _AdminEditUserState extends State<AdminEditUser> {
     }
   }
 
+  DateTime? _premiumDate(dynamic value) {
+    if (value == null) return null;
+    return DateTime.tryParse(value.toString())?.toLocal();
+  }
+
+  bool _premiumHistoryMatches(Map record, List<String> dateFields) {
+    final search = premiumHistorySearch.text.trim().toLowerCase();
+    if (search.isNotEmpty && !record.values.any((value) =>
+        (value?.toString() ?? '').toLowerCase().contains(search))) return false;
+    if (premiumHistoryFrom == null && premiumHistoryTo == null) return true;
+    DateTime? date;
+    for (final key in dateFields) {
+      date = _premiumDate(record[key]);
+      if (date != null) break;
+    }
+    if (date == null) return false;
+    if (premiumHistoryFrom != null && date.isBefore(DateTime(premiumHistoryFrom!.year,
+        premiumHistoryFrom!.month, premiumHistoryFrom!.day))) return false;
+    if (premiumHistoryTo != null && !date.isBefore(DateTime(premiumHistoryTo!.year,
+        premiumHistoryTo!.month, premiumHistoryTo!.day + 1))) return false;
+    return true;
+  }
+
+  Future<void> _selectPremiumHistoryDate(bool from) async {
+    final date = await showDatePicker(context: context,
+      initialDate: (from ? premiumHistoryFrom : premiumHistoryTo) ?? DateTime.now(),
+      firstDate: DateTime(2000), lastDate: DateTime(2100));
+    if (date == null || !mounted) return;
+    setState(() { if (from) { premiumHistoryFrom = date; } else { premiumHistoryTo = date; } });
+  }
+
   @override
   void dispose() {
     BackButtonInterceptor.remove(myInterceptor);
+    premiumHistorySearch.dispose();
     super.dispose();
   }
 
@@ -1071,11 +1107,51 @@ class _AdminEditUserState extends State<AdminEditUser> {
                             ),
                             if (!premiumLoaded) Text('No se pudo consultar el permiso. No se modificara.'),
                             const SizedBox(height: 10),
+                            const SizedBox(height: 12),
+                            const Text('Control de renovaciones', style: TextStyle(fontWeight: FontWeight.w600)),
+                            const Text('Cancela en el proveedor; el cliente conserva el acceso pagado hasta el vencimiento.',
+                                style: TextStyle(fontSize: 12, color: Colors.black54)),
+                            ...premiumSubscriptions.where((entry) => entry is Map &&
+                                entry['cancellation_supported'] == true && entry['subscription_id'] != null).map((entry) {
+                              final record = entry as Map;
+                              final name = record['provider'] == 'google_play' ? 'Google Play' : 'PayPal';
+                              return Padding(padding: const EdgeInsets.symmetric(vertical: 5), child: Wrap(
+                                spacing: 8, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
+                                  Text('$name · ${record['store_product_id'] ?? record['plan_id'] ?? 'Suscripción'}'),
+                                  OutlinedButton.icon(
+                                    onPressed: premiumCancelling ? null : () => _cancelPremiumSubscription(
+                                      record['subscription_id'].toString(), name),
+                                    icon: const Icon(Icons.cancel_outlined),
+                                    label: const Text('Cancelar renovación')),
+                                ]));
+                            }),
+                            if (!premiumSubscriptions.any((entry) => entry is Map && entry['cancellation_supported'] == true))
+                              const Text('No hay renovaciones habilitadas para cancelación.', style: TextStyle(fontSize: 12)),
+                            const SizedBox(height: 10),
+                            ExpansionTile(
+                              key: const PageStorageKey('premiumHistory'),
+                              initiallyExpanded: false,
+                              title: const Text('Ver u ocultar historial de pagos y suscripciones'),
+                              subtitle: Text('${premiumEvents.length} eventos · ${premiumPayments.length} cobros · ${premiumSubscriptions.length} suscripciones'),
+                              children: [
+                                TextField(controller: premiumHistorySearch,
+                                  decoration: const InputDecoration(prefixIcon: Icon(Icons.search),
+                                    labelText: 'Buscar en el historial'),
+                                  onChanged: (_) => setState(() {})),
+                                Wrap(spacing: 8, runSpacing: 6, children: [
+                                  OutlinedButton(onPressed: () => _selectPremiumHistoryDate(true),
+                                    child: Text('Desde: ${premiumHistoryFrom == null ? 'Todas' : DateFormat('dd/MM/yyyy').format(premiumHistoryFrom!)}')),
+                                  OutlinedButton(onPressed: () => _selectPremiumHistoryDate(false),
+                                    child: Text('Hasta: ${premiumHistoryTo == null ? 'Todas' : DateFormat('dd/MM/yyyy').format(premiumHistoryTo!)}')),
+                                  TextButton(onPressed: () => setState(() {
+                                    premiumHistoryFrom = null; premiumHistoryTo = null; premiumHistorySearch.clear();
+                                  }), child: const Text('Limpiar filtros')),
+                                ]),
                             Text('Historial de verificaciones (${premiumEvents.length})',
                                 style: const TextStyle(fontWeight: FontWeight.w600)),
                             const Text('Auditoría de estados; no representa cargos ni recibos.',
                                 style: TextStyle(fontSize: 12, color: Colors.black54)),
-                            ...premiumEvents.map((event) {
+                            ...premiumEvents.where((event) => event is Map && _premiumHistoryMatches(event, ['createdAt'])).map((event) {
                               final item = event is Map ? event : <String, dynamic>{};
                               return ListTile(
                                 dense: true,
@@ -1089,7 +1165,7 @@ class _AdminEditUserState extends State<AdminEditUser> {
                             const Text('PayPal y Google Play: movimientos verificados disponibles. El histórico de Google Play puede ser parcial. Apple se prueba por separado.',
                                 style: TextStyle(fontSize: 12, color: Colors.black54)),
                             if (premiumPaymentsError != null) Text(premiumPaymentsError!, style: const TextStyle(color: Colors.red)),
-                            ...premiumPayments.map((entry) {
+                            ...premiumPayments.where((entry) => entry is Map && _premiumHistoryMatches(entry, ['date'])).map((entry) {
                               final item = entry is Map ? entry : <String, dynamic>{};
                               return ListTile(dense: true,
                                 title: Text('${item['provider'] ?? ''} · ${item['amount'] ?? '—'} ${item['currency'] ?? ''} · ${item['status'] ?? ''}'),
@@ -1119,7 +1195,7 @@ class _AdminEditUserState extends State<AdminEditUser> {
                             if (premiumLoaded && premiumSubscriptions.isEmpty)
                               const Padding(padding: EdgeInsets.symmetric(vertical: 12),
                                   child: Text('Este cliente no tiene suscripciones registradas.')),
-                            ...premiumSubscriptions.map((entry) {
+                            ...premiumSubscriptions.where((entry) => entry is Map && _premiumHistoryMatches(entry, ['createdAt', 'updatedAt'])).map((entry) {
                               final record = entry is Map ? entry : <String, dynamic>{};
                               final provider = record['provider']?.toString() ?? 'legacy_unknown';
                               final providerName = provider == 'google_play' ? 'Google Play (Android)'
@@ -1142,13 +1218,6 @@ class _AdminEditUserState extends State<AdminEditUser> {
                                     Text('Renovación automática: ${record['auto_renew'] == true ? 'Sí' : record['auto_renew'] == false ? 'No' : 'Sin datos'}'),
                                     if (record['cancelled_at'] != null)
                                       Text('Cancelación registrada: ${value('cancelled_at')}'),
-                                    if (record['cancellation_supported'] == true && record['subscription_id'] != null)
-                                      Padding(padding: const EdgeInsets.only(top: 8), child: OutlinedButton.icon(
-                                        onPressed: premiumCancelling ? null : () => _cancelPremiumSubscription(
-                                          record['subscription_id'].toString(), providerName),
-                                        icon: const Icon(Icons.cancel_outlined),
-                                        label: const Text('Cancelar renovación en proveedor'),
-                                      )),
                                     const SizedBox(height: 4),
                                     const Text('Para cancelar cobros, utiliza el proveedor correspondiente.'
                                         'El Premium gratuito se gestiona con la casilla superior.',
@@ -1157,6 +1226,9 @@ class _AdminEditUserState extends State<AdminEditUser> {
                                 ),
                               );
                             }),
+
+                              ],
+                            ),
                           ]),
                         ),
                       ),
