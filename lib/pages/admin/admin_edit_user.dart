@@ -88,6 +88,7 @@ class _AdminEditUserState extends State<AdminEditUser> {
   bool premiumGranted = false;
   bool premiumLoaded = false;
   List<dynamic> premiumSubscriptions = [];
+  List<dynamic> premiumEvents = [];
 
   @override
   void initState() {
@@ -131,6 +132,7 @@ class _AdminEditUserState extends State<AdminEditUser> {
       setState(() {
         premiumGranted = result['premium_granted_by_admin'] == true;
         premiumSubscriptions = result['subscriptions'] is List ? result['subscriptions'] : [];
+        premiumEvents = result['events'] is List ? result['events'] : [];
         premiumLoaded = true;
       });
     } catch (error) {
@@ -1008,6 +1010,19 @@ class _AdminEditUserState extends State<AdminEditUser> {
                             ),
                             if (!premiumLoaded) Text('No se pudo consultar el permiso. No se modificara.'),
                             const SizedBox(height: 10),
+                            Text('Historial de verificaciones (${premiumEvents.length})',
+                                style: const TextStyle(fontWeight: FontWeight.w600)),
+                            const Text('Auditoría de estados; no representa cargos ni recibos.',
+                                style: TextStyle(fontSize: 12, color: Colors.black54)),
+                            ...premiumEvents.map((event) {
+                              final item = event is Map ? event : <String, dynamic>{};
+                              return ListTile(
+                                dense: true,
+                                title: Text('${item['provider'] ?? 'Proveedor'} · ${item['status'] ?? 'Sin estado'}'),
+                                subtitle: Text('${item['event'] ?? ''} · ${item['createdAt'] ?? ''}'),
+                              );
+                            }),
+                            const SizedBox(height: 12),
                             Text('Historial de suscripciones (${premiumSubscriptions.length})',
                                 style: const TextStyle(fontWeight: FontWeight.w600)),
                             const Text('Los registros indican el estado del plan; no son comprobantes de cobros.',

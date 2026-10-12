@@ -61,6 +61,7 @@ Future<void> checkSubscription({
 
       print("ESTADO SUSCRIPCIÓN: $sub");
 
+      if (!loadingContext.mounted || !context.mounted) return;
       Navigator.pop(loadingContext);
 
       if (sub["active"] == true) {
@@ -69,8 +70,8 @@ Future<void> checkSubscription({
         showSelectPayment(callback, callbackLogin);
       }
     } catch (e) {
-      Navigator.pop(loadingContext);
-      showErrorsDialog(context, e);
+      if (loadingContext.mounted) Navigator.pop(loadingContext);
+      if (context.mounted) showErrorsDialog(context, e);
     } finally {
       // ✅ Libera el bloqueo SIEMPRE
       _isCheckingSubscription = false;

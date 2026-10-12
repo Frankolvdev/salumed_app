@@ -1410,14 +1410,17 @@ checkSubscriptionAndRedirect(Function callback) async {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
+              checkSubscriptionAndRedirect(() {
+                if (!mounted) return;
+                Navigator.push(
                 context,
                 PageTransition(
                   child: CalmScreen(),
                   type: PageTransitionType.slideInUp,
                   duration: Duration(milliseconds: 250),
                 ),
-              ).then((_) => _loadDashboardData());
+              ).then((_) { if (mounted) _loadDashboardData(); });
+              });
             },
             child: _DashboardCard(
               icon: Icons.sentiment_satisfied_alt,
