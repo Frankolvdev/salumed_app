@@ -44,6 +44,7 @@ import '../constants/colors.dart';
 import '../helpers/subscription_helper.dart';
 import '../helpers/store_purchase_helper.dart';
 import 'package:universal_io/io.dart' show Platform;
+import 'package:url_launcher/url_launcher.dart' as subscription_urls;
 import '../main.dart';
 import '../models/question.dart';
 
@@ -1093,6 +1094,41 @@ checkSubscriptionAndRedirect(Function callback) async {
     );
   }
 
+  // Store subscriptions must be cancelled in the store that owns billing.
+  // Opening the management page is not proof that cancellation occurred.
+  Future<void> _manageStoreSubscription(String provider) async {
+    final storeName = provider == 'google_play' ? 'Google Play' : 'App Store';
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Administrar suscripción'),
+        content: Text('Se abrirá $storeName para cancelar la renovación. '
+            'La cancelación debe confirmarse allí. Tu acceso Premium puede '
+            'continuar hasta que termine el periodo pagado.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialogContext, false),
+              child: const Text('Volver')),
+          TextButton(onPressed: () => Navigator.pop(dialogContext, true),
+              child: const Text('Continuar')),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    final url = provider == 'google_play'
+        ? 'https://play.google.com/store/account/subscriptions'
+        : 'https://apps.apple.com/account/subscriptions';
+    try {
+      final opened = await subscription_urls.launchUrl(
+          Uri.parse(url), mode: subscription_urls.LaunchMode.externalApplication);
+      if (!opened) throw StateError('No se pudo abrir la tienda');
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('No se pudo abrir $storeName. Abre la tienda y entra a Suscripciones.'),
+      ));
+    }
+  }
+
   Future<void> _showPlanDetails(dynamic plan, bool active) async {
     final paymentProvider = (plan['provider'] ?? '').toString();
     final store = paymentProvider == 'google_play' || paymentProvider == 'apple';
@@ -1182,11 +1218,15 @@ checkSubscriptionAndRedirect(Function callback) async {
                   callback: () async { await subscriptionStatus(); });
               }),
             ],
-            if (active && !store && !admin) ...[
+            if (active && !admin && (store || paymentProvider == 'paypal')) ...[
               const SizedBox(height: 10),
               _planActionButton('Cancelar suscripción', Icons.cancel_outlined, () {
                 Navigator.pop(dialogContext);
-                confirmCancel();
+                if (store) {
+                  _manageStoreSubscription(paymentProvider);
+                } else {
+                  confirmCancel();
+                }
               }, outlined: true),
             ],
           ])),
